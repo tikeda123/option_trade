@@ -1,0 +1,92 @@
+{
+        "ONLINE": {
+                "DBNAME": "trading",
+                "DBFILENAME": "./trading.db"
+        },
+        "BYBIT_API": {
+                "TESTNET": false,
+                "API_KEY": "IngC1joym24Zwbr3I3",
+                "API_SECRET": "PWYVjBGUSk1XbopAsr97JiKc5REZJQBCXgEm"
+        },
+        "DATA": {
+                "DATAINV": false,
+                "DBPATH": "data/db_export",
+                "TSTPATH": "data/data_rolling/"
+        },
+        "MONGODB": {
+                "HOST": "localhost",
+                "PORT": "27017",
+                "USERNAME": "root",
+                "PASSWORD": "password",
+                "DATABASE": "trading"
+        },
+        "TRADE_CONFIG": {
+                "UPDATE": true,
+                "ENTRY_ENABLED": true,
+                "SYMBOL": "BTCUSDT",
+                "INTERVAL": 60,
+                "CONTRACT": "USDT",
+                "INIT_AMOUNT": 1000,
+                "AMOUNT": 1000,
+                "INIT_EQUITY": 1000,
+                "MAX_LEVERAGE": 1.5,
+                "FTC": 0,
+                "PTC": 0.00055,
+                "MAX_LOSSCUT": 0.04,
+                "MIN_LOSSCUT": 0.03,
+                "SHORT_MODEL_RATIO": 0.8,
+                "MIDDLE_MODEL_RATIO": 0.2,
+                "LONG_MODEL_RATIO": 0.2
+        },
+        "LOG": {
+                "LOGLVL": 2,
+                "VERBOSE": true,
+                "DB_FLAG": true,
+                "LOGPATH": "logs/",
+                "LOGFNAME": "btc_usdt.log",
+                "DB_TABLE_NAME": "trading_log",
+                "FILE_IDF_AC": "_account.csv",
+                "FILE_IDF_FX": "_tran.csv"
+        },
+        "TECHNICAL": {
+                "ATR": {
+                        "TIMEPERIOD": 14
+                },
+                "ROC": {
+                        "TIMEPERIOD": 14
+                },
+                "MFI": {
+                        "TIMEPERIOD": 14
+                },
+                "AROON": {
+                        "TIMEPERIOD": 14
+                },
+                "BB": {
+                        "TIMEPERIOD": 20,
+                        "SIGMA": 2
+                },
+                "MACD": {
+                        "FASTPERIOD": 12,
+                        "SLOWPERIOD": 26,
+                        "SIGNALPERIOD": 9
+                },
+                "RSI": {
+                        "TIMEPERIOD": 14
+                },
+                "DMI": {
+                        "TIMEPERIOD": 14
+                },
+                "VOLUME_MA": {
+                        "TIMEPERIOD": 14
+                },
+                "DIFFERENCE": {
+                        "TIMEPERIOD": 1
+                },
+                "SMA": {
+                        "TIMEPERIOD": 9
+                },
+                "EMA": {
+                        "TIMEPERIOD": 4
+                }
+        }
+}

@@ -1,0 +1,37 @@
+version: "3.8"
+services:
+  mongo:
+    image: mongo:5.0
+    restart: always
+    ports:
+      - "27017:27017"
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: password
+      MONGO_INITDB_DATABASE: trading
+    volumes:
+      - ./data/db:/data/db
+    networks:
+      - mongo-express
+
+  mongo_express:
+    image: mongo-express:1.0.0-alpha.4
+    restart: always
+    ports:
+      - "8081:8081"
+    environment:
+      ME_CONFIG_MONGODB_ADMINUSERNAME: root
+      ME_CONFIG_MONGODB_ADMINPASSWORD: password
+      ME_CONFIG_MONGODB_URL: mongodb://root:password@mongo:27017/
+      ME_CONFIG_BASICAUTH_USERNAME: admin
+      ME_CONFIG_BASICAUTH_PASSWORD: Password1
+      ME_CONFIG_OPTIONS_EDITORTHEME: ambiance
+      ME_CONFIG_SITE_BASEURL: /
+    depends_on:
+      - mongo
+    networks:
+      - mongo-express
+
+networks:
+  mongo-express:
+    driver: bridge

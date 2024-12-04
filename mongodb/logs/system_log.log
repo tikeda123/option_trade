@@ -1,0 +1,73 @@
+2024-09-07 22:17:48,024 INFO: Failed to export data to CSV: [Errno 2] No such file or directory: 'data/db/20240907_221748_BTCUSDT_60_market_data.csv'
+2024-09-07 22:23:26,089 INFO: Data exported to data/db/20240907_222325_BTCUSDT_60_market_data.csv
+2024-09-07 22:25:37,975 INFO: Attempting to export collection: BTCUSDT_60_market_data
+2024-09-07 22:25:38,043 INFO: Found 38842 documents in the collection
+2024-09-07 22:25:38,043 INFO: Attempting to create file: data/db/20240907_222538_BTCUSDT_60_market_data.csv
+2024-09-07 22:25:38,186 INFO: Data successfully exported to data/db/20240907_222538_BTCUSDT_60_market_data.csv
+2024-09-07 22:38:19,556 INFO: Attempting to export collection: BTCUSDT_60_market_data
+2024-09-07 22:38:19,634 INFO: Found 38842 documents in the collection
+2024-09-07 22:38:19,634 INFO: Attempting to create file: data/db/20240907_223819_BTCUSDT_60_market_data.csv
+2024-09-07 22:38:19,782 INFO: Data successfully exported to data/db/20240907_223819_BTCUSDT_60_market_data.csv
+2024-09-07 22:49:37,850 INFO: Attempting to export collection: BTCUSDT_60_market_data
+2024-09-07 22:49:37,916 INFO: Found 38842 documents in the collection
+2024-09-07 22:49:37,917 INFO: Attempting to create file: /home/tikeda/workspace/trade/AI_DayTrading/data/db/20240907_224937_BTCUSDT_60_market_data.csv
+2024-09-07 22:49:38,064 INFO: Data successfully exported to /home/tikeda/workspace/trade/AI_DayTrading/data/db/20240907_224937_BTCUSDT_60_market_data.csv
+2024-09-07 22:51:42,129 INFO: Attempting to export collection: account_data
+2024-09-07 22:51:42,134 INFO: Found 375 documents in the collection
+2024-09-07 22:51:42,134 INFO: Attempting to create file: /home/tikeda/workspace/trade/AI_DayTrading/data/db/20240907_225142_account_data.csv
+2024-09-07 22:51:42,135 INFO: Data successfully exported to /home/tikeda/workspace/trade/AI_DayTrading/data/db/20240907_225142_account_data.csv
+2024-09-07 22:54:02,860 INFO: Attempting to export collection: transaction_data
+2024-09-07 22:54:02,867 INFO: Found 188 documents in the collection
+2024-09-07 22:54:02,867 INFO: Attempting to create file: /home/tikeda/workspace/trade/AI_DayTrading/data/db/20240907_225402_transaction_data.csv
+2024-09-07 22:54:02,869 INFO: Data successfully exported to /home/tikeda/workspace/trade/AI_DayTrading/data/db/20240907_225402_transaction_data.csv
+2024-09-07 22:54:02,871 INFO: Attempting to export collection: BTCUSDT_60_rolling_ai_data
+2024-09-07 22:54:02,920 INFO: Found 5668 documents in the collection
+2024-09-07 22:54:02,920 INFO: Attempting to create file: /home/tikeda/workspace/trade/AI_DayTrading/data/db/20240907_225402_BTCUSDT_60_rolling_ai_data.csv
+2024-09-07 22:54:03,029 INFO: Data successfully exported to /home/tikeda/workspace/trade/AI_DayTrading/data/db/20240907_225402_BTCUSDT_60_rolling_ai_data.csv
+2024-09-07 22:54:03,038 INFO: Attempting to export collection: trading_log
+2024-09-07 22:54:03,057 INFO: Found 17361 documents in the collection
+2024-09-07 22:54:03,057 INFO: Attempting to create file: /home/tikeda/workspace/trade/AI_DayTrading/data/db/20240907_225403_trading_log.csv
+2024-09-07 22:54:03,092 INFO: Data successfully exported to /home/tikeda/workspace/trade/AI_DayTrading/data/db/20240907_225403_trading_log.csv
+2024-09-07 22:54:03,095 INFO: Attempting to export collection: BTCUSDT_60_aiml_tracing
+2024-09-07 22:54:03,100 INFO: Found 187 documents in the collection
+2024-09-07 22:54:03,100 INFO: Attempting to create file: /home/tikeda/workspace/trade/AI_DayTrading/data/db/20240907_225403_BTCUSDT_60_aiml_tracing.csv
+2024-09-07 22:54:03,103 INFO: Data successfully exported to /home/tikeda/workspace/trade/AI_DayTrading/data/db/20240907_225403_BTCUSDT_60_aiml_tracing.csv
+2024-09-07 23:12:22,913 INFO: Attempting to export collection: account_data
+2024-09-07 23:12:22,919 INFO: Found 375 documents in the collection
+2024-09-07 23:12:22,919 INFO: Attempting to create file: /home/tikeda/workspace/trade/AI_DayTrading/data/db_export/20240907_231222_account_data.csv
+2024-09-07 23:12:22,921 INFO: Data successfully exported to /home/tikeda/workspace/trade/AI_DayTrading/data/db_export/20240907_231222_account_data.csv
+2024-09-07 23:12:22,922 INFO: Attempting to export collection: transaction_data
+2024-09-07 23:12:22,928 INFO: Found 188 documents in the collection
+2024-09-07 23:12:22,928 INFO: Attempting to create file: /home/tikeda/workspace/trade/AI_DayTrading/data/db_export/20240907_231222_transaction_data.csv
+2024-09-07 23:12:22,930 INFO: Data successfully exported to /home/tikeda/workspace/trade/AI_DayTrading/data/db_export/20240907_231222_transaction_data.csv
+2024-09-07 23:12:22,931 INFO: Attempting to export collection: trading_log
+2024-09-07 23:12:22,976 INFO: Found 17361 documents in the collection
+2024-09-07 23:12:22,976 INFO: Attempting to create file: /home/tikeda/workspace/trade/AI_DayTrading/data/db_export/20240907_231222_trading_log.csv
+2024-09-07 23:12:23,011 INFO: Data successfully exported to /home/tikeda/workspace/trade/AI_DayTrading/data/db_export/20240907_231222_trading_log.csv
+2024-09-07 23:12:23,015 INFO: Attempting to export collection: BTCUSDT_60_aiml_tracing
+2024-09-07 23:12:23,021 INFO: Found 187 documents in the collection
+2024-09-07 23:12:23,021 INFO: Attempting to create file: /home/tikeda/workspace/trade/AI_DayTrading/data/db_export/20240907_231223_BTCUSDT_60_aiml_tracing.csv
+2024-09-07 23:12:23,024 INFO: Data successfully exported to /home/tikeda/workspace/trade/AI_DayTrading/data/db_export/20240907_231223_BTCUSDT_60_aiml_tracing.csv
+2024-09-07 23:12:23,025 INFO: Attempting to export collection: BTCUSDT_60_rolling_ai_data
+2024-09-07 23:12:23,071 INFO: Found 5668 documents in the collection
+2024-09-07 23:12:23,071 INFO: Attempting to create file: /home/tikeda/workspace/trade/AI_DayTrading/data/db_export/20240907_231223_BTCUSDT_60_rolling_ai_data.csv
+2024-09-07 23:12:23,179 INFO: Data successfully exported to /home/tikeda/workspace/trade/AI_DayTrading/data/db_export/20240907_231223_BTCUSDT_60_rolling_ai_data.csv
+2024-09-07 23:15:41,258 INFO: Collection 'trading_log' dropped successfully.
+2024-09-07 23:16:04,834 INFO: Collection 'trading_log' dropped successfully.
+2024-09-07 23:16:58,685 INFO: Collection 'aiml_tracing' dropped successfully.
+2024-09-07 23:18:00,310 INFO: Collection 'BTCUSDT_60_aiml_tracing' dropped successfully.
+2024-09-07 23:49:09,724 INFO: Attempting to export collection: BTCUSDT_60_rolling_ai_data
+2024-09-07 23:49:09,781 INFO: Found 5668 documents in the collection
+2024-09-07 23:49:09,781 INFO: Attempting to create file: /home/tikeda/workspace/trade/AI_DayTrading/data/db_export/20240907_234909_BTCUSDT_60_rolling_ai_data.csv
+2024-09-07 23:49:09,892 INFO: Data successfully exported to /home/tikeda/workspace/trade/AI_DayTrading/data/db_export/20240907_234909_BTCUSDT_60_rolling_ai_data.csv
+2024-09-07 23:49:09,905 INFO: Collection 'rolling_ai_data' dropped successfully.
+2024-09-07 23:49:19,597 INFO: Attempting to export collection: BTCUSDT_60_rolling_ai_data
+2024-09-07 23:49:19,637 INFO: Found 5668 documents in the collection
+2024-09-07 23:49:19,637 INFO: Attempting to create file: /home/tikeda/workspace/trade/AI_DayTrading/data/db_export/20240907_234919_BTCUSDT_60_rolling_ai_data.csv
+2024-09-07 23:49:19,748 INFO: Data successfully exported to /home/tikeda/workspace/trade/AI_DayTrading/data/db_export/20240907_234919_BTCUSDT_60_rolling_ai_data.csv
+2024-09-07 23:49:19,759 INFO: Collection 'rolling_ai_data' dropped successfully.
+2024-09-07 23:50:01,204 INFO: Attempting to export collection: BTCUSDT_60_rolling_ai_data
+2024-09-07 23:50:01,245 INFO: Found 5668 documents in the collection
+2024-09-07 23:50:01,245 INFO: Attempting to create file: /home/tikeda/workspace/trade/AI_DayTrading/data/db_export/20240907_235001_BTCUSDT_60_rolling_ai_data.csv
+2024-09-07 23:50:01,354 INFO: Data successfully exported to /home/tikeda/workspace/trade/AI_DayTrading/data/db_export/20240907_235001_BTCUSDT_60_rolling_ai_data.csv
+2024-09-07 23:50:01,371 INFO: Collection 'BTCUSDT_60_rolling_ai_data' dropped successfully.
