@@ -83,7 +83,9 @@ class MongoDataLoader(DataLoader):
                                 TRANSACTION_DATA: "transaction_data",
                                 ACCOUNT_DATA: "account_data",
                                 TRADE_CONFIG: "trade_config",
-                                TRADING_LOG: "trading_log"
+                                TRADING_LOG: "trading_log",
+                                OPTION_SYMBOL: "option_symbol",
+                                OPTION_TICKER: "option_ticker"
                         },
                         'seq_collection': {
                                 TRADING_LOG: "trading_log_seq",
@@ -101,7 +103,9 @@ class MongoDataLoader(DataLoader):
                                 TRANSACTION_DATA: "serial",
                                 ACCOUNT_DATA: "serial",
                                 TRADE_CONFIG: "serial",
-                                TRADING_LOG: "serial"
+                                TRADING_LOG: "serial",
+                                OPTION_SYMBOL: "symbol",
+                                OPTION_TICKER: "symbol_id"
                         }
                 }
                 return info_dict[info_type].get(collection_type)

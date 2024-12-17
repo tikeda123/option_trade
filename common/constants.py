@@ -208,7 +208,8 @@ TRANSACTION_DATA = "transaction_data"
 ACCOUNT_DATA = "account_data"
 TRADING_LOG="trading_log"
 TRADE_CONFIG="trade_config"
-
+OPTION_SYMBOL="option_symbol"
+OPTION_TICKER="option_ticker"
 #config file name
 CONFIG_FILENAME = 'aitrading_settings_ver2.json'
 AIMODLE_CONFIG_FILENAME = 'aimodel_setting.json'
