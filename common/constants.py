@@ -210,6 +210,7 @@ TRADING_LOG="trading_log"
 TRADE_CONFIG="trade_config"
 OPTION_SYMBOL="option_symbol"
 OPTION_TICKER="option_ticker"
+OPTION_HV="option_hv"
 #config file name
 CONFIG_FILENAME = 'aitrading_settings_ver2.json'
 AIMODLE_CONFIG_FILENAME = 'aimodel_setting.json'

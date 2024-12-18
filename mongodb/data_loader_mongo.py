@@ -85,7 +85,8 @@ class MongoDataLoader(DataLoader):
                                 TRADE_CONFIG: "trade_config",
                                 TRADING_LOG: "trading_log",
                                 OPTION_SYMBOL: "option_symbol",
-                                OPTION_TICKER: "option_ticker"
+                                OPTION_TICKER: "option_ticker",
+                                OPTION_HV: f"{symbol}_{interval}_option_hv"
                         },
                         'seq_collection': {
                                 TRADING_LOG: "trading_log_seq",
@@ -105,7 +106,8 @@ class MongoDataLoader(DataLoader):
                                 TRADE_CONFIG: "serial",
                                 TRADING_LOG: "serial",
                                 OPTION_SYMBOL: "symbol",
-                                OPTION_TICKER: "symbol_id"
+                                OPTION_TICKER: "symbol_id",
+                                OPTION_HV: "start_at"
                         }
                 }
                 return info_dict[info_type].get(collection_type)

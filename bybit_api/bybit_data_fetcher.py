@@ -373,15 +373,15 @@ class BybitDataFetcher(BybitBaseAPI):
             data_list = result.get("result", [])
 
             if not data_list:
-                return pd.DataFrame(columns=["period", "value", "time", "date"])
+                return pd.DataFrame(columns=["period", "value", "time", "start_at"])
 
             df = pd.DataFrame(data_list)
             # Convert time (ms) to datetime
             if "time" in df.columns:
                 df["time"] = df["time"].astype(float) / 1000
-                df["date"] = pd.to_datetime(df["time"], unit="s", utc=True)
+                df["start_at"] = pd.to_datetime(df["time"], unit="s", utc=True)
 
-            return df[["period", "value", "time", "date"]].sort_values("time")
+            return df[["period", "value", "time", "start_at"]].sort_values("time")
         except (HTTPError, KeyError, Exception) as e:
             raise RuntimeError(f"An error occurred while fetching historical volatility: {e}") from e
 
@@ -462,6 +462,7 @@ class BybitDataFetcher(BybitBaseAPI):
 def main():
     import time
     api = BybitDataFetcher()
+
     # Example usage of fetch_tickers method
 
 

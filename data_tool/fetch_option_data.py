@@ -34,6 +34,7 @@ def main():
     api = BybitDataFetcher()
     data_loader = MongoDataLoader()
 
+
     while True:
         # Get current time
         now = datetime.now(timezone.utc)
@@ -53,18 +54,35 @@ def main():
         base_coin = "BTC"
         # Fetch and store data
         try:
+            # Get current UTC timestamp and format date string
+            current_utc = int(time.time_ns() // 1_000_000_000)
+            current_date = datetime.fromtimestamp(current_utc, tz=timezone.utc)
+            date_str = current_date.strftime("%Y-%m-%d %H:%M:%S")
+            date_str_tz = current_date.strftime("%Y-%m-%d %H:%M:%S%z")
+
+            # Fetch and store instrument info
             instrument_info = api.fetch_instruments_info(category="option", baseCoin=base_coin)
             data_loader.insert_data(instrument_info, OPTION_SYMBOL)
 
-            current_utc = int(time.time_ns() // 1_000_000_000)
-            date = datetime.fromtimestamp(current_utc, tz=timezone.utc).strftime("%Y-%m-%d %H:%M:%S")
-
+            # Fetch and store ticker data
             tickers_data = api.fetch_tickers(category="option", baseCoin=base_coin)
-
-            tickers_data["symbol_id"] = tickers_data["symbol"] + "_" + date
-            tickers_data["date"] = date
+            tickers_data["symbol_id"] = tickers_data["symbol"] + "_" + date_str
+            tickers_data["date"] = date_str
             data_loader.insert_data(tickers_data, OPTION_TICKER)
             print(tickers_data)
+
+            # Fetch and store historical volatility data for BTC and ETH
+            for coin in ["BTC", "ETH"]:
+                time.sleep(3)
+                hv_result = api.fetch_historical_volatility_extended(
+                    category="option",
+                    baseCoin=coin,
+                    period=7,
+                    startTime="2023-01-01 00:00:00+0000",
+                    endTime=date_str_tz
+                )
+                data_loader.insert_data(hv_result, OPTION_HV, symbol=coin, interval=7)
+                print(hv_result)
 
         except Exception as e:
             print(f"Error occurred: {e}")
