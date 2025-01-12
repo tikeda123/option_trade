@@ -2,4 +2,5 @@
 /__pycache__/
 /logs/
 /.vscode/
-/offline/logs/offline/logs/btc_usdt.log
+/offline/logs/
+/offline/logs/btc_usdt.log
