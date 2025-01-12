@@ -137,3 +137,6 @@ Request → POST https://api.bybit.com/v5/position/set-leverage: {"category": "l
 2024-12-18 08:39:52,334 INFO: Collection 'trade_config' exists.
 2024-12-18 08:39:52,340 INFO: Collection 'trade_config' dropped successfully.
 2024-12-18 08:39:52,345 INFO: Collection 'trade_config' does not exist.
+2024-12-18 19:33:32,490 INFO: Collection 'trade_config' exists.
+2024-12-18 19:33:32,510 INFO: Collection 'trade_config' dropped successfully.
+2024-12-18 19:33:32,528 INFO: Collection 'trade_config' does not exist.

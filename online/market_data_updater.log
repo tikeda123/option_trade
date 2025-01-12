@@ -1,0 +1,692 @@
+2024-11-14 20:04:49,503 INFO: Collection 'trade_config' exists.
+2024-11-14 20:04:49,519 INFO: Collection 'trade_config' dropped successfully.
+2024-11-14 20:04:49,540 INFO: Collection 'trade_config' does not exist.
+2024-11-14 20:04:50.250030: I external/local_tsl/tsl/cuda/cudart_stub.cc:32] Could not find cuda drivers on your machine, GPU will not be used.
+2024-11-14 20:04:50.254568: I external/local_tsl/tsl/cuda/cudart_stub.cc:32] Could not find cuda drivers on your machine, GPU will not be used.
+2024-11-14 20:04:50.304883: I tensorflow/core/platform/cpu_feature_guard.cc:210] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: AVX2 FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2024-11-14 20:04:51.233509: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Could not find TensorRT
+2024-11-14 20:04:52,226 INFO: No GPU available, using CPU instead
+2024-11-14 20:04:52,230 INFO: No GPU available, using CPU instead
+2024-11-14 20:04:52,231 INFO: No GPU available, using CPU instead
+2024-11-14 20:04:52,233 INFO: No GPU available, using CPU instead
+2024-11-14 20:04:52,235 INFO: No GPU available, using CPU instead
+2024-11-14 20:04:52,236 INFO: No GPU available, using CPU instead
+2024-11-14 20:04:52,236 INFO: Loading model from file: /home/ai-trade/AI_DayTrading/data/data_rolling/rolling_BTC_ETH_SOL_BNB_60_120_240_720_d_model_roc1.keras
+/home/ai-trade/anaconda3/envs/ai-trade/lib/python3.10/site-packages/keras/src/layers/layer.py:361: UserWarning: `build()` was called on layer 'transformer_block_6', however the layer does not have a `build()` method implemented and it looks like it has unbuilt state. This will cause the layer to be marked as built, despite not being actually built, which may cause failures down the line. Make sure to implement a proper `build()` method.
+  warnings.warn(
+/home/ai-trade/anaconda3/envs/ai-trade/lib/python3.10/site-packages/keras/src/layers/layer.py:361: UserWarning: `build()` was called on layer 'transformer_block_7', however the layer does not have a `build()` method implemented and it looks like it has unbuilt state. This will cause the layer to be marked as built, despite not being actually built, which may cause failures down the line. Make sure to implement a proper `build()` method.
+  warnings.warn(
+/home/ai-trade/anaconda3/envs/ai-trade/lib/python3.10/site-packages/keras/src/layers/layer.py:361: UserWarning: `build()` was called on layer 'transformer_block_8', however the layer does not have a `build()` method implemented and it looks like it has unbuilt state. This will cause the layer to be marked as built, despite not being actually built, which may cause failures down the line. Make sure to implement a proper `build()` method.
+  warnings.warn(
+/home/ai-trade/anaconda3/envs/ai-trade/lib/python3.10/site-packages/keras/src/layers/layer.py:361: UserWarning: `build()` was called on layer 'transformer_block_9', however the layer does not have a `build()` method implemented and it looks like it has unbuilt state. This will cause the layer to be marked as built, despite not being actually built, which may cause failures down the line. Make sure to implement a proper `build()` method.
+  warnings.warn(
+/home/ai-trade/anaconda3/envs/ai-trade/lib/python3.10/site-packages/keras/src/layers/layer.py:361: UserWarning: `build()` was called on layer 'transformer_block_10', however the layer does not have a `build()` method implemented and it looks like it has unbuilt state. This will cause the layer to be marked as built, despite not being actually built, which may cause failures down the line. Make sure to implement a proper `build()` method.
+  warnings.warn(
+/home/ai-trade/anaconda3/envs/ai-trade/lib/python3.10/site-packages/keras/src/layers/layer.py:361: UserWarning: `build()` was called on layer 'transformer_block_11', however the layer does not have a `build()` method implemented and it looks like it has unbuilt state. This will cause the layer to be marked as built, despite not being actually built, which may cause failures down the line. Make sure to implement a proper `build()` method.
+  warnings.warn(
+2024-11-14 20:05:04,891 INFO: Loading scaler from /home/ai-trade/AI_DayTrading/data/data_rolling/rolling_BTC_ETH_SOL_BNB_60_120_240_720_d_model_roc1.scaler
+2024-11-14 20:05:04,891 INFO: Loading scaler from /home/ai-trade/AI_DayTrading/data/data_rolling/rolling_BTC_ETH_SOL_BNB_60_120_240_720_d_model_roc1.scaler
+2024-11-14 20:05:04,892 INFO: Loading model from file: /home/ai-trade/AI_DayTrading/data/data_rolling/rolling_BTC_ETH_SOL_BNB_60_120_240_720_d_model_ema1.keras
+/home/ai-trade/anaconda3/envs/ai-trade/lib/python3.10/site-packages/keras/src/layers/layer.py:361: UserWarning: `build()` was called on layer 'transformer_block_18', however the layer does not have a `build()` method implemented and it looks like it has unbuilt state. This will cause the layer to be marked as built, despite not being actually built, which may cause failures down the line. Make sure to implement a proper `build()` method.
+  warnings.warn(
+/home/ai-trade/anaconda3/envs/ai-trade/lib/python3.10/site-packages/keras/src/layers/layer.py:361: UserWarning: `build()` was called on layer 'transformer_block_19', however the layer does not have a `build()` method implemented and it looks like it has unbuilt state. This will cause the layer to be marked as built, despite not being actually built, which may cause failures down the line. Make sure to implement a proper `build()` method.
+  warnings.warn(
+/home/ai-trade/anaconda3/envs/ai-trade/lib/python3.10/site-packages/keras/src/layers/layer.py:361: UserWarning: `build()` was called on layer 'transformer_block_20', however the layer does not have a `build()` method implemented and it looks like it has unbuilt state. This will cause the layer to be marked as built, despite not being actually built, which may cause failures down the line. Make sure to implement a proper `build()` method.
+  warnings.warn(
+/home/ai-trade/anaconda3/envs/ai-trade/lib/python3.10/site-packages/keras/src/layers/layer.py:361: UserWarning: `build()` was called on layer 'transformer_block_21', however the layer does not have a `build()` method implemented and it looks like it has unbuilt state. This will cause the layer to be marked as built, despite not being actually built, which may cause failures down the line. Make sure to implement a proper `build()` method.
+  warnings.warn(
+/home/ai-trade/anaconda3/envs/ai-trade/lib/python3.10/site-packages/keras/src/layers/layer.py:361: UserWarning: `build()` was called on layer 'transformer_block_22', however the layer does not have a `build()` method implemented and it looks like it has unbuilt state. This will cause the layer to be marked as built, despite not being actually built, which may cause failures down the line. Make sure to implement a proper `build()` method.
+  warnings.warn(
+/home/ai-trade/anaconda3/envs/ai-trade/lib/python3.10/site-packages/keras/src/layers/layer.py:361: UserWarning: `build()` was called on layer 'transformer_block_23', however the layer does not have a `build()` method implemented and it looks like it has unbuilt state. This will cause the layer to be marked as built, despite not being actually built, which may cause failures down the line. Make sure to implement a proper `build()` method.
+  warnings.warn(
+2024-11-14 20:05:17,355 INFO: Loading scaler from /home/ai-trade/AI_DayTrading/data/data_rolling/rolling_BTC_ETH_SOL_BNB_60_120_240_720_d_model_ema1.scaler
+2024-11-14 20:05:17,356 INFO: Loading scaler from /home/ai-trade/AI_DayTrading/data/data_rolling/rolling_BTC_ETH_SOL_BNB_60_120_240_720_d_model_ema1.scaler
+2024-11-14 20:05:17,356 INFO: Loading model from file: /home/ai-trade/AI_DayTrading/data/data_rolling/rolling_BTC_ETH_SOL_BNB_60_120_240_720_d_model_macd1.keras
+/home/ai-trade/anaconda3/envs/ai-trade/lib/python3.10/site-packages/keras/src/layers/layer.py:361: UserWarning: `build()` was called on layer 'transformer_block_30', however the layer does not have a `build()` method implemented and it looks like it has unbuilt state. This will cause the layer to be marked as built, despite not being actually built, which may cause failures down the line. Make sure to implement a proper `build()` method.
+  warnings.warn(
+/home/ai-trade/anaconda3/envs/ai-trade/lib/python3.10/site-packages/keras/src/layers/layer.py:361: UserWarning: `build()` was called on layer 'transformer_block_31', however the layer does not have a `build()` method implemented and it looks like it has unbuilt state. This will cause the layer to be marked as built, despite not being actually built, which may cause failures down the line. Make sure to implement a proper `build()` method.
+  warnings.warn(
+/home/ai-trade/anaconda3/envs/ai-trade/lib/python3.10/site-packages/keras/src/layers/layer.py:361: UserWarning: `build()` was called on layer 'transformer_block_32', however the layer does not have a `build()` method implemented and it looks like it has unbuilt state. This will cause the layer to be marked as built, despite not being actually built, which may cause failures down the line. Make sure to implement a proper `build()` method.
+  warnings.warn(
+/home/ai-trade/anaconda3/envs/ai-trade/lib/python3.10/site-packages/keras/src/layers/layer.py:361: UserWarning: `build()` was called on layer 'transformer_block_33', however the layer does not have a `build()` method implemented and it looks like it has unbuilt state. This will cause the layer to be marked as built, despite not being actually built, which may cause failures down the line. Make sure to implement a proper `build()` method.
+  warnings.warn(
+/home/ai-trade/anaconda3/envs/ai-trade/lib/python3.10/site-packages/keras/src/layers/layer.py:361: UserWarning: `build()` was called on layer 'transformer_block_34', however the layer does not have a `build()` method implemented and it looks like it has unbuilt state. This will cause the layer to be marked as built, despite not being actually built, which may cause failures down the line. Make sure to implement a proper `build()` method.
+  warnings.warn(
+/home/ai-trade/anaconda3/envs/ai-trade/lib/python3.10/site-packages/keras/src/layers/layer.py:361: UserWarning: `build()` was called on layer 'transformer_block_35', however the layer does not have a `build()` method implemented and it looks like it has unbuilt state. This will cause the layer to be marked as built, despite not being actually built, which may cause failures down the line. Make sure to implement a proper `build()` method.
+  warnings.warn(
+2024-11-14 20:05:29,783 INFO: Loading scaler from /home/ai-trade/AI_DayTrading/data/data_rolling/rolling_BTC_ETH_SOL_BNB_60_120_240_720_d_model_macd1.scaler
+2024-11-14 20:05:29,784 INFO: Loading scaler from /home/ai-trade/AI_DayTrading/data/data_rolling/rolling_BTC_ETH_SOL_BNB_60_120_240_720_d_model_macd1.scaler
+2024-11-14 20:05:29,785 INFO: Loading model from file: /home/ai-trade/AI_DayTrading/data/data_rolling/rolling_BTC_ETH_SOL_BNB_60_120_240_720_d_model_sma1.keras
+/home/ai-trade/anaconda3/envs/ai-trade/lib/python3.10/site-packages/keras/src/layers/layer.py:361: UserWarning: `build()` was called on layer 'transformer_block_42', however the layer does not have a `build()` method implemented and it looks like it has unbuilt state. This will cause the layer to be marked as built, despite not being actually built, which may cause failures down the line. Make sure to implement a proper `build()` method.
+  warnings.warn(
+/home/ai-trade/anaconda3/envs/ai-trade/lib/python3.10/site-packages/keras/src/layers/layer.py:361: UserWarning: `build()` was called on layer 'transformer_block_43', however the layer does not have a `build()` method implemented and it looks like it has unbuilt state. This will cause the layer to be marked as built, despite not being actually built, which may cause failures down the line. Make sure to implement a proper `build()` method.
+  warnings.warn(
+/home/ai-trade/anaconda3/envs/ai-trade/lib/python3.10/site-packages/keras/src/layers/layer.py:361: UserWarning: `build()` was called on layer 'transformer_block_44', however the layer does not have a `build()` method implemented and it looks like it has unbuilt state. This will cause the layer to be marked as built, despite not being actually built, which may cause failures down the line. Make sure to implement a proper `build()` method.
+  warnings.warn(
+/home/ai-trade/anaconda3/envs/ai-trade/lib/python3.10/site-packages/keras/src/layers/layer.py:361: UserWarning: `build()` was called on layer 'transformer_block_45', however the layer does not have a `build()` method implemented and it looks like it has unbuilt state. This will cause the layer to be marked as built, despite not being actually built, which may cause failures down the line. Make sure to implement a proper `build()` method.
+  warnings.warn(
+/home/ai-trade/anaconda3/envs/ai-trade/lib/python3.10/site-packages/keras/src/layers/layer.py:361: UserWarning: `build()` was called on layer 'transformer_block_46', however the layer does not have a `build()` method implemented and it looks like it has unbuilt state. This will cause the layer to be marked as built, despite not being actually built, which may cause failures down the line. Make sure to implement a proper `build()` method.
+  warnings.warn(
+/home/ai-trade/anaconda3/envs/ai-trade/lib/python3.10/site-packages/keras/src/layers/layer.py:361: UserWarning: `build()` was called on layer 'transformer_block_47', however the layer does not have a `build()` method implemented and it looks like it has unbuilt state. This will cause the layer to be marked as built, despite not being actually built, which may cause failures down the line. Make sure to implement a proper `build()` method.
+  warnings.warn(
+2024-11-14 20:05:41,583 INFO: Loading scaler from /home/ai-trade/AI_DayTrading/data/data_rolling/rolling_BTC_ETH_SOL_BNB_60_120_240_720_d_model_sma1.scaler
+2024-11-14 20:05:41,584 INFO: Loading scaler from /home/ai-trade/AI_DayTrading/data/data_rolling/rolling_BTC_ETH_SOL_BNB_60_120_240_720_d_model_sma1.scaler
+2024-11-14 20:05:41,584 INFO: Loading model from file: /home/ai-trade/AI_DayTrading/data/data_rolling/rolling_BTC_ETH_SOL_BNB_60_120_240_720_d_model_mfi1.keras
+/home/ai-trade/anaconda3/envs/ai-trade/lib/python3.10/site-packages/keras/src/layers/layer.py:361: UserWarning: `build()` was called on layer 'transformer_block_54', however the layer does not have a `build()` method implemented and it looks like it has unbuilt state. This will cause the layer to be marked as built, despite not being actually built, which may cause failures down the line. Make sure to implement a proper `build()` method.
+  warnings.warn(
+/home/ai-trade/anaconda3/envs/ai-trade/lib/python3.10/site-packages/keras/src/layers/layer.py:361: UserWarning: `build()` was called on layer 'transformer_block_55', however the layer does not have a `build()` method implemented and it looks like it has unbuilt state. This will cause the layer to be marked as built, despite not being actually built, which may cause failures down the line. Make sure to implement a proper `build()` method.
+  warnings.warn(
+/home/ai-trade/anaconda3/envs/ai-trade/lib/python3.10/site-packages/keras/src/layers/layer.py:361: UserWarning: `build()` was called on layer 'transformer_block_56', however the layer does not have a `build()` method implemented and it looks like it has unbuilt state. This will cause the layer to be marked as built, despite not being actually built, which may cause failures down the line. Make sure to implement a proper `build()` method.
+  warnings.warn(
+/home/ai-trade/anaconda3/envs/ai-trade/lib/python3.10/site-packages/keras/src/layers/layer.py:361: UserWarning: `build()` was called on layer 'transformer_block_57', however the layer does not have a `build()` method implemented and it looks like it has unbuilt state. This will cause the layer to be marked as built, despite not being actually built, which may cause failures down the line. Make sure to implement a proper `build()` method.
+  warnings.warn(
+/home/ai-trade/anaconda3/envs/ai-trade/lib/python3.10/site-packages/keras/src/layers/layer.py:361: UserWarning: `build()` was called on layer 'transformer_block_58', however the layer does not have a `build()` method implemented and it looks like it has unbuilt state. This will cause the layer to be marked as built, despite not being actually built, which may cause failures down the line. Make sure to implement a proper `build()` method.
+  warnings.warn(
+/home/ai-trade/anaconda3/envs/ai-trade/lib/python3.10/site-packages/keras/src/layers/layer.py:361: UserWarning: `build()` was called on layer 'transformer_block_59', however the layer does not have a `build()` method implemented and it looks like it has unbuilt state. This will cause the layer to be marked as built, despite not being actually built, which may cause failures down the line. Make sure to implement a proper `build()` method.
+  warnings.warn(
+2024-11-14 20:05:53,966 INFO: Loading scaler from /home/ai-trade/AI_DayTrading/data/data_rolling/rolling_BTC_ETH_SOL_BNB_60_120_240_720_d_model_mfi1.scaler
+2024-11-14 20:05:53,967 INFO: Loading scaler from /home/ai-trade/AI_DayTrading/data/data_rolling/rolling_BTC_ETH_SOL_BNB_60_120_240_720_d_model_mfi1.scaler
+2024-11-14 20:05:53,969 INFO: Loading model from file: /home/ai-trade/AI_DayTrading/data/data_rolling/rolling_BTC_ETH_SOL_BNB_60_120_240_720_d_model_atr1.keras
+2024-11-14 20:06:06,301 INFO: Loading scaler from /home/ai-trade/AI_DayTrading/data/data_rolling/rolling_BTC_ETH_SOL_BNB_60_120_240_720_d_model_atr1.scaler
+2024-11-14 20:06:06,302 INFO: Loading scaler from /home/ai-trade/AI_DayTrading/data/data_rolling/rolling_BTC_ETH_SOL_BNB_60_120_240_720_d_model_atr1.scaler
+2024-11-14 20:06:06,307 INFO: No GPU available, using CPU instead
+2024-11-14 20:06:06,309 INFO: No GPU available, using CPU instead
+2024-11-14 20:06:06,311 INFO: No GPU available, using CPU instead
+2024-11-14 20:06:06,312 INFO: No GPU available, using CPU instead
+2024-11-14 20:06:06,314 INFO: No GPU available, using CPU instead
+2024-11-14 20:06:06,316 INFO: No GPU available, using CPU instead
+2024-11-14 20:06:06,316 INFO: Loading model from cache: /home/ai-trade/AI_DayTrading/data/data_rolling/rolling_BTC_ETH_SOL_BNB_60_120_240_720_d_model_roc1.keras
+2024-11-14 20:06:06,316 INFO: Loading scaler from /home/ai-trade/AI_DayTrading/data/data_rolling/rolling_BTC_ETH_SOL_BNB_60_120_240_720_d_model_roc1.scaler
+2024-11-14 20:06:06,316 INFO: Loading model from cache: /home/ai-trade/AI_DayTrading/data/data_rolling/rolling_BTC_ETH_SOL_BNB_60_120_240_720_d_model_sma1.keras
+2024-11-14 20:06:06,316 INFO: Loading scaler from /home/ai-trade/AI_DayTrading/data/data_rolling/rolling_BTC_ETH_SOL_BNB_60_120_240_720_d_model_sma1.scaler
+2024-11-14 20:06:06,317 INFO: Loading model from cache: /home/ai-trade/AI_DayTrading/data/data_rolling/rolling_BTC_ETH_SOL_BNB_60_120_240_720_d_model_macd1.keras
+2024-11-14 20:06:06,317 INFO: Loading scaler from /home/ai-trade/AI_DayTrading/data/data_rolling/rolling_BTC_ETH_SOL_BNB_60_120_240_720_d_model_macd1.scaler
+2024-11-14 20:06:06,317 INFO: Loading model from cache: /home/ai-trade/AI_DayTrading/data/data_rolling/rolling_BTC_ETH_SOL_BNB_60_120_240_720_d_model_mfi1.keras
+2024-11-14 20:06:06,317 INFO: Loading scaler from /home/ai-trade/AI_DayTrading/data/data_rolling/rolling_BTC_ETH_SOL_BNB_60_120_240_720_d_model_mfi1.scaler
+2024-11-14 20:06:06,317 INFO: Loading model from cache: /home/ai-trade/AI_DayTrading/data/data_rolling/rolling_BTC_ETH_SOL_BNB_60_120_240_720_d_model_ema1.keras
+2024-11-14 20:06:06,317 INFO: Loading scaler from /home/ai-trade/AI_DayTrading/data/data_rolling/rolling_BTC_ETH_SOL_BNB_60_120_240_720_d_model_ema1.scaler
+2024-11-14 20:06:06,318 INFO: Loading model from cache: /home/ai-trade/AI_DayTrading/data/data_rolling/rolling_BTC_ETH_SOL_BNB_60_120_240_720_d_model_atr1.keras
+2024-11-14 20:06:06,318 INFO: Loading scaler from /home/ai-trade/AI_DayTrading/data/data_rolling/rolling_BTC_ETH_SOL_BNB_60_120_240_720_d_model_atr1.scaler
+2024-11-14 20:06:08,403 INFO: Updated data for BTCUSDT at 30 minute interval.
+2024-11-14 20:06:09,342 INFO: Updated data for BTCUSDT at 60 minute interval.
+2024-11-14 20:00:00| 
+                        _id            start_at     open  ...    mfi   roc      atr
+0  6736583187aaafad60e406e7 2024-11-14 20:00:00  89499.9  ...  51.82 -0.58  1168.62
+
+[1 rows x 51 columns]
+2024-11-14 20:06:10,195 INFO: Updated data for BTCUSDT at 120 minute interval.
+2024-11-14 20:06:10,598 INFO: Updated data for BTCUSDT at 240 minute interval.
+2024-11-14 20:30:05,871 INFO: Updated data for BTCUSDT at 30 minute interval.
+2024-11-14 21:00:03,374 INFO: Updated data for BTCUSDT at 30 minute interval.
+2024-11-14 21:00:04,315 INFO: Updated data for BTCUSDT at 60 minute interval.
+2024-11-14 21:00:00| 
+                        _id            start_at     open  ...    mfi   roc      atr
+0  673664d487aaafad60e41349 2024-11-14 21:00:00  87621.2  ...  48.67 -3.18  1185.71
+
+[1 rows x 51 columns]
+2024-11-14 21:30:03,187 INFO: Updated data for BTCUSDT at 30 minute interval.
+2024-11-14 22:00:04,552 INFO: Updated data for BTCUSDT at 30 minute interval.
+2024-11-14 22:00:05,495 INFO: Updated data for BTCUSDT at 60 minute interval.
+2024-11-14 22:00:00| 
+                        _id            start_at     open  ...    mfi   roc      atr
+0  673672e587aaafad60e420f1 2024-11-14 22:00:00  88247.3  ...  43.16 -2.78  1152.63
+
+[1 rows x 51 columns]
+2024-11-14 22:00:06,302 INFO: Updated data for BTCUSDT at 120 minute interval.
+2024-11-14 22:30:06,287 INFO: Updated data for BTCUSDT at 30 minute interval.
+2024-11-14 23:00:02,304 INFO: Updated data for BTCUSDT at 30 minute interval.
+2024-11-14 23:00:03,259 INFO: Updated data for BTCUSDT at 60 minute interval.
+2024-11-14 23:00:00| 
+                        _id            start_at     open  ...    mfi   roc      atr
+0  673680f387aaafad60e42e9f 2024-11-14 23:00:00  87650.4  ...  44.67 -3.55  1116.66
+
+[1 rows x 51 columns]
+2024-11-14 23:30:06,173 INFO: Updated data for BTCUSDT at 30 minute interval.
+2024-11-15 00:00:04,131 INFO: Updated data for BTCUSDT at 30 minute interval.
+2024-11-15 00:00:05,073 INFO: Updated data for BTCUSDT at 60 minute interval.
+2024-11-15 00:00:00| 
+                        _id   start_at     open  ...    mfi   roc      atr
+0  67368f0487aaafad60e43c41 2024-11-15  87367.3  ...  41.38 -4.21  1057.45
+
+[1 rows x 51 columns]
+2024-11-15 00:00:06,109 INFO: Updated data for BTCUSDT at 120 minute interval.
+2024-11-15 00:00:06,522 INFO: Updated data for BTCUSDT at 240 minute interval.
+2024-11-15 00:00:06,860 INFO: Updated data for BTCUSDT at 720 minute interval.
+2024-11-15 00:00:07,157 INFO: Updated data for BTCUSDT at 1440 minute interval.
+2024-11-15 00:30:02,364 INFO: Updated data for BTCUSDT at 30 minute interval.
+2024-11-15 01:00:01,823 INFO: Updated data for BTCUSDT at 30 minute interval.
+2024-11-15 01:00:02,792 INFO: Updated data for BTCUSDT at 60 minute interval.
+2024-11-15 01:00:00| 
+                        _id            start_at     open  ...    mfi   roc     atr
+0  67369d1287aaafad60e449fd 2024-11-15 01:00:00  87908.7  ...  36.52 -3.76  1022.3
+
+[1 rows x 51 columns]
+2024-11-15 01:30:06,273 INFO: Updated data for BTCUSDT at 30 minute interval.
+2024-11-15 02:00:00,945 INFO: Updated data for BTCUSDT at 60 minute interval.
+2024-11-15 02:00:00| 
+                        _id            start_at     open  ...   mfi   roc     atr
+0  6736ab2087aaafad60e45779 2024-11-15 02:00:00  88143.6  ...  32.7 -3.48  965.93
+
+[1 rows x 51 columns]
+2024-11-15 02:00:01,963 INFO: Updated data for BTCUSDT at 120 minute interval.
+2024-11-15 02:00:08,652 INFO: Updated data for BTCUSDT at 30 minute interval.
+2024-11-15 02:30:02,901 INFO: Updated data for BTCUSDT at 30 minute interval.
+2024-11-15 03:00:04,080 INFO: Updated data for BTCUSDT at 30 minute interval.
+2024-11-15 03:00:05,016 INFO: Updated data for BTCUSDT at 60 minute interval.
+2024-11-15 03:00:00| 
+                        _id            start_at     open  ...   mfi   roc     atr
+0  6736b93487aaafad60e4653b 2024-11-15 03:00:00  88396.4  ...  35.0 -2.81  915.01
+
+[1 rows x 51 columns]
+2024-11-15 03:30:06,500 INFO: Updated data for BTCUSDT at 30 minute interval.
+2024-11-15 04:00:02,011 INFO: Updated data for BTCUSDT at 30 minute interval.
+2024-11-15 04:00:02,978 INFO: Updated data for BTCUSDT at 60 minute interval.
+2024-11-15 04:00:00| 
+                        _id            start_at     open  ...    mfi   roc     atr
+0  6736c74287aaafad60e472d1 2024-11-15 04:00:00  88242.3  ...  50.79 -1.44  858.05
+
+[1 rows x 51 columns]
+2024-11-15 04:00:03,811 INFO: Updated data for BTCUSDT at 120 minute interval.
+2024-11-15 04:00:04,364 INFO: Updated data for BTCUSDT at 240 minute interval.
+2024-11-15 04:30:06,775 INFO: Updated data for BTCUSDT at 30 minute interval.
+2024-11-15 05:00:06,178 INFO: Updated data for BTCUSDT at 30 minute interval.
+2024-11-15 05:00:07,123 INFO: Updated data for BTCUSDT at 60 minute interval.
+2024-11-15 05:00:00| 
+                        _id            start_at     open  ...    mfi  roc    atr
+0  6736d55687aaafad60e48083 2024-11-15 05:00:00  87470.9  ...  95.83 -1.0  852.8
+
+[1 rows x 51 columns]
+2024-11-15 05:30:06,562 INFO: Updated data for BTCUSDT at 30 minute interval.
+2024-11-15 06:00:05,632 INFO: Updated data for BTCUSDT at 30 minute interval.
+2024-11-15 06:00:06,566 INFO: Updated data for BTCUSDT at 60 minute interval.
+2024-11-15 06:00:00| 
+                        _id            start_at     open  ...    mfi   roc     atr
+0  6736e36687aaafad60e48e1f 2024-11-15 06:00:00  87749.4  ...  90.15 -1.17  813.55
+
+[1 rows x 51 columns]
+2024-11-15 06:00:07,621 INFO: Updated data for BTCUSDT at 120 minute interval.
+2024-11-15 06:30:05,103 INFO: Updated data for BTCUSDT at 30 minute interval.
+2024-11-15 07:00:01,410 INFO: Updated data for BTCUSDT at 30 minute interval.
+2024-11-15 07:00:02,352 INFO: Updated data for BTCUSDT at 60 minute interval.
+2024-11-15 07:00:00| 
+                        _id            start_at     open  ...    mfi   roc     atr
+0  6736f17287aaafad60e49bc7 2024-11-15 07:00:00  88210.0  ...  81.63 -1.02  787.72
+
+[1 rows x 51 columns]
+2024-11-15 07:30:01,989 INFO: Updated data for BTCUSDT at 30 minute interval.
+2024-11-15 08:00:02,123 INFO: Updated data for BTCUSDT at 30 minute interval.
+2024-11-15 08:00:03,076 INFO: Updated data for BTCUSDT at 60 minute interval.
+2024-11-15 08:00:00| 
+                        _id            start_at     open  ...    mfi   roc     atr
+0  6736ff8287aaafad60e4a963 2024-11-15 08:00:00  87672.0  ...  40.02 -1.74  769.87
+
+[1 rows x 51 columns]
+2024-11-15 08:00:03,896 INFO: Updated data for BTCUSDT at 120 minute interval.
+2024-11-15 08:00:04,308 INFO: Updated data for BTCUSDT at 240 minute interval.
+2024-11-15 08:30:02,727 INFO: Updated data for BTCUSDT at 30 minute interval.
+2024-11-15 09:00:05,490 INFO: Updated data for BTCUSDT at 30 minute interval.
+2024-11-15 09:00:06,436 INFO: Updated data for BTCUSDT at 60 minute interval.
+2024-11-15 09:00:00| 
+                        _id            start_at     open  ...   mfi   roc     atr
+0  67370d9687aaafad60e4b71b 2024-11-15 09:00:00  88123.3  ...  2.38 -1.41  746.99
+
+[1 rows x 51 columns]
+2024-11-15 09:30:02,640 INFO: Updated data for BTCUSDT at 30 minute interval.
+2024-11-15 10:00:03,091 INFO: Updated data for BTCUSDT at 30 minute interval.
+2024-11-15 10:00:04,031 INFO: Updated data for BTCUSDT at 60 minute interval.
+2024-11-15 10:00:00| 
+                        _id            start_at     open  ...    mfi   roc    atr
+0  67371ba387aaafad60e4c4bd 2024-11-15 10:00:00  89227.3  ...  34.11  0.16  774.9
+
+[1 rows x 51 columns]
+2024-11-15 10:00:05,064 INFO: Updated data for BTCUSDT at 120 minute interval.
+2024-11-15 10:30:02,946 INFO: Updated data for BTCUSDT at 30 minute interval.
+2024-11-15 11:00:03,634 INFO: Updated data for BTCUSDT at 30 minute interval.
+2024-11-15 11:00:04,582 INFO: Updated data for BTCUSDT at 60 minute interval.
+2024-11-15 11:00:00| 
+                        _id            start_at     open  ...    mfi   roc    atr
+0  673729b487aaafad60e4d26b 2024-11-15 11:00:00  89398.6  ...  53.36  2.08  731.8
+
+[1 rows x 51 columns]
+2024-11-15 11:30:07,396 INFO: Updated data for BTCUSDT at 30 minute interval.
+2024-11-15 12:00:04,517 INFO: Updated data for BTCUSDT at 30 minute interval.
+2024-11-15 12:00:06,004 INFO: Updated data for BTCUSDT at 60 minute interval.
+2024-11-15 12:00:00| 
+                        _id            start_at     open  ...   mfi   roc     atr
+0  673737c587aaafad60e4e00d 2024-11-15 12:00:00  89775.3  ...  60.4  1.73  708.92
+
+[1 rows x 51 columns]
+2024-11-15 12:00:07,243 INFO: Updated data for BTCUSDT at 120 minute interval.
+2024-11-15 12:00:08,125 INFO: Updated data for BTCUSDT at 240 minute interval.
+2024-11-15 12:00:09,257 INFO: Updated data for BTCUSDT at 720 minute interval.
+2024-11-15 12:30:02,074 INFO: Updated data for BTCUSDT at 30 minute interval.
+2024-11-15 13:00:04,901 INFO: Updated data for BTCUSDT at 30 minute interval.
+2024-11-15 13:00:07,028 INFO: Updated data for BTCUSDT at 60 minute interval.
+2024-11-15 13:00:00| 
+                        _id            start_at     open  ...    mfi   roc    atr
+0  673745d687aaafad60e4edcd 2024-11-15 13:00:00  89800.2  ...  76.51  2.47  659.2
+
+[1 rows x 51 columns]
+2024-11-15 13:30:03,640 INFO: Updated data for BTCUSDT at 30 minute interval.
+2024-11-15 14:00:00,390 INFO: Updated data for BTCUSDT at 120 minute interval.
+2024-11-15 14:00:07,344 INFO: Updated data for BTCUSDT at 30 minute interval.
+2024-11-15 14:00:08,282 INFO: Updated data for BTCUSDT at 60 minute interval.
+2024-11-15 14:00:00| 
+                        _id            start_at     open  ...    mfi   roc     atr
+0  673753e887aaafad60e4fb7a 2024-11-15 14:00:00  90213.1  ...  86.92  3.27  641.11
+
+[1 rows x 51 columns]
+2024-11-15 14:00:09,071 INFO: Updated data for BTCUSDT at 120 minute interval.
+2024-11-15 14:30:01,828 INFO: Updated data for BTCUSDT at 30 minute interval.
+2024-11-15 15:00:04,518 INFO: Updated data for BTCUSDT at 30 minute interval.
+2024-11-15 15:00:05,462 INFO: Updated data for BTCUSDT at 60 minute interval.
+2024-11-15 15:00:00| 
+                        _id            start_at     open  ...    mfi   roc     atr
+0  673761f587aaafad60e50922 2024-11-15 15:00:00  89143.0  ...  68.98  1.35  675.72
+
+[1 rows x 51 columns]
+2024-11-15 15:30:03,269 INFO: Updated data for BTCUSDT at 30 minute interval.
+2024-11-15 16:00:04,073 INFO: Updated data for BTCUSDT at 30 minute interval.
+2024-11-15 16:00:05,021 INFO: Updated data for BTCUSDT at 60 minute interval.
+2024-11-15 16:00:00| 
+                        _id            start_at     open  ...    mfi   roc     atr
+0  6737700487aaafad60e516be 2024-11-15 16:00:00  88450.5  ...  61.84  0.33  674.11
+
+[1 rows x 51 columns]
+2024-11-15 16:00:06,046 INFO: Updated data for BTCUSDT at 120 minute interval.
+2024-11-15 16:00:06,456 INFO: Updated data for BTCUSDT at 240 minute interval.
+2024-11-15 16:30:01,802 INFO: Updated data for BTCUSDT at 30 minute interval.
+2024-11-15 17:00:04,087 INFO: Updated data for BTCUSDT at 30 minute interval.
+2024-11-15 17:00:05,030 INFO: Updated data for BTCUSDT at 60 minute interval.
+2024-11-15 17:00:00| 
+                        _id            start_at     open  ...    mfi   roc     atr
+0  67377e1487aaafad60e52476 2024-11-15 17:00:00  89382.1  ...  63.47  1.16  695.09
+
+[1 rows x 51 columns]
+2024-11-15 17:30:02,783 INFO: Updated data for BTCUSDT at 30 minute interval.
+2024-11-15 18:00:01,763 INFO: Updated data for BTCUSDT at 30 minute interval.
+2024-11-15 18:00:02,730 INFO: Updated data for BTCUSDT at 60 minute interval.
+2024-11-15 18:00:00| 
+                        _id            start_at     open  ...    mfi   roc     atr
+0  67378c2287aaafad60e53212 2024-11-15 18:00:00  89503.1  ...  65.81  1.42  653.43
+
+[1 rows x 51 columns]
+2024-11-15 18:00:03,766 INFO: Updated data for BTCUSDT at 120 minute interval.
+2024-11-15 18:30:03,461 INFO: Updated data for BTCUSDT at 30 minute interval.
+2024-11-15 19:00:04,074 INFO: Updated data for BTCUSDT at 30 minute interval.
+2024-11-15 19:00:04,998 INFO: Updated data for BTCUSDT at 60 minute interval.
+2024-11-15 19:00:00| 
+                        _id            start_at     open  ...    mfi  roc     atr
+0  67379a3487aaafad60e53fc0 2024-11-15 19:00:00  89389.5  ...  65.69  2.2  614.41
+
+[1 rows x 51 columns]
+2024-11-15 19:30:05,427 INFO: Updated data for BTCUSDT at 30 minute interval.
+2024-11-15 20:00:03,149 INFO: Updated data for BTCUSDT at 30 minute interval.
+2024-11-15 20:00:04,105 INFO: Updated data for BTCUSDT at 60 minute interval.
+2024-11-15 20:00:00| 
+                        _id            start_at     open  ...    mfi   roc     atr
+0  6737a84387aaafad60e54d62 2024-11-15 20:00:00  90416.4  ...  68.01  3.01  643.89
+
+[1 rows x 51 columns]
+2024-11-15 20:00:05,153 INFO: Updated data for BTCUSDT at 120 minute interval.
+2024-11-15 20:00:05,572 INFO: Updated data for BTCUSDT at 240 minute interval.
+2024-11-15 20:30:01,068 INFO: Updated data for BTCUSDT at 30 minute interval.
+2024-11-15 21:00:04,049 INFO: Updated data for BTCUSDT at 30 minute interval.
+2024-11-15 21:00:04,978 INFO: Updated data for BTCUSDT at 60 minute interval.
+2024-11-15 21:00:00|upper band cross
+/home/ai-trade/AI_DayTrading/aiml/aiml_comm.py:356: FutureWarning: 'T' is deprecated and will be removed in a future version, please use 'min' instead.
+  t_floor_higher = t.floor(higher_freq)
+/home/ai-trade/AI_DayTrading/aiml/aiml_comm.py:360: FutureWarning: 'T' is deprecated and will be removed in a future version, please use 'min' instead.
+  lower_timestamp = t_floor_higher.floor(lower_freq)
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+I0000 00:00:1731704405.845539   25972 service.cc:145] XLA service 0x7bf1fc005dc0 initialized for platform Host (this does not guarantee that XLA will be used). Devices:
+I0000 00:00:1731704405.845587   25972 service.cc:153]   StreamExecutor device (0): Host, Default Version
+2024-11-15 21:00:05.943788: I tensorflow/compiler/mlir/tensorflow/utils/dump_mlir_util.cc:268] disabling MLIR crash reproducer, set env var `MLIR_CRASH_REPRODUCER_DIRECTORY` to enable.
+I0000 00:00:1731704407.507242   25972 device_compiler.h:188] Compiled cluster using XLA!  This line is logged at most once for the lifetime of the process.
+mod_date:2024-11-15 12:00:00,date:2024-11-15 21:00:00
+df_date:2024-11-15 12:00:00,date:2024-11-15 21:00:00
+[1m1/1[0m [32m━━━━━━━━━━━━━━━━━━━━[0m[37m[0m [1m0s[0m 2s/step[1m1/1[0m [32m━━━━━━━━━━━━━━━━━━━━[0m[37m[0m [1m2s[0m 2s/step
+/home/ai-trade/AI_DayTrading/mongodb/data_loader.py:85: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise an error in a future version of pandas. Value '0.03120848909020424' has dtype incompatible with int64, please explicitly cast to a compatible dtype first.
+  self._df.at[index, column] = value
+[1m1/1[0m [32m━━━━━━━━━━━━━━━━━━━━[0m[37m[0m [1m0s[0m 2s/step[1m1/1[0m [32m━━━━━━━━━━━━━━━━━━━━[0m[37m[0m [1m2s[0m 2s/step
+/home/ai-trade/AI_DayTrading/mongodb/data_loader.py:85: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise an error in a future version of pandas. Value '0.15342631936073303' has dtype incompatible with int64, please explicitly cast to a compatible dtype first.
+  self._df.at[index, column] = value
+[1m1/1[0m [32m━━━━━━━━━━━━━━━━━━━━[0m[37m[0m [1m0s[0m 2s/step[1m1/1[0m [32m━━━━━━━━━━━━━━━━━━━━[0m[37m[0m [1m2s[0m 2s/step
+/home/ai-trade/AI_DayTrading/mongodb/data_loader.py:85: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise an error in a future version of pandas. Value '0.02519194222986698' has dtype incompatible with int64, please explicitly cast to a compatible dtype first.
+  self._df.at[index, column] = value
+[1m1/1[0m [32m━━━━━━━━━━━━━━━━━━━━[0m[37m[0m [1m0s[0m 2s/step[1m1/1[0m [32m━━━━━━━━━━━━━━━━━━━━[0m[37m[0m [1m2s[0m 2s/step
+/home/ai-trade/AI_DayTrading/mongodb/data_loader.py:85: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise an error in a future version of pandas. Value '0.992062509059906' has dtype incompatible with int64, please explicitly cast to a compatible dtype first.
+  self._df.at[index, column] = value
+WARNING:tensorflow:5 out of the last 5 calls to <function TensorFlowTrainer.make_predict_function.<locals>.one_step_on_data_distributed at 0x7bf190db6680> triggered tf.function retracing. Tracing is expensive and the excessive number of tracings could be due to (1) creating @tf.function repeatedly in a loop, (2) passing tensors with different shapes, (3) passing Python objects instead of tensors. For (1), please define your @tf.function outside of the loop. For (2), @tf.function has reduce_retracing=True option that can avoid unnecessary retracing. For (3), please refer to https://www.tensorflow.org/guide/function#controlling_retracing and https://www.tensorflow.org/api_docs/python/tf/function for  more details.
+[1m1/1[0m [32m━━━━━━━━━━━━━━━━━━━━[0m[37m[0m [1m0s[0m 2s/step[1m1/1[0m [32m━━━━━━━━━━━━━━━━━━━━[0m[37m[0m [1m2s[0m 2s/step
+/home/ai-trade/AI_DayTrading/mongodb/data_loader.py:85: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise an error in a future version of pandas. Value '0.2703533470630646' has dtype incompatible with int64, please explicitly cast to a compatible dtype first.
+  self._df.at[index, column] = value
+WARNING:tensorflow:6 out of the last 6 calls to <function TensorFlowTrainer.make_predict_function.<locals>.one_step_on_data_distributed at 0x7bf1c49c7010> triggered tf.function retracing. Tracing is expensive and the excessive number of tracings could be due to (1) creating @tf.function repeatedly in a loop, (2) passing tensors with different shapes, (3) passing Python objects instead of tensors. For (1), please define your @tf.function outside of the loop. For (2), @tf.function has reduce_retracing=True option that can avoid unnecessary retracing. For (3), please refer to https://www.tensorflow.org/guide/function#controlling_retracing and https://www.tensorflow.org/api_docs/python/tf/function for  more details.
+[1m1/1[0m [32m━━━━━━━━━━━━━━━━━━━━[0m[37m[0m [1m0s[0m 2s/step[1m1/1[0m [32m━━━━━━━━━━━━━━━━━━━━[0m[37m[0m [1m2s[0m 2s/step
+/home/ai-trade/AI_DayTrading/mongodb/data_loader.py:85: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise an error in a future version of pandas. Value '0.04145796224474907' has dtype incompatible with int64, please explicitly cast to a compatible dtype first.
+  self._df.at[index, column] = value
+2024-11-15 21:00:00|Initial State: Selecting ALL models.
+2024-11-15 21:00:00|Selected model indices: [0, 1, 2, 3, 4, 5]
+/home/ai-trade/AI_DayTrading/aiml/aiml_comm.py:356: FutureWarning: 'T' is deprecated and will be removed in a future version, please use 'min' instead.
+  t_floor_higher = t.floor(higher_freq)
+/home/ai-trade/AI_DayTrading/aiml/aiml_comm.py:360: FutureWarning: 'T' is deprecated and will be removed in a future version, please use 'min' instead.
+  lower_timestamp = t_floor_higher.floor(lower_freq)
+mod_date:2024-11-15 00:00:00,date:2024-11-15 21:00:00
+df_date:2024-11-15 00:00:00,date:2024-11-15 21:00:00
+[1m1/1[0m [32m━━━━━━━━━━━━━━━━━━━━[0m[37m[0m [1m0s[0m 36ms/step[1m1/1[0m [32m━━━━━━━━━━━━━━━━━━━━[0m[37m[0m [1m0s[0m 36ms/step
+/home/ai-trade/AI_DayTrading/mongodb/data_loader.py:85: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise an error in a future version of pandas. Value '0.9529079794883728' has dtype incompatible with int64, please explicitly cast to a compatible dtype first.
+  self._df.at[index, column] = value
+[1m1/1[0m [32m━━━━━━━━━━━━━━━━━━━━[0m[37m[0m [1m0s[0m 37ms/step[1m1/1[0m [32m━━━━━━━━━━━━━━━━━━━━[0m[37m[0m [1m0s[0m 37ms/step
+/home/ai-trade/AI_DayTrading/mongodb/data_loader.py:85: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise an error in a future version of pandas. Value '0.9921467900276184' has dtype incompatible with int64, please explicitly cast to a compatible dtype first.
+  self._df.at[index, column] = value
+[1m1/1[0m [32m━━━━━━━━━━━━━━━━━━━━[0m[37m[0m [1m0s[0m 36ms/step[1m1/1[0m [32m━━━━━━━━━━━━━━━━━━━━[0m[37m[0m [1m0s[0m 36ms/step
+/home/ai-trade/AI_DayTrading/mongodb/data_loader.py:85: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise an error in a future version of pandas. Value '0.024885348975658417' has dtype incompatible with int64, please explicitly cast to a compatible dtype first.
+  self._df.at[index, column] = value
+[1m1/1[0m [32m━━━━━━━━━━━━━━━━━━━━[0m[37m[0m [1m0s[0m 35ms/step[1m1/1[0m [32m━━━━━━━━━━━━━━━━━━━━[0m[37m[0m [1m0s[0m 35ms/step
+/home/ai-trade/AI_DayTrading/mongodb/data_loader.py:85: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise an error in a future version of pandas. Value '0.9684231281280518' has dtype incompatible with int64, please explicitly cast to a compatible dtype first.
+  self._df.at[index, column] = value
+[1m1/1[0m [32m━━━━━━━━━━━━━━━━━━━━[0m[37m[0m [1m0s[0m 36ms/step[1m1/1[0m [32m━━━━━━━━━━━━━━━━━━━━[0m[37m[0m [1m0s[0m 36ms/step
+/home/ai-trade/AI_DayTrading/mongodb/data_loader.py:85: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise an error in a future version of pandas. Value '0.9764145612716675' has dtype incompatible with int64, please explicitly cast to a compatible dtype first.
+  self._df.at[index, column] = value
+[1m1/1[0m [32m━━━━━━━━━━━━━━━━━━━━[0m[37m[0m [1m0s[0m 32ms/step[1m1/1[0m [32m━━━━━━━━━━━━━━━━━━━━[0m[37m[0m [1m0s[0m 32ms/step
+/home/ai-trade/AI_DayTrading/mongodb/data_loader.py:85: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise an error in a future version of pandas. Value '0.602076530456543' has dtype incompatible with int64, please explicitly cast to a compatible dtype first.
+  self._df.at[index, column] = value
+2024-11-15 21:00:00|Initial State: Selecting ALL models.
+2024-11-15 21:00:00|Selected model indices: [0, 1, 2, 3, 4, 5]
+2024-11-15 21:00:18,473 INFO: No document found with 'serial' 1.
+2024-11-15 21:00:00|Entry: upper, LONG, pred:1, entry_price91494.1
+2024-11-15 21:00:00|Transitioning to EntryPreparationState
+2024-11-15 21:00:00|Transitioning to Entry Preparation State.
+                        _id            start_at     open  ...    mfi   roc    atr
+0  6737b65487aaafad60e55b1a 2024-11-15 21:00:00  91492.8  ...  73.57  3.72  676.5
+
+[1 rows x 51 columns]
+2024-11-15 21:30:03,534 INFO: Updated data for BTCUSDT at 30 minute interval.
+2024-11-15 22:00:05,119 INFO: Updated data for BTCUSDT at 30 minute interval.
+2024-11-15 22:00:06,453 INFO: Updated data for BTCUSDT at 60 minute interval.
+2024-11-15 22:00:00|Check Online Position status: position
+2024-11-15 22:00:00|Transitioning to PositionState
+2024-11-15 22:00:00|Entry event occurred. Transitioning to Position State.
+                        _id            start_at     open  ...    mfi   roc     atr
+0  6737c46687aaafad60e568cc 2024-11-15 22:00:00  91751.6  ...  78.92  4.67  648.89
+
+[1 rows x 51 columns]
+2024-11-15 22:00:07,483 INFO: Updated data for BTCUSDT at 120 minute interval.
+2024-11-15 22:30:05,445 INFO: Updated data for BTCUSDT at 30 minute interval.
+2024-11-15 23:00:00,669 INFO: Updated data for BTCUSDT at 60 minute interval.
+2024-11-15 23:00:00|Check Online Position status: position
+2024-11-15 23:00:00|continue Position state pandl:-0.9548999999999683
+                        _id            start_at     open  ...    mfi  roc     atr
+0  6737d27087aaafad60e57656 2024-11-15 23:00:00  91285.8  ...  78.41  3.6  637.54
+
+[1 rows x 51 columns]
+2024-11-15 23:00:08,295 INFO: Updated data for BTCUSDT at 30 minute interval.
+2024-11-15 23:30:01,407 INFO: Updated data for BTCUSDT at 30 minute interval.
+2024-11-16 00:00:05,924 INFO: Updated data for BTCUSDT at 30 minute interval.
+2024-11-16 00:00:07,132 INFO: Updated data for BTCUSDT at 60 minute interval.
+2024-11-16 00:00:00|Check Online Position status: position
+2024-11-16 00:00:00|continue Position state pandl:-1.512900000000018
+                        _id   start_at     open  ...    mfi   roc     atr
+0  6737e08687aaafad60e5840a 2024-11-16  91125.2  ...  70.38  2.09  605.26
+
+[1 rows x 51 columns]
+2024-11-16 00:00:08,106 INFO: Updated data for BTCUSDT at 120 minute interval.
+2024-11-16 00:00:08,512 INFO: Updated data for BTCUSDT at 240 minute interval.
+2024-11-16 00:00:08,985 INFO: Updated data for BTCUSDT at 720 minute interval.
+2024-11-16 00:00:09,301 INFO: Updated data for BTCUSDT at 1440 minute interval.
+2024-11-16 00:30:01,986 INFO: Updated data for BTCUSDT at 30 minute interval.
+2024-11-16 01:00:03,599 INFO: Updated data for BTCUSDT at 30 minute interval.
+2024-11-16 01:00:04,585 INFO: Updated data for BTCUSDT at 60 minute interval.
+2024-11-16 01:00:00|Check Online Position status: position
+2024-11-16 01:00:00|continue Position state pandl:-1.588800000000008
+                        _id            start_at     open  ...    mfi   roc    atr
+0  6737ee9487aaafad60e591c4 2024-11-16 01:00:00  91088.2  ...  67.05  1.87  563.8
+
+[1 rows x 51 columns]
+2024-11-16 01:30:02,163 INFO: Updated data for BTCUSDT at 30 minute interval.
+2024-11-16 02:00:00,951 INFO: Updated data for BTCUSDT at 60 minute interval.
+2024-11-16 02:00:00|Check Online Position status: position
+2024-11-16 02:00:00|continue Position state pandl:-0.8922000000000185
+                        _id            start_at     open  ...    mfi   roc     atr
+0  6737fca087aaafad60e59f44 2024-11-16 02:00:00  91306.7  ...  62.36  1.67  540.09
+
+[1 rows x 51 columns]
+2024-11-16 02:00:02,184 INFO: Updated data for BTCUSDT at 120 minute interval.
+2024-11-16 02:00:08,908 INFO: Updated data for BTCUSDT at 30 minute interval.
+2024-11-16 02:30:01,850 INFO: Updated data for BTCUSDT at 30 minute interval.
+2024-11-16 03:00:02,163 INFO: Updated data for BTCUSDT at 30 minute interval.
+2024-11-16 03:00:03,511 INFO: Updated data for BTCUSDT at 60 minute interval.
+2024-11-16 03:00:00|Check Online Position status: position
+2024-11-16 03:00:00|continue Position state pandl:-0.3662999999999829
+                        _id            start_at     open  ...    mfi   roc     atr
+0  67380ab387aaafad60e5ad0a 2024-11-16 03:00:00  91491.7  ...  61.83  1.86  514.59
+
+[1 rows x 51 columns]
+2024-11-16 03:30:05,121 INFO: Updated data for BTCUSDT at 30 minute interval.
+2024-11-16 04:00:05,216 INFO: Updated data for BTCUSDT at 30 minute interval.
+2024-11-16 04:00:06,402 INFO: Updated data for BTCUSDT at 60 minute interval.
+2024-11-16 04:00:00|Check Online Position status: position
+2024-11-16 04:00:00|continue Position state pandl:-0.8555999999999973
+                        _id            start_at     open  ...    mfi   roc     atr
+0  673818c687aaafad60e5baaa 2024-11-16 04:00:00  91321.3  ...  60.33  1.23  489.52
+
+[1 rows x 51 columns]
+2024-11-16 04:00:07,377 INFO: Updated data for BTCUSDT at 120 minute interval.
+2024-11-16 04:00:07,772 INFO: Updated data for BTCUSDT at 240 minute interval.
+2024-11-16 04:30:06,067 INFO: Updated data for BTCUSDT at 30 minute interval.
+2024-11-16 05:00:01,245 INFO: Updated data for BTCUSDT at 30 minute interval.
+2024-11-16 05:00:01,962 INFO: Updated data for BTCUSDT at 60 minute interval.
+2024-11-16 05:00:00|Check Online Position status: position
+2024-11-16 05:00:00|continue Position state pandl:-0.7206000000000063
+                        _id            start_at     open  ...   mfi   roc     atr
+0  673826d187aaafad60e5c854 2024-11-16 05:00:00  91363.9  ...  69.9  2.54  457.71
+
+[1 rows x 51 columns]
+2024-11-16 05:30:01,388 INFO: Updated data for BTCUSDT at 30 minute interval.
+2024-11-16 06:00:03,184 INFO: Updated data for BTCUSDT at 30 minute interval.
+2024-11-16 06:00:04,181 INFO: Updated data for BTCUSDT at 60 minute interval.
+2024-11-16 06:00:00|Check Online Position status: position
+2024-11-16 06:00:00|continue Position state pandl:-0.5532000000000199
+                        _id            start_at     open  ...    mfi   roc     atr
+0  673834e487aaafad60e5d5ee 2024-11-16 06:00:00  91413.9  ...  76.87  3.36  429.57
+
+[1 rows x 51 columns]
+2024-11-16 06:00:05,318 INFO: Updated data for BTCUSDT at 120 minute interval.
+2024-11-16 06:30:06,517 INFO: Updated data for BTCUSDT at 30 minute interval.
+2024-11-16 07:00:03,209 INFO: Updated data for BTCUSDT at 30 minute interval.
+2024-11-16 07:00:04,430 INFO: Updated data for BTCUSDT at 60 minute interval.
+2024-11-16 07:00:00|Check Online Position status: position
+2024-11-16 07:00:00|continue Position state pandl:-0.9839999999999964
+                        _id            start_at     open  ...   mfi  roc     atr
+0  673842f487aaafad60e5e394 2024-11-16 07:00:00  91277.5  ...  69.7  2.1  409.16
+
+[1 rows x 51 columns]
+2024-11-16 07:30:06,314 INFO: Updated data for BTCUSDT at 30 minute interval.
+2024-11-16 08:00:02,914 INFO: Updated data for BTCUSDT at 30 minute interval.
+2024-11-16 08:00:04,133 INFO: Updated data for BTCUSDT at 60 minute interval.
+2024-11-16 08:00:00|Check Online Position status: position
+2024-11-16 08:00:00|continue Position state pandl:-1.1673000000000275
+                        _id            start_at     open  ...    mfi   roc     atr
+0  6738510387aaafad60e5f128 2024-11-16 08:00:00  91220.5  ...  65.85  1.92  384.42
+
+[1 rows x 51 columns]
+2024-11-16 08:00:05,240 INFO: Updated data for BTCUSDT at 120 minute interval.
+2024-11-16 08:00:05,857 INFO: Updated data for BTCUSDT at 240 minute interval.
+2024-11-16 08:30:01,611 INFO: Updated data for BTCUSDT at 30 minute interval.
+2024-11-16 09:00:04,880 INFO: Updated data for BTCUSDT at 30 minute interval.
+2024-11-16 09:00:06,056 INFO: Updated data for BTCUSDT at 60 minute interval.
+2024-11-16 09:00:00|Check Online Position status: position
+2024-11-16 09:00:00|continue Position state pandl:-0.36870000000000575
+                        _id            start_at     open  ...    mfi   roc     atr
+0  67385f1587aaafad60e5fed8 2024-11-16 09:00:00  91488.2  ...  70.94  2.33  376.46
+
+[1 rows x 51 columns]
+2024-11-16 09:30:02,241 INFO: Updated data for BTCUSDT at 30 minute interval.
+2024-11-16 10:00:07,041 INFO: Updated data for BTCUSDT at 30 minute interval.
+2024-11-16 10:00:07,996 INFO: Updated data for BTCUSDT at 60 minute interval.
+2024-11-16 10:00:00|Check Online Position status: position
+2024-11-16 10:00:00|continue Position state pandl:-0.873299999999988
+                        _id            start_at     open  ...    mfi  roc     atr
+0  67386d2787aaafad60e60c72 2024-11-16 10:00:00  91313.0  ...  66.98  1.0  361.65
+
+[1 rows x 51 columns]
+2024-11-16 10:00:09,401 INFO: Updated data for BTCUSDT at 120 minute interval.
+2024-11-16 10:30:05,783 INFO: Updated data for BTCUSDT at 30 minute interval.
+2024-11-16 11:00:02,967 INFO: Updated data for BTCUSDT at 30 minute interval.
+2024-11-16 11:00:05,691 INFO: Updated data for BTCUSDT at 60 minute interval.
+2024-11-16 11:00:00|Check Online Position status: position
+2024-11-16 11:00:00|continue Position state pandl:-0.42480000000002066
+                        _id            start_at     open  ...    mfi   roc     atr
+0  67387b3587aaafad60e61a12 2024-11-16 11:00:00  91465.0  ...  52.35 -0.03  346.81
+
+[1 rows x 51 columns]
+2024-11-16 11:30:06,473 INFO: Updated data for BTCUSDT at 30 minute interval.
+2024-11-16 12:00:05,286 INFO: Updated data for BTCUSDT at 30 minute interval.
+2024-11-16 12:00:06,288 INFO: Updated data for BTCUSDT at 60 minute interval.
+2024-11-16 12:00:00|Check Online Position status: position
+2024-11-16 12:00:00|continue Position state pandl:-1.0643999999999938
+                        _id            start_at     open  ...    mfi   roc     atr
+0  6738894687aaafad60e627a6 2024-11-16 12:00:00  91246.5  ...  14.13 -0.56  337.89
+
+[1 rows x 51 columns]
+2024-11-16 12:00:07,297 INFO: Updated data for BTCUSDT at 120 minute interval.
+2024-11-16 12:00:07,709 INFO: Updated data for BTCUSDT at 240 minute interval.
+2024-11-16 12:00:08,059 INFO: Updated data for BTCUSDT at 720 minute interval.
+2024-11-16 12:30:05,271 INFO: Updated data for BTCUSDT at 30 minute interval.
+2024-11-16 13:00:02,790 INFO: Updated data for BTCUSDT at 30 minute interval.
+2024-11-16 13:00:04,025 INFO: Updated data for BTCUSDT at 60 minute interval.
+2024-11-16 13:00:00|Check Online Position status: position
+2024-11-16 13:00:00|continue Position state pandl:-1.938600000000024
+                        _id            start_at     open  ...   mfi   roc     atr
+0  6738975387aaafad60e63558 2024-11-16 13:00:00  90959.9  ...  13.0 -0.35  334.43
+
+[1 rows x 51 columns]
+2024-11-16 13:30:01,731 INFO: Updated data for BTCUSDT at 30 minute interval.
+2024-11-16 14:00:00,902 INFO: Updated data for BTCUSDT at 60 minute interval.
+2024-11-16 14:00:00|Check Online Position status: position
+2024-11-16 14:00:00|continue Position state pandl:-2.3234999999999832
+/home/ai-trade/AI_DayTrading/fxtransaction.py:246: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise an error in a future version of pandas. Value 'normal' has dtype incompatible with int64, please explicitly cast to a compatible dtype first.
+  self.__fxtrn.loc[self.__fxtrn['serial'] == serial, col] = valume
+2024-11-16 14:00:00|Exit: 258, LONG_EXIT, normal, Entry_price:91494.1, Exit_price:90835.9,P%L: -2.07
+2024-11-16 14:00:00|=======================================================
+2024-11-16 14:00:00|2024-11-16 14:00:00: USDT ,leverage: 1.00
+2024-11-16 14:00:00|Initial balance [$]: 300.00
+2024-11-16 14:00:00|Final balance   [$]: 297.93
+2024-11-16 14:00:00|Net Performance [%]: -0.69
+2024-11-16 14:00:00|=======================================================
+2024-11-16 14:00:00|Trade Exit price: 90835.9, PnL: -2.07207448
+2024-11-16 14:00:00|rolling_v1 - Hit Rate: 1.0000, Avg Error: 0.0000, Avg Profit: 2.0721
+2024-11-16 14:00:00|rolling_v2 - Hit Rate: 1.0000, Avg Error: 0.0000, Avg Profit: 2.0721
+2024-11-16 14:00:00|rolling_v3 - Hit Rate: 1.0000, Avg Error: 0.0000, Avg Profit: 2.0721
+2024-11-16 14:00:00|rolling_v4 - Hit Rate: 0.0000, Avg Error: 1.0000, Avg Profit: -2.0721
+2024-11-16 14:00:00|rolling_v5 - Hit Rate: 1.0000, Avg Error: 0.0000, Avg Profit: 2.0721
+2024-11-16 14:00:00|rolling_v6 - Hit Rate: 1.0000, Avg Error: 0.0000, Avg Profit: 2.0721
+2024-11-16 14:00:00|Raw hit rates: [1.0, 1.0, 1.0, 0.0, 1.0, 1.0]
+2024-11-16 14:00:00|Raw average errors: [0.0, 0.0, 0.0, 1.0, 0.0, 0.0]
+2024-11-16 14:00:00|Raw average profits: [2.07207448, 2.07207448, 2.07207448, -2.07207448, 2.07207448, 2.07207448]
+2024-11-16 14:00:00|Profit weights: [ 0.15  0.15  0.15 -0.15  0.15  0.15]
+2024-11-16 14:00:00|Hit rate weights: [0.04 0.04 0.04 0.   0.04 0.04]
+2024-11-16 14:00:00|Error weights: [0.04 0.04 0.04 0.   0.04 0.04]
+2024-11-16 14:00:00|Model 1 final weight: 0.2300
+2024-11-16 14:00:00|Model 2 final weight: 0.2300
+2024-11-16 14:00:00|Model 3 final weight: 0.2300
+2024-11-16 14:00:00|Model 4 final weight: -0.1500
+2024-11-16 14:00:00|Model 5 final weight: 0.2300
+2024-11-16 14:00:00|Model 6 final weight: 0.2300
+2024-11-16 14:00:00|rolling_v7 - Hit Rate: 0.0000, Avg Error: 1.0000, Avg Profit: -2.0721
+2024-11-16 14:00:00|rolling_v8 - Hit Rate: 0.0000, Avg Error: 1.0000, Avg Profit: -2.0721
+2024-11-16 14:00:00|rolling_v9 - Hit Rate: 1.0000, Avg Error: 0.0000, Avg Profit: 2.0721
+2024-11-16 14:00:00|rolling_v10 - Hit Rate: 0.0000, Avg Error: 1.0000, Avg Profit: -2.0721
+2024-11-16 14:00:00|rolling_v11 - Hit Rate: 0.0000, Avg Error: 1.0000, Avg Profit: -2.0721
+2024-11-16 14:00:00|rolling_v12 - Hit Rate: 0.0000, Avg Error: 1.0000, Avg Profit: -2.0721
+2024-11-16 14:00:00|Raw hit rates: [0.0, 0.0, 1.0, 0.0, 0.0, 0.0]
+2024-11-16 14:00:00|Raw average errors: [1.0, 1.0, 0.0, 1.0, 1.0, 1.0]
+2024-11-16 14:00:00|Raw average profits: [-2.07207448, -2.07207448, 2.07207448, -2.07207448, -2.07207448, -2.07207448]
+2024-11-16 14:00:00|Profit weights: [0.1 0.1 0.1 0.1 0.1 0.1]
+2024-11-16 14:00:00|Hit rate weights: [0.  0.  0.2 0.  0.  0. ]
+2024-11-16 14:00:00|Error weights: [0.  0.  0.2 0.  0.  0. ]
+2024-11-16 14:00:00|Model 1 final weight: 0.1000
+2024-11-16 14:00:00|Model 2 final weight: 0.1000
+2024-11-16 14:00:00|Model 3 final weight: 0.5000
+2024-11-16 14:00:00|Model 4 final weight: 0.1000
+2024-11-16 14:00:00|Model 5 final weight: 0.1000
+2024-11-16 14:00:00|Model 6 final weight: 0.1000
+2024-11-10 16:00:00|Transitioning to IdleState
+2024-11-10 16:00:00|アイドル状態に遷移します。
+                        _id            start_at     open  ...    mfi  roc     atr
+0  6738a56087aaafad60e642cc 2024-11-16 14:00:00  90829.6  ...  19.39 -0.3  319.73
+
+[1 rows x 51 columns]
+2024-11-16 14:00:18,485 INFO: Updated data for BTCUSDT at 120 minute interval.
+2024-11-16 14:00:25,202 INFO: Updated data for BTCUSDT at 30 minute interval.
+2024-11-16 14:30:03,967 INFO: Updated data for BTCUSDT at 30 minute interval.
+2024-11-16 15:00:03,878 INFO: Updated data for BTCUSDT at 30 minute interval.
+2024-11-16 15:00:05,119 INFO: Updated data for BTCUSDT at 60 minute interval.
+2024-11-16 15:00:00| 
+                        _id            start_at     open  ...    mfi   roc     atr
+0  6738b37487aaafad60e65141 2024-11-16 15:00:00  91041.5  ...  36.16 -0.02  313.06
+
+[1 rows x 51 columns]
+2024-11-16 15:30:02,876 INFO: Updated data for BTCUSDT at 30 minute interval.
+2024-11-16 16:00:01,896 INFO: Updated data for BTCUSDT at 30 minute interval.
+2024-11-16 16:00:03,108 INFO: Updated data for BTCUSDT at 60 minute interval.
+2024-11-16 16:00:00| 
+                        _id            start_at     open  ...    mfi   roc     atr
+0  6738c18287aaafad60e65ed1 2024-11-16 16:00:00  90582.2  ...  28.96 -0.79  324.55
+
+[1 rows x 51 columns]
+2024-11-16 16:00:03,959 INFO: Updated data for BTCUSDT at 120 minute interval.
+2024-11-16 16:00:04,370 INFO: Updated data for BTCUSDT at 240 minute interval.
+2024-11-16 16:30:06,249 INFO: Updated data for BTCUSDT at 30 minute interval.
+2024-11-16 17:00:01,258 INFO: Updated data for BTCUSDT at 30 minute interval.
+2024-11-16 17:00:02,241 INFO: Updated data for BTCUSDT at 60 minute interval.
+2024-11-16 17:00:00| 
+                        _id            start_at     open  ...    mfi   roc     atr
+0  6738cf9287aaafad60e66c71 2024-11-16 17:00:00  90677.1  ...  28.62 -0.88  308.09
+
+[1 rows x 51 columns]
+2024-11-16 17:30:01,500 INFO: Updated data for BTCUSDT at 30 minute interval.
+2024-11-16 18:00:05,351 INFO: Updated data for BTCUSDT at 30 minute interval.
+2024-11-16 18:00:06,544 INFO: Updated data for BTCUSDT at 60 minute interval.
+2024-11-16 18:00:00| 
+                        _id            start_at     open  ...    mfi   roc     atr
+0  6738dda687aaafad60e67a07 2024-11-16 18:00:00  90994.8  ...  33.88 -0.34  309.79
+
+[1 rows x 51 columns]
+2024-11-16 18:00:07,375 INFO: Updated data for BTCUSDT at 120 minute interval.
+2024-11-16 18:30:04,926 INFO: Updated data for BTCUSDT at 30 minute interval.
+2024-11-16 19:00:03,277 INFO: Updated data for BTCUSDT at 30 minute interval.
+2024-11-16 19:00:04,613 INFO: Updated data for BTCUSDT at 60 minute interval.
+2024-11-16 19:00:00| 
+                        _id            start_at     open  ...    mfi   roc     atr
+0  6738ebb487aaafad60e687a3 2024-11-16 19:00:00  91379.9  ...  35.52  0.04  316.28
+
+[1 rows x 51 columns]
+2024-11-16 19:30:02,092 INFO: Updated data for BTCUSDT at 30 minute interval.
+2024-11-16 20:00:02,124 INFO: Updated data for BTCUSDT at 30 minute interval.
+2024-11-16 20:00:03,360 INFO: Updated data for BTCUSDT at 60 minute interval.
+2024-11-16 20:00:00| 
+                        _id            start_at     open  ...    mfi   roc     atr
+0  6738f9c387aaafad60e69533 2024-11-16 20:00:00  91207.8  ...  34.59 -0.23  308.02
+
+[1 rows x 51 columns]
+2024-11-16 20:00:04,204 INFO: Updated data for BTCUSDT at 120 minute interval.
+2024-11-16 20:00:04,618 INFO: Updated data for BTCUSDT at 240 minute interval.
+2024-11-16 20:30:07,000 INFO: Updated data for BTCUSDT at 30 minute interval.
+2024-11-16 21:00:01,623 INFO: Updated data for BTCUSDT at 30 minute interval.
+2024-11-16 21:00:02,638 INFO: Updated data for BTCUSDT at 60 minute interval.
+2024-11-16 21:00:00| 
+                        _id            start_at     open  ...    mfi   roc     atr
+0  673907d287aaafad60e6a2d3 2024-11-16 21:00:00  90821.5  ...  31.34 -0.48  313.56
+
+[1 rows x 51 columns]
+2024-11-16 21:30:05,910 INFO: Updated data for BTCUSDT at 30 minute interval.
+2024-11-16 22:00:00,895 INFO: Updated data for BTCUSDT at 60 minute interval.
+2024-11-16 22:00:00| 
+                        _id            start_at     open  ...    mfi   roc     atr
+0  673915e087aaafad60e6b043 2024-11-16 22:00:00  91075.6  ...  34.28 -0.15  308.04
+
+[1 rows x 51 columns]
+2024-11-16 22:00:02,005 INFO: Updated data for BTCUSDT at 120 minute interval.
+2024-11-16 22:00:08,805 INFO: Updated data for BTCUSDT at 30 minute interval.

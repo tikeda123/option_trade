@@ -1,0 +1,891 @@
+                        _id            start_at     open     high      low    close  ...  bol_diff  aroon adline    mfi   roc      atr
+0  66d0aaa5c66d55b403632eac 2024-08-29 17:05:00  59720.6  60365.5  59687.5  60012.3  ...   1030.68 -21.42  131.5  36.59  0.19  1378.12
+
+[1 rows x 51 columns]
+                        _id            start_at     open     high      low    close  volume  ...  macd_diff bol_diff  aroon  adline    mfi   roc     atr
+0  66d0ab6dc66d55b403633465 2024-08-29 17:10:00  59200.0  59375.0  59200.0  59375.0   0.019  ...     -64.42  1131.25 -21.42  128.01  31.59 -1.45  1337.7
+
+[1 rows x 51 columns]
+2024-08-29 17:20:00| 
+                        _id            start_at     open     high      low    close  ...  bol_diff  aroon  adline    mfi   roc      atr
+0  66d0adfcfe369f47d110d310 2024-08-29 17:20:00  60150.0  60365.5  59687.5  60166.2  ...   1116.21 -21.42  128.87  33.04 -0.48  1284.79
+
+[1 rows x 51 columns]
+2024-08-29 17:25:00| 
+                        _id            start_at     open     high      low    close  ...  bol_diff  aroon  adline    mfi   roc      atr
+0  66d0aef2fe369f47d110d43f 2024-08-29 17:25:00  59866.3  59954.5  59720.6  59720.6  ...   1112.44 -14.28  120.94  38.44 -0.85  1224.83
+
+[1 rows x 51 columns]
+2024-08-29 17:30:00|upper band cross
+2024-08-29 17:30:00|Initial State: Selecting ALL models.
+2024-08-29 17:30:00|Selected model indices: [0, 1, 2, 3]
+2024-08-29 17:30:00|Pred_b 1  0.9948010742664337
+2024-08-29 17:30:00|Initial State: Selecting ALL models.
+2024-08-29 17:30:00|Selected model indices: [0, 1, 2, 3]
+2024-08-29 17:30:00|Pred_b 0  0.4976152635063045
+2024-08-29 17:30:00|Initial State: Selecting ALL models.
+2024-08-29 17:30:00|Selected model indices: [0, 1, 2, 3]
+2024-08-29 17:30:00|Pred_b 1  0.9942672848701477
+2024-08-29 17:30:00|Entry: upper, LONG, pred:1, entry_price60452.5
+2024-08-29 17:30:00|Transitioning to EntryPreparationState
+2024-08-29 17:30:00|Transitioning to Entry Preparation State.
+                        _id            start_at     open     high      low    close  ...  bol_diff  aroon  adline    mfi   roc      atr
+0  66d0b01afe369f47d110d55e 2024-08-29 17:30:00  60178.3  60452.5  60178.3  60452.5  ...   1117.44  -7.14  118.51  46.71  0.74  1189.62
+
+[1 rows x 51 columns]
+2024-08-29 17:35:00|Position status: position
+2024-08-29 17:35:00|Transitioning to PositionState
+2024-08-29 17:35:00|Entry event occurred. Transitioning to Position State.
+                        _id            start_at     open     high      low    close  ...  bol_diff  aroon  adline    mfi   roc      atr
+0  66d0b146fe369f47d110d6f7 2024-08-29 17:35:00  59866.3  60012.3  59866.3  60012.3  ...   1115.75   7.14  122.19  58.79  0.11  1146.54
+
+[1 rows x 51 columns]
+2024-08-29 17:40:00|Position status: position
+2024-08-29 17:40:00|continue Position state pandl:-30.092899999999645
+                        _id            start_at     open     high      low    close  volume  ...  macd_diff bol_diff  aroon  adline   mfi   roc      atr
+0  66d0b277fe369f47d110d822 2024-08-29 17:40:00  59218.7  60156.2  59218.7  60156.2   1.058  ...      18.64  1096.41 -14.28  134.32  53.0 -0.64  1131.63
+
+[1 rows x 51 columns]
+2024-08-29 17:45:00|Position status: position
+2024-08-29 17:45:00|continue Position state pandl:-42.03659999999945
+                        _id            start_at     open     high      low    close  ...  bol_diff  aroon  adline    mfi   roc      atr
+0  66d0b3a3fe369f47d110d945 2024-08-29 17:45:00  60015.7  60100.0  59843.7  60012.3  ...   1080.77    0.0  130.98  65.19  0.03  1073.13
+
+[1 rows x 51 columns]
+2024-08-29 17:50:00|Position status: position
+2024-08-29 17:50:00|continue Position state pandl:-107.90539999999964
+2024-08-29 17:50:00|Exit: 159013, LONG_EXIT, None, Entry_price:60452.5, Exit_price:59223.0518,P%L: -63.02
+2024-08-29 17:50:00|=======================================================
+2024-08-29 17:50:00|2024-08-29 17:50:00: USDT Leverage: 1
+2024-08-29 17:50:00|Initial balance [$]: 5000.00
+2024-08-29 17:50:00|Final balance   [$]: 4936.98
+2024-08-29 17:50:00|Net Performance [%]: -1.26
+2024-08-29 17:50:00|=======================================================
+2024-08-29 17:50:00|Trade Exit price: 59223.0518, PnL: -63.02172389
+2024-08-29 17:50:00|rolling_v1 - Hit Rate: 0.0000, Avg Error: 1.0000, Avg Profit: -63.0217
+2024-08-29 17:50:00|rolling_v2 - Hit Rate: 0.0000, Avg Error: 1.0000, Avg Profit: -63.0217
+2024-08-29 17:50:00|rolling_v3 - Hit Rate: 0.0000, Avg Error: 1.0000, Avg Profit: -63.0217
+2024-08-29 17:50:00|rolling_v4 - Hit Rate: 0.0000, Avg Error: 1.0000, Avg Profit: -63.0217
+2024-08-29 17:50:00|Raw hit rates: [0.0, 0.0, 0.0, 0.0]
+2024-08-29 17:50:00|Raw average errors: [1.0, 1.0, 1.0, 1.0]
+2024-08-29 17:50:00|Raw average profits: [-63.02172389, -63.02172389, -63.02172389, -63.02172389]
+2024-08-29 17:50:00|Profit weights: [0.25 0.25 0.25 0.25]
+2024-08-29 17:50:00|Hit rate weights: [0.25 0.25 0.25 0.25]
+2024-08-29 17:50:00|Error weights: [0.25 0.25 0.25 0.25]
+2024-08-29 17:50:00|Model 1 final weight: 0.2500
+2024-08-29 17:50:00|Model 2 final weight: 0.2500
+2024-08-29 17:50:00|Model 3 final weight: 0.2500
+2024-08-29 17:50:00|Model 4 final weight: 0.2500
+2024-08-29 17:50:00|rolling_v5 - Hit Rate: 0.0000, Avg Error: 1.0000, Avg Profit: -63.0217
+2024-08-29 17:50:00|rolling_v6 - Hit Rate: 0.0000, Avg Error: 1.0000, Avg Profit: -63.0217
+2024-08-29 17:50:00|rolling_v7 - Hit Rate: 1.0000, Avg Error: 0.0000, Avg Profit: 63.0217
+2024-08-29 17:50:00|rolling_v8 - Hit Rate: 1.0000, Avg Error: 0.0000, Avg Profit: 63.0217
+2024-08-29 17:50:00|Raw hit rates: [0.0, 0.0, 1.0, 1.0]
+2024-08-29 17:50:00|Raw average errors: [1.0, 1.0, 0.0, 0.0]
+2024-08-29 17:50:00|Raw average profits: [-63.02172389, -63.02172389, 63.02172389, 63.02172389]
+2024-08-29 17:50:00|Profit weights: [0.25 0.25 0.25 0.25]
+2024-08-29 17:50:00|Hit rate weights: [0.  0.  0.5 0.5]
+2024-08-29 17:50:00|Error weights: [0.5 0.5 0.  0. ]
+2024-08-29 17:50:00|Model 1 final weight: 0.2500
+2024-08-29 17:50:00|Model 2 final weight: 0.2500
+2024-08-29 17:50:00|Model 3 final weight: 0.2500
+2024-08-29 17:50:00|Model 4 final weight: 0.2500
+2024-08-29 17:50:00|rolling_v9 - Hit Rate: 0.0000, Avg Error: 1.0000, Avg Profit: -63.0217
+2024-08-29 17:50:00|rolling_v10 - Hit Rate: 0.0000, Avg Error: 1.0000, Avg Profit: -63.0217
+2024-08-29 17:50:00|rolling_v11 - Hit Rate: 0.0000, Avg Error: 1.0000, Avg Profit: -63.0217
+2024-08-29 17:50:00|rolling_v12 - Hit Rate: 0.0000, Avg Error: 1.0000, Avg Profit: -63.0217
+2024-08-29 17:50:00|Raw hit rates: [0.0, 0.0, 0.0, 0.0]
+2024-08-29 17:50:00|Raw average errors: [1.0, 1.0, 1.0, 1.0]
+2024-08-29 17:50:00|Raw average profits: [-63.02172389, -63.02172389, -63.02172389, -63.02172389]
+2024-08-29 17:50:00|Profit weights: [0.25 0.25 0.25 0.25]
+2024-08-29 17:50:00|Hit rate weights: [0.25 0.25 0.25 0.25]
+2024-08-29 17:50:00|Error weights: [0.25 0.25 0.25 0.25]
+2024-08-29 17:50:00|Model 1 final weight: 0.2500
+2024-08-29 17:50:00|Model 2 final weight: 0.2500
+2024-08-29 17:50:00|Model 3 final weight: 0.2500
+2024-08-29 17:50:00|Model 4 final weight: 0.2500
+2024-08-22 17:05:00|Transitioning to IdleState
+2024-08-22 17:05:00|アイドル状態に遷移します。
+                        _id            start_at     open     high      low    close  ...  bol_diff  aroon  adline    mfi   roc      atr
+0  66d0b4cbfe369f47d110da94 2024-08-29 17:50:00  59218.7  59218.7  59218.7  59218.7  ...   1179.93    0.0  128.52  56.45 -1.38  1053.17
+
+[1 rows x 51 columns]
+2024-08-29 17:55:00|lower band cross
+2024-08-29 17:55:00|Normal State: Selecting top 4 models.
+2024-08-29 17:55:00|Selected model indices: [0, 1, 2, 3]
+2024-08-29 17:55:00|Pred_b 1  0.6722242468968034
+2024-08-29 17:55:00|Normal State: Selecting top 4 models.
+2024-08-29 17:55:00|Selected model indices: [2, 3, 0, 1]
+2024-08-29 17:55:00|Pred_b 1  0.7068991439882666
+2024-08-29 17:55:00|Normal State: Selecting top 4 models.
+2024-08-29 17:55:00|Selected model indices: [0, 1, 2, 3]
+2024-08-29 17:55:00|Pred_b 1  0.9929103553295135
+2024-08-29 17:55:00|Entry: lower, LONG, pred:1, entry_price59536.5
+2024-08-29 17:55:00|Transitioning to EntryPreparationState
+2024-08-29 17:55:00|Transitioning to Entry Preparation State.
+                        _id            start_at     open     high      low    close  ...  bol_diff  aroon  adline    mfi   roc      atr
+0  66d0b5f9fe369f47d110dc8d 2024-08-29 17:55:00  59650.5  59650.5  59385.0  59536.5  ...   1160.71   7.14  128.43  64.79 -0.43  1008.79
+
+[1 rows x 51 columns]
+2024-08-29 18:00:00|Position status: position
+2024-08-29 18:00:00|Transitioning to PositionState
+2024-08-29 18:00:00|Entry event occurred. Transitioning to Position State.
+                        _id            start_at     open     high      low    close  volume  ...  macd_diff bol_diff  aroon  adline    mfi   roc     atr
+0  66d0b726fe369f47d110dde4 2024-08-29 18:00:00  60115.1  60115.1  59687.5  59687.5   0.519  ...     -28.64  1159.45   7.14   128.8  75.58  0.12  978.09
+
+[1 rows x 51 columns]
+2024-08-29 18:05:00|Position status: position
+2024-08-29 18:05:00|continue Position state pandl:-5.870576103721307
+                        _id            start_at     open     high      low    close  volume  ...  macd_diff bol_diff  aroon  adline    mfi   roc     atr
+0  66d0b850fe369f47d110df62 2024-08-29 18:05:00  59531.2  59720.6  59531.2  59531.2   0.006  ...     -32.08   1181.5   7.14  126.78  96.36  0.22  921.77
+
+[1 rows x 51 columns]
+2024-08-29 18:10:00|Position status: position
+2024-08-29 18:10:00|continue Position state pandl:20.847123896278845
+                        _id            start_at     open     high      low    close  volume  ...  macd_diff bol_diff  aroon  adline    mfi   roc    atr
+0  66d0b97afe369f47d110e085 2024-08-29 18:10:00  59853.1  59853.1  59853.1  59853.1     0.0  ...     -14.52  1098.12   7.14   129.5  93.32  0.16  878.9
+
+[1 rows x 51 columns]
+2024-08-29 18:15:00|Position status: position
+2024-08-29 18:15:00|continue Position state pandl:-36.563976103721416
+                        _id            start_at     open     high      low    close  volume  ...  macd_diff bol_diff  aroon  adline    mfi   roc     atr
+0  66d0baaafe369f47d110e1ac 2024-08-29 18:15:00  59202.8  59202.8  59161.4  59161.4   0.002  ...     -45.69  1218.52 -85.71  119.97  92.14 -1.41  865.48
+
+[1 rows x 51 columns]
+2024-08-29 18:20:00|Position status: position
+2024-08-29 18:20:00|continue Position state pandl:-31.808076103721305
+                        _id            start_at     open     high      low    close  volume  ...  macd_diff bol_diff  aroon  adline    mfi   roc     atr
+0  66d0bbd5fe369f47d110e2fb 2024-08-29 18:20:00  58906.2  59218.7  58906.2  59218.7    0.02  ...     -64.18  1306.13 -92.85  115.43  92.14 -0.32  825.94
+
+[1 rows x 51 columns]
+2024-08-29 18:25:00|Position status: position
+2024-08-29 18:25:00|continue Position state pandl:-16.4945761037211
+                        _id            start_at     open     high      low    close  volume  ...  macd_diff bol_diff  aroon  adline    mfi   roc    atr
+0  66d0bcfefe369f47d110e41e 2024-08-29 18:25:00  59339.1  59403.2  59202.8  59403.2   0.024  ...     -58.09  1343.73 -92.85  111.49  67.34 -1.07  781.3
+
+[1 rows x 51 columns]
+2024-08-29 18:30:00|Position status: position
+2024-08-29 18:30:00|continue Position state pandl:7.102323896278447
+                        _id            start_at     open     high      low    close  volume  ...  macd_diff bol_diff  aroon  adline    mfi   roc     atr
+0  66d0be31fe369f47d110e545 2024-08-29 18:30:00  59687.5  59736.6  59687.5  59687.5   0.058  ...     -28.15  1343.63 -71.42   118.5  37.18 -0.65  749.31
+
+[1 rows x 51 columns]
+2024-08-29 18:35:00|Position status: position
+2024-08-29 18:35:00|continue Position state pandl:-18.83517610372155
+                        _id            start_at     open     high      low    close  volume  ...  macd_diff bol_diff  aroon  adline    mfi   roc     atr
+0  66d0bf56fe369f47d110e6aa 2024-08-29 18:35:00  59430.3  59575.3  59375.0  59375.0   0.008  ...     -24.46  1346.71 -71.42   116.4  37.18 -0.59  718.07
+
+[1 rows x 51 columns]
+2024-08-29 18:40:00|Position status: position
+2024-08-29 18:40:00|continue Position state pandl:-66.560176103721
+                        _id            start_at     open     high      low    close  volume  ...  macd_diff bol_diff  aroon  adline    mfi   roc     atr
+0  66d0c088fe369f47d110e7d1 2024-08-29 18:40:00  58800.0  58800.0  58800.0  58800.0     0.0  ...     -59.73  1556.94 -100.0  110.54  36.49 -2.62  707.86
+
+[1 rows x 51 columns]
+2024-08-29 18:45:00|Position status: position
+2024-08-29 18:45:00|continue Position state pandl:-70.71017610372155
+                        _id            start_at     open     high      low    close  volume  ...  macd_diff bol_diff  aroon  adline    mfi   roc    atr
+0  66d0c1b0fe369f47d110e8f4 2024-08-29 18:45:00  58750.0  59062.5  58750.0  58750.0   0.032  ...     -75.72  1674.56 -92.85  110.03  37.67 -1.91  679.6
+
+[1 rows x 51 columns]
+2024-08-29 18:50:00|Position status: position
+2024-08-29 18:50:00|continue Position state pandl:-65.72187610372157
+                        _id            start_at     open     high      low    close  volume  ...  macd_diff bol_diff  aroon  adline    mfi   roc     atr
+0  66d0c2dcfe369f47d110ea43 2024-08-29 18:50:00  58810.1  58810.1  58810.1  58810.1     0.0  ...     -81.57  1796.97 -92.85  101.94  94.88 -1.85  635.35
+
+[1 rows x 51 columns]
+2024-08-29 18:55:00|Position status: position
+2024-08-29 18:55:00|continue Position state pandl:-43.96757610372197
+                        _id            start_at     open     high      low    close  volume  ...  macd_diff bol_diff  aroon  adline    mfi  roc     atr
+0  66d0c409fe369f47d110eb66 2024-08-29 18:55:00  58906.2  59072.2  58906.2  59072.2   0.018  ...     -65.36  1809.56 -64.28   92.79  94.83 -1.6  608.72
+
+[1 rows x 51 columns]
+2024-08-29 19:00:00|Position status: position
+2024-08-29 19:00:00|continue Position state pandl:-83.6830761037213
+                        _id            start_at     open     high      low    close  volume  ...  macd_diff bol_diff  aroon  adline    mfi   roc     atr
+0  66d0c532fe369f47d110ec89 2024-08-29 19:00:00  58593.7  58593.7  58593.7  58593.7     0.0  ...     -77.98  1898.02 -85.71   96.27  94.83 -1.05  599.44
+
+[1 rows x 51 columns]
+2024-08-29 19:05:00|Position status: position
+2024-08-29 19:05:00|continue Position state pandl:-98.33257610372175
+                        _id            start_at     open     high      low    close  volume  ...  macd_diff bol_diff  aroon  adline    mfi   roc     atr
+0  66d0c65ffe369f47d110ee03 2024-08-29 19:05:00  58567.9  58593.7  58417.2  58417.2   0.018  ...     -88.37  2053.16 -92.85   98.32  92.42 -1.79  569.22
+
+[1 rows x 51 columns]
+2024-08-29 19:10:00|Position status: position
+2024-08-29 19:10:00|continue Position state pandl:-38.21567610372085
+                        _id            start_at     open     high      low    close  volume  ...  macd_diff bol_diff  aroon  adline    mfi   roc     atr
+0  66d0c78efe369f47d110ef2a 2024-08-29 19:10:00  59141.5  59141.5  59141.5  59141.5     0.0  ...     -44.77   1840.9 -92.85   90.44  71.08 -1.09  580.29
+
+[1 rows x 51 columns]
+2024-08-29 19:15:00|Position status: position
+2024-08-29 19:15:00|continue Position state pandl:-99.76017610372173
+                        _id            start_at     open     high      low    close  volume  ...  macd_diff bol_diff  aroon  adline    mfi   roc     atr
+0  66d0c8b8fe369f47d110f04d 2024-08-29 19:15:00  58400.0  58400.0  58400.0  58400.0     0.0  ...     -60.23  1900.58 -92.85   89.28  73.46 -1.97  591.86
+
+[1 rows x 51 columns]
+2024-08-29 19:20:00|Position status: position
+2024-08-29 19:20:00|continue Position state pandl:-83.6830761037213
+                        _id            start_at     open     high      low    close  volume  ...  macd_diff bol_diff  aroon  adline    mfi  roc     atr
+0  66d0c9e5fe369f47d110f19c 2024-08-29 19:20:00  58593.7  58593.7  58593.7  58593.7     0.0  ...     -52.11  1870.22 -92.85   93.91  73.46 -2.1  563.42
+
+[1 rows x 51 columns]
+2024-08-29 19:25:00|Position status: position
+2024-08-29 19:25:00|continue Position state pandl:-46.6152761037215
+                        _id            start_at     open     high      low    close  volume  ...  macd_diff bol_diff  aroon  adline    mfi   roc     atr
+0  66d0cb0efe369f47d110f2bf 2024-08-29 19:25:00  59062.5  59062.5  58877.7  59040.3   0.004  ...     -15.59   1714.9 -64.28   94.87  74.85 -0.28  556.64
+
+[1 rows x 51 columns]
+2024-08-29 19:30:00|Position status: position
+2024-08-29 19:30:00|continue Position state pandl:-31.808076103721305
+                        _id            start_at     open     high      low    close  volume  ...  macd_diff bol_diff  aroon  adline    mfi   roc     atr
+0  66d0cc40fe369f47d110f3e6 2024-08-29 19:30:00  59365.4  59365.4  59218.7  59218.7   0.042  ...      26.55  1716.86 -64.28    83.6  87.35  0.19  540.07
+
+[1 rows x 51 columns]
+2024-10-18 10:30:00| 
+                        _id            start_at     open     high      low    close  volume   turnover  ... dmi_diff  macd_diff  bol_diff  aroon   adline    mfi   roc     atr
+0  671238a9525d097688e60aa5 2024-10-18 10:30:00  67656.8  67658.8  67656.8  67658.8   0.048  3247.6148  ...   -12.78     -13.25    171.19  28.57 -4856.85  47.69 -0.02  361.79
+
+[1 rows x 51 columns]
+2024-10-18 10:45:00|upper band cross
+2024-10-18 10:45:00|Initial State: Selecting ALL models.
+2024-10-18 10:45:00|Selected model indices: [0, 1, 2, 3]
+2024-10-18 10:45:00|Initial State: Selecting ALL models.
+2024-10-18 10:45:00|Selected model indices: [0, 1, 2, 3]
+2024-10-18 10:45:00|Entry: upper, SHORT, pred:0, entry_price67746.9
+2024-10-18 11:00:00| 
+                        _id            start_at     open     high      low    close  volume   turnover  ... dmi_diff  macd_diff  bol_diff  aroon  adline    mfi   roc     atr
+0  67123fb9f5d6365926f3e6fa 2024-10-18 11:00:00  67746.9  67746.9  67746.9  67746.9   0.132  8942.5908  ...   -10.97      -1.06    209.57   50.0  278.59  56.57  0.17  315.62
+
+[1 rows x 51 columns]
+2024-10-18 11:15:00| 
+                        _id            start_at     open     high      low    close  volume   turnover  ... dmi_diff  macd_diff  bol_diff  aroon  adline    mfi   roc     atr
+0  6712433c8fab4aeb8e42b3ba 2024-10-18 11:15:00  67746.9  67746.9  67550.8  67746.9    1.11  75198.291  ...   -15.04      -1.59    213.78  57.14  678.06  62.65  0.09  306.79
+
+[1 rows x 51 columns]
+2024-10-18 11:30:00| 
+                        _id            start_at     open     high      low    close  volume  turnover  ... dmi_diff  macd_diff  bol_diff  aroon  adline    mfi   roc     atr
+0  671246b98fab4aeb8e42b759 2024-10-18 11:30:00  67746.9  67746.9  67746.9  67746.9     0.0       0.0  ...   -15.05       0.88    204.29  64.28  789.23  57.68  0.12  284.83
+
+[1 rows x 51 columns]
+2024-10-18 11:45:00| 
+                        _id            start_at     open     high      low    close  volume    turnover  ... dmi_diff  macd_diff  bol_diff  aroon  adline    mfi   roc     atr
+0  67124a3f8fab4aeb8e42bb1e 2024-10-18 11:45:00  67746.9  67746.9  67718.0  67746.9     0.7  47422.7264  ...    -15.7       1.52     214.7  71.42   764.1  51.72  0.09  266.55
+
+[1 rows x 51 columns]
+2024-10-18 12:00:00| 
+                        _id            start_at     open     high      low    close  volume    turnover  ... dmi_diff  macd_diff  bol_diff  aroon  adline    mfi   roc     atr
+0  67124dc88fab4aeb8e42bec9 2024-10-18 12:00:00  67656.0  67746.9  67550.8  67746.9   1.334  90363.2089  ...   -19.42      -1.22    216.58  78.57   767.9  59.95  0.21  261.53
+
+[1 rows x 51 columns]
+2024-10-18 12:15:00| 
+                        _id            start_at     open     high      low    close  volume   turnover  ... dmi_diff  macd_diff  bol_diff  aroon  adline    mfi   roc     atr
+0  6712514a8fab4aeb8e42c2b7 2024-10-18 12:15:00  67722.7  67725.9  67550.0  67725.9   0.121  8194.4821  ...   -18.38       -4.3    214.66  78.57  771.03  52.56  0.07  256.92
+
+[1 rows x 51 columns]
+2024-10-18 12:30:00| 
+                        _id            start_at     open     high      low    close  volume  turnover  ... dmi_diff  macd_diff  bol_diff  aroon  adline   mfi  roc     atr
+0  671254cb8fab4aeb8e42c65c 2024-10-18 12:30:00  67746.9  67746.9  67746.9  67746.9     0.0       0.0  ...   -17.64      -2.24    221.73  92.85  808.88  42.9  0.1  240.09
+
+[1 rows x 51 columns]
+2024-10-18 12:45:00| 
+                        _id            start_at     open     high      low    close  volume   turnover  ... dmi_diff  macd_diff  bol_diff  aroon  adline    mfi   roc     atr
+0  671258508fab4aeb8e42ca1b 2024-10-18 12:45:00  67746.9  67746.9  67489.8  67725.9   0.495  33441.402  ...   -23.91      -5.99    218.49  100.0  802.04  54.51  0.05  241.31
+
+[1 rows x 51 columns]
+2024-10-18 13:00:00| 
+                        _id            start_at     open     high      low    close  volume  turnover  ... dmi_diff  macd_diff  bol_diff  aroon  adline    mfi  roc     atr
+0  67125bd38fab4aeb8e42cdc0 2024-10-18 13:00:00  67746.9  67746.9  67746.9  67746.9    0.06  4064.814  ...   -23.76      -3.61     226.6  85.71  808.17  37.95  0.1  225.58
+
+[1 rows x 51 columns]
+2024-10-18 13:15:00|lower band cross
+2024-10-18 13:15:00|Initial State: Selecting ALL models.
+2024-10-18 13:15:00|Selected model indices: [0, 1, 2, 3]
+2024-10-18 13:15:00|Initial State: Selecting ALL models.
+2024-10-18 13:15:00|Selected model indices: [0, 1, 2, 3]
+2024-10-18 13:15:00|Entry: lower, SHORT, pred:0, entry_price67550.8
+2024-10-18 13:15:00|Transitioning to EntryPreparationState
+2024-10-18 13:15:00|Transitioning to Entry Preparation State.
+                        _id            start_at     open     high      low    close  volume    turnover  ... dmi_diff  macd_diff  bol_diff  aroon  adline    mfi   roc     atr
+0  67125f5c8fab4aeb8e42d196 2024-10-18 13:15:00  67746.9  67746.9  67550.8  67550.8   0.583  39489.2002  ...   -28.55     -11.68    237.26  92.85  810.93  59.48 -0.09  223.47
+
+[1 rows x 51 columns]
+2024-10-18 13:30:00|Position status: position
+2024-10-18 13:30:00|Transitioning to PositionState
+2024-10-18 13:30:00|Entry event occurred. Transitioning to Position State.
+                        _id            start_at     open     high      low    close  volume   turnover  ... dmi_diff  macd_diff  bol_diff  aroon  adline   mfi  roc     atr
+0  671262dc8fab4aeb8e42d555 2024-10-18 13:30:00  67746.9  67746.9  67725.8  67746.9    0.06  4064.7604  ...   -26.73      -7.42    215.76  100.0  825.52  0.48  0.1  221.52
+
+[1 rows x 51 columns]
+2024-10-18 13:45:00|Position status: position
+2024-10-18 13:45:00|continue Position state pandl:-3.726499999999851
+2024-10-18 13:45:00|Exit: 187880, SHORT_EXIT, None, Entry_price:67550.8, Exit_price:67725.9,P%L: -3.73
+2024-10-18 13:45:00|=======================================================
+2024-10-18 13:45:00|2024-10-18 13:45:00: USDT ,leverage: 1.00
+2024-10-18 13:45:00|Initial balance [$]: 1000.00
+2024-10-18 13:45:00|Final balance   [$]: 996.27
+2024-10-18 13:45:00|Net Performance [%]: -0.37
+2024-10-18 13:45:00|=======================================================
+2024-10-18 13:45:00|Trade Exit price: 67725.9, PnL: -3.7261418
+2024-10-18 13:45:00|rolling_v1 - Hit Rate: 1.0000, Avg Error: 0.0000, Avg Profit: 3.7261
+2024-10-18 13:45:00|rolling_v3 - Hit Rate: 0.0000, Avg Error: 1.0000, Avg Profit: -3.7261
+2024-10-18 13:45:00|rolling_v4 - Hit Rate: 0.0000, Avg Error: 1.0000, Avg Profit: -3.7261
+2024-10-18 13:45:00|rolling_v5 - Hit Rate: 1.0000, Avg Error: 0.0000, Avg Profit: 3.7261
+2024-10-18 13:45:00|Raw hit rates: [1.0, 0.0, 0.0, 1.0]
+2024-10-18 13:45:00|Raw average errors: [0.0, 1.0, 1.0, 0.0]
+2024-10-18 13:45:00|Raw average profits: [3.7261418, -3.7261418, -3.7261418, 3.7261418]
+2024-10-18 13:45:00|Profit weights: [0.15 0.15 0.15 0.15]
+2024-10-18 13:45:00|Hit rate weights: [0.1 0.  0.  0.1]
+2024-10-18 13:45:00|Error weights: [0.1 0.  0.  0.1]
+2024-10-18 13:45:00|Model 1 final weight: 0.3500
+2024-10-18 13:45:00|Model 2 final weight: 0.1500
+2024-10-18 13:45:00|Model 3 final weight: 0.1500
+2024-10-18 13:45:00|Model 4 final weight: 0.3500
+2024-10-18 13:45:00|rolling_v6 - Hit Rate: 0.0000, Avg Error: 1.0000, Avg Profit: -3.7261
+2024-10-18 13:45:00|rolling_v8 - Hit Rate: 0.0000, Avg Error: 1.0000, Avg Profit: -3.7261
+2024-10-18 13:45:00|rolling_v9 - Hit Rate: 0.0000, Avg Error: 1.0000, Avg Profit: -3.7261
+2024-10-18 13:45:00|rolling_v10 - Hit Rate: 1.0000, Avg Error: 0.0000, Avg Profit: 3.7261
+2024-10-18 13:45:00|Raw hit rates: [0.0, 0.0, 0.0, 1.0]
+2024-10-18 13:45:00|Raw average errors: [1.0, 1.0, 1.0, 0.0]
+2024-10-18 13:45:00|Raw average profits: [-3.7261418, -3.7261418, -3.7261418, 3.7261418]
+2024-10-18 13:45:00|Profit weights: [0.125 0.125 0.125 0.125]
+2024-10-18 13:45:00|Hit rate weights: [0.  0.  0.  0.3]
+2024-10-18 13:45:00|Error weights: [0.  0.  0.  0.2]
+2024-10-18 13:45:00|Model 1 final weight: 0.1250
+2024-10-18 13:45:00|Model 2 final weight: 0.1250
+2024-10-18 13:45:00|Model 3 final weight: 0.1250
+2024-10-18 13:45:00|Model 4 final weight: 0.6250
+2024-10-17 10:15:00|Transitioning to IdleState
+2024-10-17 10:15:00|アイドル状態に遷移します。
+                        _id            start_at     open     high      low    close  volume   turnover  ... dmi_diff  macd_diff  bol_diff  aroon  adline   mfi   roc     atr
+0  6712665f8fab4aeb8e42d91c 2024-10-18 13:45:00  67550.0  67725.9  67550.0  67725.9   0.049  3318.5691  ...   -30.73      -8.47    209.46  92.85  793.52  3.68  0.19  219.78
+
+[1 rows x 51 columns]
+2024-10-18 14:00:00| 
+                        _id            start_at     open     high      low    close  volume   turnover  ... dmi_diff  macd_diff  bol_diff  aroon  adline   mfi   roc     atr
+0  671269e78fab4aeb8e42dd6a 2024-10-18 14:00:00  67746.9  67746.9  67745.7  67746.9   0.089  6029.4717  ...   -29.77      -4.86    214.78  35.71  821.61  4.54  0.13  205.61
+
+[1 rows x 51 columns]
+2024-10-18 14:15:00| 
+                        _id            start_at     open     high      low    close  volume    turnover  ... dmi_diff  macd_diff  bol_diff  aroon  adline   mfi   roc     atr
+0  67126d6a8fab4aeb8e42e146 2024-10-18 14:15:00  67746.9  67746.9  67578.1  67578.1   0.599  40579.5903  ...    -33.9      -10.7    217.86  42.85  837.46  4.02 -0.18  202.97
+
+[1 rows x 51 columns]
+2024-10-18 14:30:00| 
+                        _id            start_at     open     high      low    close  volume   turnover  ... dmi_diff  macd_diff  bol_diff  aroon  adline  mfi   roc     atr
+0  671270eb8fab4aeb8e42e4eb 2024-10-18 14:30:00  67550.8  67746.9  67550.8  67746.9   0.054  3658.3226  ...   -32.52      -9.09     217.4   50.0  832.44  5.0 -0.07  202.48
+
+[1 rows x 51 columns]
+2024-10-18 14:45:00| 
+                        _id            start_at     open     high      low    close  volume   turnover  ... dmi_diff  macd_diff  bol_diff  aroon  adline   mfi  roc     atr
+0  6712746f8fab4aeb8e42e8aa 2024-10-18 14:45:00  67554.0  67746.9  67554.0  67746.9   0.041  2777.6229  ...   -30.29      -7.81    215.67  57.14  869.86  7.26  0.0  201.81
+
+[1 rows x 51 columns]
+2024-10-18 15:00:00| 
+                        _id            start_at     open     high      low    close  volume   turnover  ... dmi_diff  macd_diff  bol_diff  aroon  adline   mfi  roc     atr
+0  671277f68fab4aeb8e42ec4f 2024-10-18 15:00:00  67746.9  67746.9  67736.9  67746.9   0.055  3726.0663  ...   -30.17      -3.89    218.85  64.28  873.51  8.47 -0.0  188.12
+
+[1 rows x 51 columns]
+2024-10-18 15:15:00| 
+                        _id            start_at     open     high      low    close  volume   turnover  ... dmi_diff  macd_diff  bol_diff  aroon  adline  mfi   roc    atr
+0  67127b788fab4aeb8e42f01f 2024-10-18 15:15:00  67550.8  67746.9  67550.8  67746.9   0.089  6028.1014  ...   -34.98      -4.41    172.98  71.42  889.39  9.9 -0.06  188.7
+
+[1 rows x 51 columns]
+2024-10-18 15:30:00| 
+                        _id            start_at     open     high      low    close  volume  turnover  ... dmi_diff  macd_diff  bol_diff  aroon  adline    mfi   roc     atr
+0  67127efa8fab4aeb8e42f3c4 2024-10-18 15:30:00  67746.9  67746.9  67746.9  67746.9     0.0       0.0  ...   -34.99      -1.57    170.84  78.57  871.94  15.66  0.07  175.22
+
+[1 rows x 51 columns]
+2024-10-18 15:45:00| 
+                        _id            start_at     open     high      low    close  volume  turnover  ... dmi_diff  macd_diff  bol_diff  aroon  adline    mfi   roc     atr
+0  6712827f8fab4aeb8e42f789 2024-10-18 15:45:00  67725.9  67725.9  67725.9  67725.9     0.0       0.0  ...   -35.58      -1.26    168.16  78.57  877.65  16.53  0.06  164.23
+
+[1 rows x 51 columns]
+2024-10-18 16:00:00|lower band cross
+2024-10-18 16:15:00| 
+                        _id            start_at     open     high      low    close  volume    turnover  ... dmi_diff  macd_diff  bol_diff  aroon  adline    mfi   roc     atr
+0  67128cd1f8d3a9011f522cbd 2024-10-18 16:15:00  67746.9  67746.9  67376.1  67746.9  45.513  3079620.68  ...   -41.15     -10.46    193.65    0.0  911.75  96.08 -0.02  181.11
+
+[1 rows x 51 columns]
+2024-10-18 16:30:00| 
+                        _id            start_at     open     high      low    close  volume  turnover  ... dmi_diff  macd_diff  bol_diff  aroon  adline    mfi   roc     atr
+0  67128d0af8d3a9011f522d67 2024-10-18 16:30:00  67622.3  67622.3  67622.3  67622.3     0.0       0.0  ...   -39.11      -12.9    199.58    0.0  924.33  96.07 -0.18  177.07
+
+[1 rows x 51 columns]
+2024-10-18 16:45:00|upper band cross
+2024-10-18 16:45:00|Initial State: Selecting ALL models.
+2024-10-18 16:45:00|Selected model indices: [0, 1, 2, 3]
+2024-10-18 16:45:00|Initial State: Selecting ALL models.
+2024-10-18 16:45:00|Selected model indices: [0, 1, 2, 3]
+2024-10-18 16:45:00|Entry: upper, LONG, pred:1, entry_price67746.9
+2024-10-18 16:45:00|Transitioning to EntryPreparationState
+2024-10-18 16:45:00|Transitioning to Entry Preparation State.
+                        _id            start_at     open     high      low    close  volume    turnover  ... dmi_diff  macd_diff  bol_diff  aroon  adline    mfi   roc     atr
+0  67129092ddb91e43b1244777 2024-10-18 16:45:00  67550.8  67746.9  67550.8  67746.9   0.159  10771.7571  ...   -31.09      -9.08    195.06  14.28  918.77  97.27  0.14  178.39
+
+[1 rows x 51 columns]
+2024-10-18 17:00:00|Check Online Position status: position
+2024-10-18 17:00:00|Transitioning to PositionState
+2024-10-18 17:00:00|Entry event occurred. Transitioning to Position State.
+                        _id            start_at     open     high      low    close  volume    turnover  ... dmi_diff  macd_diff  bol_diff  aroon  adline    mfi   roc     atr
+0  67129414ddb91e43b1244b36 2024-10-18 17:00:00  67746.9  67746.9  67489.8  67489.8   0.493  33311.9857  ...   -30.31      -15.5    228.48  21.42  979.96  96.26 -0.27  183.95
+
+[1 rows x 51 columns]
+2024-10-18 17:15:00|Check Online Position status: position
+2024-10-18 17:15:00|continue Position state pandl:-1.1
+                        _id            start_at     open     high      low    close  volume  turnover  ... dmi_diff  macd_diff  bol_diff  aroon  adline    mfi   roc     atr
+0  67129798ddb91e43b1244f08 2024-10-18 17:15:00  67746.9  67746.9  67746.9  67746.9     0.0       0.0  ...   -27.38      -6.47    234.96  28.57  532.99  96.36  0.09  189.13
+
+[1 rows x 51 columns]
+2024-10-18 17:30:00|lower band cross
+2024-10-18 17:30:00|Initial State: Selecting ALL models.
+2024-10-18 17:30:00|Selected model indices: [0, 1, 2, 3, 4]
+2024-10-18 17:30:00|Initial State: Selecting ALL models.
+2024-10-18 17:30:00|Selected model indices: [0, 1, 2, 3, 4]
+2024-10-18 17:30:00|Entry: lower, LONG, pred:1, entry_price67489.8
+2024-10-18 17:30:00|Transitioning to EntryPreparationState
+2024-10-18 17:30:00|Transitioning to Entry Preparation State.
+                        _id            start_at     open     high      low    close  volume  turnover  ... dmi_diff  macd_diff  bol_diff  aroon  adline    mfi   roc    atr
+0  67129b1cf1d86b5da47b8128 2024-10-18 17:30:00  67489.8  67489.8  67489.8  67489.8     0.0       0.0  ...   -34.25     -16.94    284.36  28.57  482.21  96.36 -0.37  194.0
+
+[1 rows x 51 columns]
+2024-10-18 17:45:00|Check Online Position status: position
+2024-10-18 17:45:00|Transitioning to PositionState
+2024-10-18 17:45:00|Entry event occurred. Transitioning to Position State.
+                        _id            start_at     open     high      low    close  volume  turnover  ... dmi_diff  macd_diff  bol_diff  aroon  adline    mfi   roc     atr
+0  67129e9ef1d86b5da47b84fb 2024-10-18 17:45:00  67489.8  67489.8  67489.8  67489.8     0.0       0.0  ...   -34.25     -22.66    326.73  28.57  470.43  97.58 -0.19  180.16
+
+[1 rows x 51 columns]
+2024-10-18 18:00:00|Check Online Position status: position
+2024-10-18 18:00:00|continue Position state pandl:-0.18499999999992278
+                        _id            start_at     open     high      low    close  volume  turnover  ... dmi_diff  macd_diff  bol_diff  aroon  adline    mfi   roc     atr
+0  6712a226f1d86b5da47b88a8 2024-10-18 18:00:00  67746.9  67746.9  67550.8  67550.8   0.002  135.1048  ...   -20.97     -18.02    322.44   50.0  453.82  97.58 -0.14  185.65
+
+[1 rows x 51 columns]
+2024-10-18 18:15:00|Check Online Position status: position
+2024-10-18 18:15:00|continue Position state pandl:2.441499999999928
+                        _id            start_at     open     high      low    close  volume  turnover  ... dmi_diff  macd_diff  bol_diff  aroon  adline    mfi   roc     atr
+0  6712a5a7f1d86b5da47b8c82 2024-10-18 18:15:00  67725.9  67725.9  67725.9  67725.9     0.0       0.0  ...   -19.54      -6.05    323.03   50.0  458.91  97.58  0.04  184.89
+
+[1 rows x 51 columns]
+2024-10-18 18:30:00|Check Online Position status: No position
+2024-10-18 18:30:00|No position. Losscut not triggered. Potential exit price: 60740.82
+2024-10-18 18:30:00|Exit: 187882, LONG_EXIT, losscut, Entry_price:67489.8, Exit_price:67550.8,P%L: -4.00
+2024-10-18 18:30:00|=======================================================
+2024-10-18 18:30:00|2024-10-18 18:30:00: USDT ,leverage: 1.00
+2024-10-18 18:30:00|Initial balance [$]: 1000.00
+2024-10-18 18:30:00|Final balance   [$]: 996.00
+2024-10-18 18:30:00|Net Performance [%]: -0.40
+2024-10-18 18:30:00|=======================================================
+2024-10-18 18:30:00|Trade Exit price: 67550.8, PnL: -4.00157519
+2024-10-18 18:30:00|rolling_v1 - Hit Rate: 0.0000, Avg Error: 1.0000, Avg Profit: -4.0016
+2024-10-18 18:30:00|rolling_v2 - Hit Rate: 0.0000, Avg Error: 1.0000, Avg Profit: -4.0016
+2024-10-18 18:30:00|rolling_v3 - Hit Rate: 0.0000, Avg Error: 1.0000, Avg Profit: -4.0016
+2024-10-18 18:30:00|rolling_v4 - Hit Rate: 0.0000, Avg Error: 1.0000, Avg Profit: -4.0016
+2024-10-18 18:30:00|rolling_v5 - Hit Rate: 0.0000, Avg Error: 1.0000, Avg Profit: -4.0016
+2024-10-18 18:30:00|Raw hit rates: [0.0, 0.0, 0.0, 0.0, 0.0]
+2024-10-18 18:30:00|Raw average errors: [1.0, 1.0, 1.0, 1.0, 1.0]
+2024-10-18 18:30:00|Raw average profits: [-4.00157519, -4.00157519, -4.00157519, -4.00157519, -4.00157519]
+2024-10-18 18:30:00|Profit weights: [0.12 0.12 0.12 0.12 0.12]
+2024-10-18 18:30:00|Hit rate weights: [0.04 0.04 0.04 0.04 0.04]
+2024-10-18 18:30:00|Error weights: [nan nan nan nan nan]
+2024-10-18 18:30:00|Model 1 final weight: nan
+2024-10-18 18:30:00|Model 2 final weight: nan
+2024-10-18 18:30:00|Model 3 final weight: nan
+2024-10-18 18:30:00|Model 4 final weight: nan
+2024-10-18 18:30:00|Model 5 final weight: nan
+2024-10-18 18:30:00|rolling_v6 - Hit Rate: 1.0000, Avg Error: 0.0000, Avg Profit: 4.0016
+2024-10-18 18:30:00|rolling_v7 - Hit Rate: 1.0000, Avg Error: 0.0000, Avg Profit: 4.0016
+2024-10-18 18:30:00|rolling_v8 - Hit Rate: 1.0000, Avg Error: 0.0000, Avg Profit: 4.0016
+2024-10-18 18:30:00|rolling_v9 - Hit Rate: 1.0000, Avg Error: 0.0000, Avg Profit: 4.0016
+2024-10-18 18:30:00|rolling_v10 - Hit Rate: 0.0000, Avg Error: 1.0000, Avg Profit: -4.0016
+2024-10-18 18:30:00|Raw hit rates: [1.0, 1.0, 1.0, 1.0, 0.0]
+2024-10-18 18:30:00|Raw average errors: [0.0, 0.0, 0.0, 0.0, 1.0]
+2024-10-18 18:30:00|Raw average profits: [4.00157519, 4.00157519, 4.00157519, 4.00157519, -4.00157519]
+2024-10-18 18:30:00|Profit weights: [ 0.16666667  0.16666667  0.16666667  0.16666667 -0.16666667]
+2024-10-18 18:30:00|Hit rate weights: [0.075 0.075 0.075 0.075 0.   ]
+2024-10-18 18:30:00|Error weights: [0.05 0.05 0.05 0.05 0.  ]
+2024-10-18 18:30:00|Model 1 final weight: 0.2917
+2024-10-18 18:30:00|Model 2 final weight: 0.2917
+2024-10-18 18:30:00|Model 3 final weight: 0.2917
+2024-10-18 18:30:00|Model 4 final weight: 0.2917
+2024-10-18 18:30:00|Model 5 final weight: -0.1667
+2024-10-17 16:30:00|Transitioning to IdleState
+2024-10-17 16:30:00|アイドル状態に遷移します。
+                        _id            start_at     open     high      low    close  volume  turnover  ... dmi_diff  macd_diff  bol_diff  aroon  adline    mfi  roc     atr
+0  6712a92df1d86b5da47b9025 2024-10-18 18:30:00  67468.8  67468.8  67468.8  67468.8     0.0       0.0  ...   -27.32     -14.57    356.49   50.0  460.54  97.58 -0.4  190.03
+
+[1 rows x 51 columns]
+2024-10-18 18:45:00| 
+                        _id            start_at     open     high      low    close  volume  turnover  ... dmi_diff  macd_diff  bol_diff  aroon  adline    mfi   roc     atr
+0  6712acaef1d86b5da47b9491 2024-10-18 18:45:00  67489.8  67656.9  67489.8  67656.9   0.005  337.9503  ...    -18.3      -9.68    356.54   50.0  453.56  97.76 -0.12  189.83
+
+[1 rows x 51 columns]
+2024-10-18 19:00:00| 
+                        _id            start_at     open     high      low    close  volume  turnover  ... dmi_diff  macd_diff  bol_diff  aroon  adline    mfi   roc     atr
+0  6712b035f1d86b5da47b9836 2024-10-18 19:00:00  67554.0  67554.0  67554.0  67554.0     0.0       0.0  ...   -17.57      -9.87    353.08   50.0  505.68  97.76 -0.28  183.59
+
+[1 rows x 51 columns]
+2024-10-18 19:15:00|upper band cross
+2024-10-18 19:15:00|Normal State: Selecting top 5 models.
+2024-10-18 19:15:00|Selected model indices: [0, 1, 2, 3, 4]
+2024-10-18 19:15:00|Normal State: Selecting top 5 models.
+2024-10-18 19:15:00|Selected model indices: [0, 1, 2, 3, 4]
+2024-10-18 19:15:00|Entry: upper, SHORT, pred:0, entry_price67746.9
+2024-10-19 02:45:00|lower band cross
+2024-10-19 03:15:00|upper band cross
+2024-10-19 03:15:00|Initial State: Selecting ALL models.
+2024-10-19 03:15:00|Selected model indices: [0, 1, 2, 3, 4]
+2024-10-19 03:15:00|Initial State: Selecting ALL models.
+2024-10-19 03:15:00|Selected model indices: [0, 1, 2, 3, 4]
+2024-10-19 03:15:00|Entry: upper, SHORT, pred:0, entry_price67746.9
+2024-10-19 03:15:00|Transitioning to EntryPreparationState
+2024-10-19 03:15:00|Transitioning to Entry Preparation State.
+                        _id            start_at     open     high      low    close  volume   turnover  ... dmi_diff  macd_diff  bol_diff  aroon   adline    mfi   roc     atr
+0  67132439073a85a27a86ce5b 2024-10-19 03:15:00  67746.9  67746.9  67746.9  67746.9   0.043  2913.1167  ...   -13.02       9.79    273.75  35.71  1780.69  39.93  0.13  342.99
+
+[1 rows x 51 columns]
+2024-10-19 03:30:00|Check Online Position status: position
+2024-10-19 03:30:00|Transitioning to PositionState
+2024-10-19 03:30:00|Entry event occurred. Transitioning to Position State.
+                        _id            start_at     open     high      low    close  volume  turnover  ... dmi_diff  macd_diff  bol_diff  aroon   adline    mfi   roc     atr
+0  671327b9073a85a27a86d21a 2024-10-19 03:30:00  67746.9  67746.9  67746.9  67746.9     0.0       0.0  ...   -13.02      18.92    308.33  42.85  1593.97  34.45  0.12  318.49
+
+[1 rows x 51 columns]
+2024-10-19 03:45:00|Check Online Position status: position
+2024-10-19 03:45:00|continue Position state pandl:-1.1
+                        _id            start_at     open     high      low    close  volume  turnover  ... dmi_diff  macd_diff  bol_diff  aroon  adline    mfi   roc     atr
+0  67132b3d073a85a27a86d5e1 2024-10-19 03:45:00  67746.9  67746.9  67746.9  67746.9     0.0       0.0  ...   -13.02      23.75    334.56   50.0  1545.7  37.89  0.25  295.74
+
+[1 rows x 51 columns]
+2024-10-19 04:00:00|Check Online Position status: position
+2024-10-19 04:00:00|continue Position state pandl:0.8994999999997844
+                        _id            start_at     open     high      low    close  volume  turnover  ... dmi_diff  macd_diff  bol_diff  aroon  adline    mfi  roc     atr
+0  67132ec1073a85a27a86d98a 2024-10-19 04:00:00  67613.6  67613.6  67613.6  67613.6     0.0       0.0  ...   -15.94       17.1    323.69   50.0  1496.5  42.15  0.1  284.14
+
+[1 rows x 51 columns]
+2024-10-19 04:15:00|Check Online Position status: position
+2024-10-19 04:15:00|continue Position state pandl:2.6064999999998917
+2024-10-19 04:15:00|Exit: 187884, SHORT_EXIT, None, Entry_price:67746.9, Exit_price:67725.72,P%L: -3.74
+2024-10-19 04:15:00|=======================================================
+2024-10-19 04:15:00|2024-10-19 04:15:00: USDT ,leverage: 1.00
+2024-10-19 04:15:00|Initial balance [$]: 1000.00
+2024-10-19 04:15:00|Final balance   [$]: 996.26
+2024-10-19 04:15:00|Net Performance [%]: -0.37
+2024-10-19 04:15:00|=======================================================
+2024-10-19 04:15:00|Trade Exit price: 67725.72, PnL: -3.73983129
+2024-10-19 04:15:00|rolling_v1 - Hit Rate: 0.0000, Avg Error: 1.0000, Avg Profit: -3.7398
+2024-10-19 04:15:00|rolling_v2 - Hit Rate: 0.0000, Avg Error: 1.0000, Avg Profit: -3.7398
+2024-10-19 04:15:00|rolling_v3 - Hit Rate: 0.0000, Avg Error: 1.0000, Avg Profit: -3.7398
+2024-10-19 04:15:00|rolling_v4 - Hit Rate: 1.0000, Avg Error: 0.0000, Avg Profit: 3.7398
+2024-10-19 04:15:00|rolling_v5 - Hit Rate: 1.0000, Avg Error: 0.0000, Avg Profit: 3.7398
+2024-10-19 04:15:00|Raw hit rates: [0.0, 0.0, 0.0, 1.0, 1.0]
+2024-10-19 04:15:00|Raw average errors: [1.0, 1.0, 1.0, 0.0, 0.0]
+2024-10-19 04:15:00|Raw average profits: [-3.73983129, -3.73983129, -3.73983129, 3.73983129, 3.73983129]
+2024-10-19 04:15:00|Profit weights: [0.12 0.12 0.12 0.12 0.12]
+2024-10-19 04:15:00|Hit rate weights: [0.  0.  0.  0.1 0.1]
+2024-10-19 04:15:00|Error weights: [0.  0.  0.  0.1 0.1]
+2024-10-19 04:15:00|Model 1 final weight: 0.1200
+2024-10-19 04:15:00|Model 2 final weight: 0.1200
+2024-10-19 04:15:00|Model 3 final weight: 0.1200
+2024-10-19 04:15:00|Model 4 final weight: 0.3200
+2024-10-19 04:15:00|Model 5 final weight: 0.3200
+2024-10-19 04:15:00|rolling_v6 - Hit Rate: 0.0000, Avg Error: 1.0000, Avg Profit: -3.7398
+2024-10-19 04:15:00|rolling_v7 - Hit Rate: 0.0000, Avg Error: 1.0000, Avg Profit: -3.7398
+2024-10-19 04:15:00|rolling_v8 - Hit Rate: 0.0000, Avg Error: 1.0000, Avg Profit: -3.7398
+2024-10-19 04:15:00|rolling_v9 - Hit Rate: 0.0000, Avg Error: 1.0000, Avg Profit: -3.7398
+2024-10-19 04:15:00|rolling_v10 - Hit Rate: 0.0000, Avg Error: 1.0000, Avg Profit: -3.7398
+2024-10-19 04:15:00|Raw hit rates: [0.0, 0.0, 0.0, 0.0, 0.0]
+2024-10-19 04:15:00|Raw average errors: [1.0, 1.0, 1.0, 1.0, 1.0]
+2024-10-19 04:15:00|Raw average profits: [-3.73983129, -3.73983129, -3.73983129, -3.73983129, -3.73983129]
+2024-10-19 04:15:00|Profit weights: [0.1 0.1 0.1 0.1 0.1]
+2024-10-19 04:15:00|Hit rate weights: [0.06 0.06 0.06 0.06 0.06]
+2024-10-19 04:15:00|Error weights: [nan nan nan nan nan]
+2024-10-19 04:15:00|Model 1 final weight: nan
+2024-10-19 04:15:00|Model 2 final weight: nan
+2024-10-19 04:15:00|Model 3 final weight: nan
+2024-10-19 04:15:00|Model 4 final weight: nan
+2024-10-19 04:15:00|Model 5 final weight: nan
+2024-10-18 02:15:00|Transitioning to IdleState
+2024-10-18 02:15:00|アイドル状態に遷移します。
+                        _id            start_at     open     high      low    close  volume  turnover  ... dmi_diff  macd_diff  bol_diff  aroon   adline    mfi   roc    atr
+0  67133247073a85a27a86dd74 2024-10-19 04:15:00  67725.9  67725.9  67499.8  67499.8   0.002  135.0498  ...   -17.91       8.41    318.91   50.0  1448.25  47.44  0.04  280.0
+
+[1 rows x 51 columns]
+2024-10-19 04:30:00|upper band cross
+2024-10-19 04:30:00|Normal State: Selecting top 5 models.
+2024-10-19 04:30:00|Selected model indices: [3, 4, 0, 1, 2]
+2024-10-19 04:30:00|Normal State: Selecting top 5 models.
+2024-10-19 04:30:00|Selected model indices: [0, 1, 2, 3, 4]
+2024-10-19 04:30:00|Entry: upper, SHORT, pred:0, entry_price67746.9
+2024-10-19 04:45:00|lower band cross
+2024-10-19 04:45:00|Initial State: Selecting ALL models.
+2024-10-19 04:45:00|Selected model indices: [0, 1, 2, 3, 4]
+2024-10-19 04:45:00|Initial State: Selecting ALL models.
+2024-10-19 04:45:00|Selected model indices: [0, 1, 2, 3, 4]
+2024-10-19 04:45:00|Entry: lower, SHORT, pred:0, entry_price67489.8
+2024-10-19 04:45:00|Transitioning to EntryPreparationState
+2024-10-19 04:45:00|Transitioning to Entry Preparation State.
+                        _id            start_at     open     high      low    close  volume      turnover  ... dmi_diff  macd_diff  bol_diff  aroon   adline   mfi   roc     atr
+0  67133af1340ce2b781873bed 2024-10-19 04:45:00  67746.9  67746.9  67452.6  67489.8   18.09  1.224315e+06  ...   -22.56       4.95    338.81  78.57  1370.81  43.1  0.04  278.84
+
+[1 rows x 51 columns]
+2024-10-19 05:00:00|Check Online Position status: position
+2024-10-19 05:00:00|Transitioning to PositionState
+2024-10-19 05:00:00|Entry event occurred. Transitioning to Position State.
+                        _id            start_at     open     high      low    close  volume   turnover  ... dmi_diff  macd_diff  bol_diff  aroon   adline    mfi   roc     atr
+0  67133cd7340ce2b781873e2e 2024-10-19 05:00:00  67746.9  67746.9  67489.8  67489.8   0.523  35321.164  ...   -21.06      -0.85    334.39  85.71  1370.84  32.76 -0.03  277.29
+
+[1 rows x 51 columns]
+2024-10-19 05:15:00|Check Online Position status: position
+2024-10-19 05:15:00|continue Position state pandl:-2.0150000000000774
+                        _id            start_at     open     high      low    close  volume  turnover  ... dmi_diff  macd_diff  bol_diff  aroon   adline    mfi  roc     atr
+0  67134055340ce2b781874200 2024-10-19 05:15:00  67746.9  67746.9  67550.8  67550.8   0.006  406.0992  ...   -19.66      -1.57    334.29  92.85  1328.96  40.22  0.1  275.85
+
+[1 rows x 51 columns]
+2024-10-19 05:30:00|Check Online Position status: position
+2024-10-19 05:30:00|continue Position state pandl:-1.1674999999999955
+                        _id            start_at     open     high      low    close  volume  turnover  ... dmi_diff  macd_diff  bol_diff  aroon   adline    mfi   roc     atr
+0  671343d8340ce2b7818745a9 2024-10-19 05:30:00  67494.3  67494.3  67494.3  67494.3     0.0       0.0  ...   -20.91      -8.69    342.57  92.85  1280.31  52.06 -0.15  260.19
+
+[1 rows x 51 columns]
+2024-10-19 05:45:00|upper band cross
+2024-10-19 05:45:00|Initial State: Selecting ALL models.
+2024-10-19 05:45:00|Selected model indices: [0, 1, 2, 3, 4]
+2024-10-19 05:45:00|Initial State: Selecting ALL models.
+2024-10-19 05:45:00|Selected model indices: [0, 1, 2, 3, 4]
+2024-10-19 05:45:00|Entry: upper, SHORT, pred:0, entry_price67746.9
+2024-10-19 05:45:00|Transitioning to EntryPreparationState
+2024-10-19 05:45:00|Transitioning to Entry Preparation State.
+                        _id            start_at     open     high      low    close  volume    turnover  ... dmi_diff  macd_diff  bol_diff  aroon   adline    mfi   roc     atr
+0  6713475e6ead9e424d27bfbf 2024-10-19 05:45:00  67746.9  67746.9  67746.9  67746.9   0.474  32112.0306  ...    -12.5        3.4    363.86  78.57  1232.27  74.56  0.35  259.65
+
+[1 rows x 51 columns]
+2024-10-19 06:00:00|Check Online Position status: position
+2024-10-19 06:00:00|Transitioning to PositionState
+2024-10-19 06:00:00|Entry event occurred. Transitioning to Position State.
+                        _id            start_at     open     high      low    close  volume    turnover  ... dmi_diff  macd_diff  bol_diff  aroon   adline    mfi   roc     atr
+0  67134ae66ead9e424d27c384 2024-10-19 06:00:00  67331.7  67613.6  67331.7  67613.6   0.519  35062.3696  ...   -22.09      -2.21    366.35  78.57  1188.38  50.34 -0.01  270.77
+
+[1 rows x 51 columns]
+2024-10-19 06:15:00|Check Online Position status: position
+2024-10-19 06:15:00|continue Position state pandl:1.8414999999997916
+                        _id            start_at     open     high      low    close  volume    turnover  ... dmi_diff  macd_diff  bol_diff  aroon   adline   mfi   roc     atr
+0  67134e6a6ead9e424d27c762 2024-10-19 06:15:00  67613.6  67613.6  67320.9  67550.8   0.928  62632.8923  ...   -20.67       -7.8    366.89 -14.28  1148.65  4.03 -0.05  272.33
+
+[1 rows x 51 columns]
+2024-10-19 06:30:00|Check Online Position status: position
+2024-10-19 06:30:00|continue Position state pandl:2.756499999999869
+2024-10-19 06:30:00|Exit: 187887, SHORT_EXIT, normal, Entry_price:67746.9, Exit_price:67702.0534,P%L: -3.84
+2024-10-19 06:30:00|=======================================================
+2024-10-19 06:30:00|2024-10-19 06:30:00: USDT ,leverage: 1.00
+2024-10-19 06:30:00|Initial balance [$]: 1000.00
+2024-10-19 06:30:00|Final balance   [$]: 996.16
+2024-10-19 06:30:00|Net Performance [%]: -0.38
+2024-10-19 06:30:00|=======================================================
+2024-10-19 06:30:00|Trade Exit price: 67702.0534, PnL: -3.83688717
+2024-10-19 06:30:00|rolling_v1 - Hit Rate: 0.0000, Avg Error: 1.0000, Avg Profit: -3.8369
+2024-10-19 06:30:00|rolling_v2 - Hit Rate: 0.0000, Avg Error: 1.0000, Avg Profit: -3.8369
+2024-10-19 06:30:00|rolling_v3 - Hit Rate: 0.0000, Avg Error: 1.0000, Avg Profit: -3.8369
+2024-10-19 06:30:00|rolling_v4 - Hit Rate: 1.0000, Avg Error: 0.0000, Avg Profit: 3.8369
+2024-10-19 06:30:00|rolling_v5 - Hit Rate: 1.0000, Avg Error: 0.0000, Avg Profit: 3.8369
+2024-10-19 06:30:00|Raw hit rates: [0.0, 0.0, 0.0, 1.0, 1.0]
+2024-10-19 06:30:00|Raw average errors: [1.0, 1.0, 1.0, 0.0, 0.0]
+2024-10-19 06:30:00|Raw average profits: [-3.83688717, -3.83688717, -3.83688717, 3.83688717, 3.83688717]
+2024-10-19 06:30:00|Profit weights: [0.12 0.12 0.12 0.12 0.12]
+2024-10-19 06:30:00|Hit rate weights: [0.  0.  0.  0.1 0.1]
+2024-10-19 06:30:00|Error weights: [0.  0.  0.  0.1 0.1]
+2024-10-19 06:30:00|Model 1 final weight: 0.1200
+2024-10-19 06:30:00|Model 2 final weight: 0.1200
+2024-10-19 06:30:00|Model 3 final weight: 0.1200
+2024-10-19 06:30:00|Model 4 final weight: 0.3200
+2024-10-19 06:30:00|Model 5 final weight: 0.3200
+2024-10-19 06:30:00|rolling_v6 - Hit Rate: 0.0000, Avg Error: 1.0000, Avg Profit: -3.8369
+2024-10-19 06:30:00|rolling_v7 - Hit Rate: 0.0000, Avg Error: 1.0000, Avg Profit: -3.8369
+2024-10-19 06:30:00|rolling_v8 - Hit Rate: 0.0000, Avg Error: 1.0000, Avg Profit: -3.8369
+2024-10-19 06:30:00|rolling_v9 - Hit Rate: 0.0000, Avg Error: 1.0000, Avg Profit: -3.8369
+2024-10-19 06:30:00|rolling_v10 - Hit Rate: 0.0000, Avg Error: 1.0000, Avg Profit: -3.8369
+2024-10-19 06:30:00|Raw hit rates: [0.0, 0.0, 0.0, 0.0, 0.0]
+2024-10-19 06:30:00|Raw average errors: [1.0, 1.0, 1.0, 1.0, 1.0]
+2024-10-19 06:30:00|Raw average profits: [-3.83688717, -3.83688717, -3.83688717, -3.83688717, -3.83688717]
+2024-10-19 06:30:00|Profit weights: [0.1 0.1 0.1 0.1 0.1]
+2024-10-19 06:30:00|Hit rate weights: [0.06 0.06 0.06 0.06 0.06]
+2024-10-19 06:30:00|Error weights: [nan nan nan nan nan]
+2024-10-19 06:30:00|Model 1 final weight: nan
+2024-10-19 06:30:00|Model 2 final weight: nan
+2024-10-19 06:30:00|Model 3 final weight: nan
+2024-10-19 06:30:00|Model 4 final weight: nan
+2024-10-19 06:30:00|Model 5 final weight: nan
+2024-10-18 04:45:00|Transitioning to IdleState
+2024-10-18 04:45:00|アイドル状態に遷移します。
+                        _id            start_at     open     high      low    close  volume  turnover  ... dmi_diff  macd_diff  bol_diff  aroon   adline   mfi  roc     atr
+0  671351ec6ead9e424d27cb05 2024-10-19 06:30:00  67489.8  67489.8  67489.8  67489.8     0.0       0.0  ...   -20.33     -12.12    378.56 -14.28  1101.65  5.08 -0.0  257.24
+
+[1 rows x 51 columns]
+2024-10-19 06:45:00| 
+                        _id            start_at     open     high      low    close  volume  turnover  ... dmi_diff  macd_diff  bol_diff  aroon   adline  mfi   roc     atr
+0  67135571febc24babf4e29ba 2024-10-19 06:45:00  67746.9  67746.9  67550.8  67550.8   0.004  270.2132  ...   -11.73      -7.13     373.5  14.28  1050.84  4.9 -0.21  257.23
+
+[1 rows x 51 columns]
+2024-10-19 07:00:00|upper band cross
+2024-10-19 07:15:00| 
+                        _id            start_at     open     high      low    close  volume  turnover  ... dmi_diff  macd_diff  bol_diff  aroon  adline  mfi   roc     atr
+0  67135c7a59ce7843f9e5859e 2024-10-19 07:15:00  67746.9  67746.9  67550.8  67550.8   0.004  270.2132  ...   -16.06       4.21    385.27  28.57  954.45  4.9 -0.21  248.73
+
+[1 rows x 51 columns]
+2024-10-19 07:30:00|lower band cross
+2024-10-19 07:30:00|Initial State: Selecting ALL models.
+2024-10-19 07:30:00|Selected model indices: [0, 1, 2, 3, 4]
+2024-10-19 07:30:00|Initial State: Selecting ALL models.
+2024-10-19 07:30:00|Selected model indices: [0, 1, 2, 3, 4]
+2024-10-19 07:30:00|Entry: lower, SHORT, pred:0, entry_price67489.8
+2024-10-19 07:30:00|Transitioning to EntryPreparationState
+2024-10-19 07:30:00|Transitioning to Entry Preparation State.
+                        _id            start_at     open     high      low    close  volume  turnover  ... dmi_diff  macd_diff  bol_diff  aroon  adline   mfi   roc     atr
+0  67135ffd59ce7843f9e58943 2024-10-19 07:30:00  67658.8  67658.8  67489.8  67489.8    0.03  2024.712  ...   -17.07      -1.25    388.44  28.57  949.97  4.89 -0.12  243.05
+
+[1 rows x 51 columns]
+2024-10-19 07:45:00|Check Online Position status: position
+2024-10-19 07:45:00|Transitioning to PositionState
+2024-10-19 07:45:00|Entry event occurred. Transitioning to Position State.
+                        _id            start_at     open     high      low    close  volume  turnover  ... dmi_diff  macd_diff  bol_diff  aroon  adline  mfi   roc    atr
+0  6713637e59ce7843f9e58d1c 2024-10-19 07:45:00  67621.5  67621.5  67621.5  67621.5     0.0       0.0  ...   -16.39       1.13    384.78  28.57   899.5  4.9  0.09  235.1
+
+[1 rows x 51 columns]
+2024-10-19 08:00:00|Check Online Position status: position
+2024-10-19 08:00:00|continue Position state pandl:-4.641499999999928
+2024-10-19 08:00:00|Exit: 187888, SHORT_EXIT, normal, Entry_price:67489.8, Exit_price:67739.9,P%L: -8.47
+2024-10-19 08:00:00|=======================================================
+2024-10-19 08:00:00|2024-10-19 08:00:00: USDT ,leverage: 1.00
+2024-10-19 08:00:00|Initial balance [$]: 1000.00
+2024-10-19 08:00:00|Final balance   [$]: 991.53
+2024-10-19 08:00:00|Net Performance [%]: -0.85
+2024-10-19 08:00:00|=======================================================
+2024-10-19 08:00:00|Trade Exit price: 67739.9, PnL: -8.46824164
+2024-10-19 08:00:00|rolling_v1 - Hit Rate: 1.0000, Avg Error: 0.0000, Avg Profit: 8.4682
+2024-10-19 08:00:00|rolling_v2 - Hit Rate: 0.0000, Avg Error: 1.0000, Avg Profit: -8.4682
+2024-10-19 08:00:00|rolling_v3 - Hit Rate: 0.0000, Avg Error: 1.0000, Avg Profit: -8.4682
+2024-10-19 08:00:00|rolling_v4 - Hit Rate: 1.0000, Avg Error: 0.0000, Avg Profit: 8.4682
+2024-10-19 08:00:00|rolling_v5 - Hit Rate: 1.0000, Avg Error: 0.0000, Avg Profit: 8.4682
+2024-10-19 08:00:00|Raw hit rates: [1.0, 0.0, 0.0, 1.0, 1.0]
+2024-10-19 08:00:00|Raw average errors: [0.0, 1.0, 1.0, 0.0, 0.0]
+2024-10-19 08:00:00|Raw average profits: [8.46824164, -8.46824164, -8.46824164, 8.46824164, 8.46824164]
+2024-10-19 08:00:00|Profit weights: [ 0.6 -0.6 -0.6  0.6  0.6]
+2024-10-19 08:00:00|Hit rate weights: [0.06666667 0.         0.         0.06666667 0.06666667]
+2024-10-19 08:00:00|Error weights: [0.06666667 0.         0.         0.06666667 0.06666667]
+2024-10-19 08:00:00|Model 1 final weight: 0.7333
+2024-10-19 08:00:00|Model 2 final weight: -0.6000
+2024-10-19 08:00:00|Model 3 final weight: -0.6000
+2024-10-19 08:00:00|Model 4 final weight: 0.7333
+2024-10-19 08:00:00|Model 5 final weight: 0.7333
+2024-10-19 08:00:00|rolling_v6 - Hit Rate: 0.0000, Avg Error: 1.0000, Avg Profit: -8.4682
+2024-10-19 08:00:00|rolling_v7 - Hit Rate: 0.0000, Avg Error: 1.0000, Avg Profit: -8.4682
+2024-10-19 08:00:00|rolling_v8 - Hit Rate: 0.0000, Avg Error: 1.0000, Avg Profit: -8.4682
+2024-10-19 08:00:00|rolling_v9 - Hit Rate: 0.0000, Avg Error: 1.0000, Avg Profit: -8.4682
+2024-10-19 08:00:00|rolling_v10 - Hit Rate: 0.0000, Avg Error: 1.0000, Avg Profit: -8.4682
+2024-10-19 08:00:00|Raw hit rates: [0.0, 0.0, 0.0, 0.0, 0.0]
+2024-10-19 08:00:00|Raw average errors: [1.0, 1.0, 1.0, 1.0, 1.0]
+2024-10-19 08:00:00|Raw average profits: [-8.46824164, -8.46824164, -8.46824164, -8.46824164, -8.46824164]
+2024-10-19 08:00:00|Profit weights: [0.1 0.1 0.1 0.1 0.1]
+2024-10-19 08:00:00|Hit rate weights: [0.06 0.06 0.06 0.06 0.06]
+2024-10-19 08:00:00|Error weights: [nan nan nan nan nan]
+2024-10-19 08:00:00|Model 1 final weight: nan
+2024-10-19 08:00:00|Model 2 final weight: nan
+2024-10-19 08:00:00|Model 3 final weight: nan
+2024-10-19 08:00:00|Model 4 final weight: nan
+2024-10-19 08:00:00|Model 5 final weight: nan
+2024-10-18 06:15:00|Transitioning to IdleState
+2024-10-18 06:15:00|アイドル状態に遷移します。
+                        _id            start_at     open     high      low    close  volume  turnover  ... dmi_diff  macd_diff  bol_diff  aroon  adline   mfi   roc     atr
+0  6713670459ce7843f9e590c9 2024-10-19 08:00:00  67725.9  67725.9  67725.9  67725.9    0.01   677.259  ...   -12.54       9.23    380.98  28.57  858.75  4.94 -0.03  225.77
+
+[1 rows x 51 columns]
+2024-10-19 08:15:00| 
+                        _id            start_at     open     high      low    close  volume  turnover  ... dmi_diff  macd_diff  bol_diff  aroon  adline   mfi   roc     atr
+0  67136a8c59ce7843f9e59550 2024-10-19 08:15:00  67746.9  67746.9  67550.8  67550.8   0.004  270.2232  ...   -17.35       5.82    363.97  57.14   835.8  40.7  0.08  223.65
+
+[1 rows x 51 columns]
+2024-10-19 08:30:00|lower band cross
+2024-10-19 08:30:00|Normal State: Selecting top 5 models.
+2024-10-19 08:30:00|Selected model indices: [0, 3, 4, 1, 2]
+2024-10-19 08:30:00|Normal State: Selecting top 5 models.
+2024-10-19 08:30:00|Selected model indices: [0, 1, 2, 3, 4]
+2024-10-19 08:30:00|Entry: lower, SHORT, pred:0, entry_price67489.8
+2024-10-19 08:30:00|Transitioning to EntryPreparationState
+2024-10-19 08:30:00|Transitioning to Entry Preparation State.
+                        _id            start_at     open     high      low    close  volume  turnover  ... dmi_diff  macd_diff  bol_diff  aroon  adline    mfi   roc     atr
+0  67136e0e59ce7843f9e598ef 2024-10-19 08:30:00  67489.8  67489.8  67489.8  67489.8     0.0       0.0  ...   -19.04      -3.67    358.91  57.14  816.22  25.02 -0.09  212.01
+
+[1 rows x 51 columns]
+2024-10-19 08:45:00|Check Online Position status: position
+2024-10-19 08:45:00|Transitioning to PositionState
+2024-10-19 08:45:00|Entry event occurred. Transitioning to Position State.
+                        _id            start_at     open     high      low    close  volume  turnover  ... dmi_diff  macd_diff  bol_diff  aroon  adline    mfi   roc     atr
+0  6713718f59ce7843f9e59cce 2024-10-19 08:45:00  67550.8  67746.9  67550.8  67746.9   0.002  135.4838  ...    -8.88       3.87    345.48  71.42  762.56  24.87  0.14  215.22
+
+[1 rows x 51 columns]
+2024-10-19 09:00:00|Check Online Position status: position
+2024-10-19 09:00:00|continue Position state pandl:-3.2720548025880003
+                        _id            start_at     open     high      low    close  volume    turnover  ... dmi_diff  macd_diff  bol_diff  aroon  adline    mfi   roc     atr
+0  6713751759ce7843f9e5a07b 2024-10-19 09:00:00  67550.8  67746.9  67489.8  67489.8   0.505  34112.9346  ...   -10.13      -0.79    347.57  78.57  713.15  19.81  0.08  218.21
+
+[1 rows x 51 columns]
+2024-10-19 09:15:00|Check Online Position status: position
+2024-10-19 09:15:00|continue Position state pandl:-5.956054802588197
+                        _id            start_at     open     high      low    close  volume    turnover  ... dmi_diff  macd_diff  bol_diff  aroon  adline    mfi   roc     atr
+0  6713789759ce7843f9e5a449 2024-10-19 09:15:00  67746.9  67746.9  67550.8  67550.8   0.479  32449.6085  ...    -9.29      -0.76    345.51  85.71   660.2  19.94 -0.21  220.96
+
+[1 rows x 51 columns]
+2024-10-19 09:30:00|Check Online Position status: position
+2024-10-19 09:30:00|continue Position state pandl:-3.2720548025880003
+                        _id            start_at     open     high      low    close  volume  turnover  ... dmi_diff  macd_diff  bol_diff  aroon  adline   mfi   roc     atr
+0  67137c1d59ce7843f9e5a7f2 2024-10-19 09:30:00  67489.8  67489.8  67489.8  67489.8     0.0       0.0  ...   -11.18      -7.73    330.28  85.71  663.52  25.2 -0.07  209.53
+
+[1 rows x 51 columns]
+2024-10-19 09:45:00|Check Online Position status: No position
+2024-10-19 09:45:00|Exit: 187889, SHORT_EXIT, losscut, Entry_price:67489.8, Exit_price:67746.9,P%L: -14.59
+2024-10-19 09:45:00|=======================================================
+2024-10-19 09:45:00|2024-10-19 09:45:00: USDT ,leverage: 3.00
+2024-10-19 09:45:00|Initial balance [$]: 1000.00
+2024-10-19 09:45:00|Final balance   [$]: 976.95
+2024-10-19 09:45:00|Net Performance [%]: -2.31
+2024-10-19 09:45:00|=======================================================
+2024-10-19 09:45:00|Trade Exit price: 67746.9, PnL: -14.58512814
+2024-10-19 09:45:00|rolling_v1 - Hit Rate: 1.0000, Avg Error: 0.0000, Avg Profit: 11.5267
+2024-10-19 09:45:00|rolling_v2 - Hit Rate: 0.0000, Avg Error: 1.0000, Avg Profit: -11.5267
+2024-10-19 09:45:00|rolling_v3 - Hit Rate: 0.5000, Avg Error: 0.5000, Avg Profit: 3.0584
+2024-10-19 09:45:00|rolling_v4 - Hit Rate: 1.0000, Avg Error: 0.0000, Avg Profit: 11.5267
+2024-10-19 09:45:00|rolling_v5 - Hit Rate: 1.0000, Avg Error: 0.0000, Avg Profit: 11.5267
+2024-10-19 09:45:00|Raw hit rates: [1.0, 0.0, 0.5, 1.0, 1.0]
+2024-10-19 09:45:00|Raw average errors: [0.0, 1.0, 0.5, 0.0, 0.0]
+2024-10-19 09:45:00|Raw average profits: [11.52668489, -11.52668489, 3.05844325, 11.52668489, 11.52668489]
+2024-10-19 09:45:00|Profit weights: [ 0.26486138 -0.26486138  0.07027723  0.26486138  0.26486138]
+2024-10-19 09:45:00|Hit rate weights: [0.05714286 0.         0.02857143 0.05714286 0.05714286]
+2024-10-19 09:45:00|Error weights: [0.05714286 0.         0.02857143 0.05714286 0.05714286]
+2024-10-19 09:45:00|Model 1 final weight: 0.3791
+2024-10-19 09:45:00|Model 2 final weight: -0.2649
+2024-10-19 09:45:00|Model 3 final weight: 0.1274
+2024-10-19 09:45:00|Model 4 final weight: 0.3791
+2024-10-19 09:45:00|Model 5 final weight: 0.3791
+2024-10-19 09:45:00|rolling_v6 - Hit Rate: 0.0000, Avg Error: 1.0000, Avg Profit: -11.5267
+2024-10-19 09:45:00|rolling_v7 - Hit Rate: 0.0000, Avg Error: 1.0000, Avg Profit: -11.5267
+2024-10-19 09:45:00|rolling_v8 - Hit Rate: 0.0000, Avg Error: 1.0000, Avg Profit: -11.5267
+2024-10-19 09:45:00|rolling_v9 - Hit Rate: 0.0000, Avg Error: 1.0000, Avg Profit: -11.5267
+2024-10-19 09:45:00|rolling_v10 - Hit Rate: 0.0000, Avg Error: 1.0000, Avg Profit: -11.5267
+2024-10-19 09:45:00|Raw hit rates: [0.0, 0.0, 0.0, 0.0, 0.0]
+2024-10-19 09:45:00|Raw average errors: [1.0, 1.0, 1.0, 1.0, 1.0]
+2024-10-19 09:45:00|Raw average profits: [-11.52668489, -11.52668489, -11.52668489, -11.52668489, -11.52668489]
+2024-10-19 09:45:00|Profit weights: [0.1 0.1 0.1 0.1 0.1]
+2024-10-19 09:45:00|Hit rate weights: [0.06 0.06 0.06 0.06 0.06]
+2024-10-19 09:45:00|Error weights: [nan nan nan nan nan]
+2024-10-19 09:45:00|Model 1 final weight: nan
+2024-10-19 09:45:00|Model 2 final weight: nan
+2024-10-19 09:45:00|Model 3 final weight: nan
+2024-10-19 09:45:00|Model 4 final weight: nan
+2024-10-19 09:45:00|Model 5 final weight: nan
+2024-10-18 06:15:00|Transitioning to IdleState
+2024-10-18 06:15:00|アイドル状態に遷移します。
+                        _id            start_at     open     high      low    close  volume  turnover  ... dmi_diff  macd_diff  bol_diff  aroon  adline   mfi   roc    atr
+0  67137f9d59ce7843f9e5abaf 2024-10-19 09:45:00  67550.8  67550.8  67550.8  67550.8     0.0       0.0  ...    -8.74      -7.78     329.7  85.71  643.09  47.7  0.06  198.9
+
+[1 rows x 51 columns]

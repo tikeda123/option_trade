@@ -1,0 +1,243 @@
+{
+        "MODEL_SHORT_TERM":{
+                "INTERVAL_GP": 4320,
+                "rolling_v1": {
+                        "LIST_ID": 1,
+                        "MODEL_TYPE": "rolling",
+                        "DATAPATH": "data/data_rolling/",
+                        "LEARN_DATAPATH": "data/data_ml/",
+                        "MODLE_FILENAME": "rolling_BTC_ETH_SOL_BNB_1440_xd_model_ema1",
+                        "PREDICTION_DISTANCE": 1,
+                        "TARGET_COLUMN": [
+                                "ema",
+                                "ema"
+                        ],
+                        "FEATURE_COLUMNS": [
+                                "date",
+                                "hour_sin",
+                                "hour_cos",
+                                "day_sin",
+                                "day_cos",
+                                "rsi",
+                                "macdhist",
+                                "volume",
+                                "close",
+                                "ema"
+                        ]
+                }
+        },
+        "MODEL_MIDDLE_TERM":{
+                "INTERVAL_GP":4320,
+                "rolling_v2": {
+                        "LIST_ID": 2,
+                        "MODEL_TYPE": "rolling",
+                        "DATAPATH": "data/data_rolling/",
+                        "LEARN_DATAPATH": "data/data_ml/",
+                        "MODLE_FILENAME": "rolling_BTC_ETH_SOL_BNB_1440_xd_model_ema1",
+                        "PREDICTION_DISTANCE": 1,
+                        "TARGET_COLUMN": [
+                                "ema",
+                                "ema"
+                        ],
+                        "FEATURE_COLUMNS": [
+                                "date",
+                                "hour_sin",
+                                "hour_cos",
+                                "day_sin",
+                                "day_cos",
+                                "rsi",
+                                "macdhist",
+                                "volume",
+                                "close",
+                                "ema"
+                        ]
+                }
+
+        },
+
+        "MODEL_LONG_TERM":{
+                "INTERVAL_GP":7200,
+                "rolling_v13": {
+                        "LIST_ID": 13,
+                        "MODEL_TYPE": "rolling",
+                        "DATAPATH": "data/data_rolling/",
+                        "LEARN_DATAPATH": "data/data_ml/",
+                        "MODLE_FILENAME": "rolling_BTC_ETH_SOL_BNB_1440_xd_model_roc1",
+                        "PREDICTION_DISTANCE":1,
+                        "TARGET_COLUMN": [
+                                "roc",
+                                "roc"
+                        ],
+                        "FEATURE_COLUMNS": [
+                                "date",
+                                "hour_sin",
+                                "hour_cos",
+                                "day_sin",
+                                "day_cos",
+                                "close",
+                                "rsi",
+                                "macdhist",
+                                "volume",
+                                "ema",
+                                "roc"
+                        ]
+                },
+                "rolling_v14": {
+                        "LIST_ID": 14,
+                        "MODEL_TYPE": "rolling",
+                        "DATAPATH": "data/data_rolling/",
+                        "LEARN_DATAPATH": "data/data_ml/",
+                        "MODLE_FILENAME": "rolling_BTC_ETH_SOL_BNB_1440_xd_model_sma1",
+                        "PREDICTION_DISTANCE": 1,
+                        "TARGET_COLUMN": [
+                                "sma",
+                                "sma"
+                        ],
+                        "FEATURE_COLUMNS": [
+                                "date",
+                                "hour_sin",
+                                "hour_cos",
+                                "day_sin",
+                                "day_cos",
+                                "rsi",
+                                "volume",
+                                "atr",
+                                "roc",
+                                "close",
+                                "macdhist",
+                                "sma"
+                        ]
+                } ,
+                "rolling_v15": {
+                        "LIST_ID": 15,
+                        "MODEL_TYPE": "rolling",
+                        "DATAPATH": "data/data_rolling/",
+                        "LEARN_DATAPATH": "data/data_ml/",
+                        "MODLE_FILENAME": "rolling_BTC_ETH_SOL_BNB_1440_xd_model_macd1",
+                        "PREDICTION_DISTANCE": 1,
+                        "TARGET_COLUMN": [
+                                "macdhist",
+                                "macdhist"
+                        ],
+                        "FEATURE_COLUMNS": [
+                                "date",
+                                "hour_sin",
+                                "hour_cos",
+                                "day_sin",
+                                "day_cos",
+                                "rsi",
+                                "volume",
+                                "atr",
+                                "roc",
+                                "wclprice",
+                                "macd",
+                                "macdhist",
+                                "macdsignal"
+                        ]
+                },
+                "rolling_v16": {
+                        "LIST_ID": 16,
+                        "MODEL_TYPE": "rolling",
+                        "DATAPATH": "data/data_rolling/",
+                        "LEARN_DATAPATH": "data/data_ml/",
+                        "MODLE_FILENAME": "rolling_BTC_ETH_SOL_BNB_1440_xd_model_mfi1",
+                        "PREDICTION_DISTANCE":1,
+                        "TARGET_COLUMN": [
+                                "mfi",
+                                "mfi"
+                        ],
+                        "FEATURE_COLUMNS": [
+                                "date",
+                                "hour_sin",
+                                "hour_cos",
+                                "day_sin",
+                                "day_cos",
+                                "rsi",
+                                "volume",
+                                "atr",
+                                "macdhist",
+                                "close",
+                                "high",
+                                "low",
+                                "mfi"
+                        ]
+                },
+                 "rolling_v17": {
+                        "LIST_ID": 17,
+                        "MODEL_TYPE": "rolling",
+                        "DATAPATH": "data/data_rolling/",
+                        "LEARN_DATAPATH": "data/data_ml/",
+                        "MODLE_FILENAME": "rolling_BTC_ETH_SOL_BNB_1440_xd_model_ema1",
+                        "PREDICTION_DISTANCE": 1,
+                        "TARGET_COLUMN": [
+                                "ema",
+                                "ema"
+                        ],
+                        "FEATURE_COLUMNS": [
+                                "date",
+                                "hour_sin",
+                                "hour_cos",
+                                "day_sin",
+                                "day_cos",
+                                "rsi",
+                                "macdhist",
+                                "volume",
+                                "close",
+                                "ema"
+                        ]
+                },
+                "rolling_v19": {
+                        "LIST_ID": 19,
+                        "MODEL_TYPE": "rolling",
+                        "DATAPATH": "data/data_rolling/",
+                        "LEARN_DATAPATH": "data/data_ml/",
+                        "MODLE_FILENAME": "rolling_BTC_ETH_SOL_BNB_1440_xd_model_wclprice1",
+                        "PREDICTION_DISTANCE":1,
+                        "TARGET_COLUMN": [
+                                "wclprice",
+                                "wclprice"
+                        ],
+                        "FEATURE_COLUMNS": [
+                                "date",
+                                "hour_sin",
+                                "hour_cos",
+                                "day_sin",
+                                "day_cos",
+                                "rsi",
+                                "macdhist",
+                                "volume",
+                                "wclprice",
+                                "close",
+                                "high",
+                                "low",
+                                "atr"
+                        ]
+                },
+                "rolling_v20": {
+                        "LIST_ID": 20,
+                        "MODEL_TYPE": "rolling",
+                        "DATAPATH": "data/data_rolling/",
+                        "LEARN_DATAPATH": "data/data_ml/",
+                        "MODLE_FILENAME": "rolling_BTC_ETH_SOL_BNB_1440_xd_model_atr1",
+                        "PREDICTION_DISTANCE":1,
+                        "TARGET_COLUMN": [
+                                "atr",
+                                "atr"
+                        ],
+                        "FEATURE_COLUMNS": [
+                                "date",
+                                "hour_sin",
+                                "hour_cos",
+                                "day_sin",
+                                "day_cos",
+                                "rsi",
+                                "macdhist",
+                                "volume",
+                                "close",
+                                "high",
+                                "low",
+                                "atr"
+                        ]
+                }
+        }
+}

@@ -471,8 +471,9 @@ def main():
         baseCoin="ETH",
         period=7,
         startTime="2024-01-15 00:00:00+0900",
-        endTime="2024-06-02 00:00:00+0900"
+        endTime="2024-12-18 00:00:00+0900"
     )
+    result.to_csv("hv_eth_7d.csv")
     print(result)
     exit()
 
