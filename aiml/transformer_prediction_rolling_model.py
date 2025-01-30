@@ -1,21 +1,14 @@
 import os
 import sys
-from typing import Tuple
-import numpy as np
-import tensorflow as tf
-import pandas as pd
-from typing import Dict, Any, Optional
-
-from sklearn.model_selection import train_test_split, TimeSeriesSplit
-from sklearn.preprocessing import StandardScaler
-from sklearn.metrics import accuracy_score, classification_report, confusion_matrix
-
-from tensorflow import keras
-from tensorflow.keras.optimizers import Adam
-from tensorflow.keras.regularizers import l2
+from typing import Any, Dict, Optional, Tuple
 
 import joblib
-
+import numpy as np
+import pandas as pd
+import tensorflow as tf
+from sklearn.metrics import accuracy_score, classification_report, confusion_matrix
+from sklearn.model_selection import TimeSeriesSplit, train_test_split
+from sklearn.preprocessing import StandardScaler
 from tensorflow.keras.layers import (
     Conv1D,
     MaxPooling1D,
@@ -26,18 +19,20 @@ from tensorflow.keras.layers import (
     Input,
     LayerNormalization,
 )
+from tensorflow.keras.optimizers import Adam
+from tensorflow.keras.regularizers import l2
 
 # Get the absolute path of the current directory
-current_dir = os.path.dirname(os.path.abspath(__file__))
+CURRENT_DIR = os.path.dirname(os.path.abspath(__file__))
 # Get the path of the parent directory
-parent_dir = os.path.dirname(current_dir)
+PARENT_DIR = os.path.dirname(CURRENT_DIR)
 # Add the path of the parent directory to sys.path
-sys.path.append(parent_dir)
+sys.path.append(PARENT_DIR)
 
 from common.trading_logger import TradingLogger
 from mongodb.data_loader_mongo import MongoDataLoader
 from common.utils import get_config
-from common.constants import *
+from common.constants import MARKET_DATA_TECH, TIME_SERIES_PERIOD
 
 from aiml.prediction_model import PredictionModel, ModelManager
 from aiml.transformerblock import TransformerBlock
@@ -46,11 +41,12 @@ from aiml.model_param import ModelParam, BaseModel
 
 class TransformerPredictionRollingModel(BaseModel, PredictionModel):
     """
-    Model class that performs rolling prediction using Transformer.
+    Model class that performs rolling prediction using a Transformer.
 
     Args:
         id (str): Model ID.
-        data_loader (DataLoader): Data loader instance.
+        config (Dict[str, Any]): Dictionary of model configuration values.
+        data_loader (MongoDataLoader): Data loader instance.
         logger (TradingLogger): Logger instance.
         symbol (str, optional): Symbol name. Defaults to None.
         interval (str, optional): Data interval. Defaults to None.
@@ -64,9 +60,9 @@ class TransformerPredictionRollingModel(BaseModel, PredictionModel):
         feature_columns (list): Feature columns.
         symbol (str): Symbol name.
         interval (str): Data interval.
-        filename (str): File name.
-        target_column (str): Target column.
-        scaler (StandardScaler): Instance used for scaling.
+        filename (str): File name for saving/loading the model.
+        target_column (list): Target column(s).
+        scaler (StandardScaler): Instance used for feature scaling.
         table_name (str): Data table name.
         model (tf.keras.Model): Transformer model.
     """
@@ -81,26 +77,15 @@ class TransformerPredictionRollingModel(BaseModel, PredictionModel):
         interval: str = None,
         use_gpu: bool = True,
     ):
-        """
-        Initializes the TransformerPredictionRollingModel.
-
-        Args:
-            id (str): Model ID.
-            data_loader (DataLoader): Data loader instance.
-            logger (TradingLogger): Logger instance.
-            symbol (str, optional): Symbol name. Defaults to None.
-            interval (str, optional): Data interval. Defaults to None.
-            use_gpu (bool, optional): Whether to use GPU for inference. Defaults to True.
-        """
         super().__init__(id, config, data_loader, logger, symbol, interval)
         self._initialize_attributes()
         self._configure_gpu(use_gpu)
 
-    def _initialize_attributes(self):
+    def _initialize_attributes(self) -> None:
         """
-        Initializes the attributes of the model.
+        Initializes the model's attributes based on provided config or defaults.
         """
-        self.datapath = f"{parent_dir}/{self.config['DATAPATH']}"
+        self.datapath = f"{PARENT_DIR}/{self.config['DATAPATH']}"
         self.feature_columns = self.config["FEATURE_COLUMNS"]
         self.target_column = self.config["TARGET_COLUMN"]
         self.prediction_distance = self.config["PREDICTION_DISTANCE"]
@@ -119,7 +104,7 @@ class TransformerPredictionRollingModel(BaseModel, PredictionModel):
         positive_threshold: Optional[float] = None,
     ) -> None:
         """
-        Sets the model parameters.
+        Sets or updates the model parameters.
 
         Args:
             time_series_period (Optional[int]): Period of time series data.
@@ -164,7 +149,7 @@ class TransformerPredictionRollingModel(BaseModel, PredictionModel):
 
     def get_data_loader(self) -> MongoDataLoader:
         """
-        Gets the data loader.
+        Returns the data loader instance.
 
         Returns:
             MongoDataLoader: Data loader instance.
@@ -173,7 +158,7 @@ class TransformerPredictionRollingModel(BaseModel, PredictionModel):
 
     def get_feature_columns(self) -> list:
         """
-        Gets the feature columns used.
+        Returns the feature columns used by the model.
 
         Returns:
             list: List of feature columns.
@@ -182,40 +167,44 @@ class TransformerPredictionRollingModel(BaseModel, PredictionModel):
 
     def create_table_name(self) -> str:
         """
-        Creates the table name.
+        Creates or updates the table name for the model.
 
         Returns:
-            str: Created table name.
+            str: Created/updated table name.
         """
         self.table_name = f"{self.symbol}_{self.interval}_market_data_tech"
         return self.table_name
 
     def load_and_prepare_data(
         self,
-        start_datetime,
-        end_datetime,
-        coll_type,
-        test_size=0.5,
-        random_state=None,
-    ):
+        start_datetime: str,
+        end_datetime: str,
+        coll_type: str,
+        test_size: float = 0.5,
+        random_state: Optional[int] = None,
+    ) -> Tuple[np.ndarray, np.ndarray, np.ndarray, np.ndarray]:
         """
-        Loads and prepares data from the database for training or evaluation.
+        Loads and prepares time-series data from the database for training and testing.
 
         Args:
             start_datetime (str): Start date and time of the data.
             end_datetime (str): End date and time of the data.
             coll_type (str): Collection type to load data from.
-            test_size (float, optional): Proportion of data to use for testing. Defaults to 0.5.
-            random_state (int, optional): Random seed for data splitting. Defaults to None.
+            test_size (float, optional): Proportion of data to use for testing.
+                                         Defaults to 0.5.
+            random_state (int, optional): Random seed for data splitting.
+                                          Defaults to None.
 
         Returns:
-            tuple: A tuple containing the training and testing data.
+            Tuple[np.ndarray, np.ndarray, np.ndarray, np.ndarray]: Arrays for
+            x_train, x_test, y_train, y_test.
         """
         data = self.data_loader.load_data_from_datetime_period(
-            start_datetime, end_datetime, coll_type
+            start_datetime,
+            end_datetime,
+            coll_type
         )
 
-        # Prepare sequences and ensure correct shapes
         scaled_sequences, targets = self._prepare_sequences(data)
         return train_test_split(
             scaled_sequences,
@@ -226,16 +215,23 @@ class TransformerPredictionRollingModel(BaseModel, PredictionModel):
         )
 
     def prepare_data(
-        self, data: pd.DataFrame, test_size=0.5, random_state=None
-    ) -> Tuple[np.ndarray, np.ndarray]:
+        self,
+        data: pd.DataFrame,
+        test_size: float = 0.5,
+        random_state: Optional[int] = None
+    ) -> Tuple[np.ndarray, np.ndarray, np.ndarray, np.ndarray]:
         """
-        Prepares the data for training or evaluation.
+        Prepares pre-loaded data for training or evaluation.
 
         Args:
             data (pd.DataFrame): Raw data to prepare.
+            test_size (float, optional): Proportion of data to use for testing.
+                                         Defaults to 0.5.
+            random_state (int, optional): Random seed. Defaults to None.
 
         Returns:
-            Tuple[np.ndarray, np.ndarray]: A tuple containing the scaled sequences and target values.
+            Tuple[np.ndarray, np.ndarray, np.ndarray, np.ndarray]: Arrays for
+            x_train, x_test, y_train, y_test.
         """
         scaled_sequences, targets = self._prepare_sequences(data)
         return train_test_split(
@@ -243,7 +239,7 @@ class TransformerPredictionRollingModel(BaseModel, PredictionModel):
             targets,
             test_size=test_size,
             random_state=random_state,
-            shuffle=False,  # 時系列データなのでシャッフルしない
+            shuffle=False,
         )
 
     def load_and_prepare_data_mix(
@@ -251,34 +247,40 @@ class TransformerPredictionRollingModel(BaseModel, PredictionModel):
         start_datetime: str,
         end_datetime: str,
         coll_type: str,
-        test_size=0.2,
-        random_state=None,
-    ):
+        test_size: float = 0.2,
+        random_state: Optional[int] = None,
+    ) -> Tuple[np.ndarray, np.ndarray, np.ndarray, np.ndarray]:
         """
         Loads and prepares data from multiple collections for training or evaluation.
 
         Args:
             start_datetime (str): Start date and time of the data.
             end_datetime (str): End date and time of the data.
-            coll_type (str): List of collection types to load data from.
-            test_size (float, optional): Proportion of data to use for testing. Defaults to 0.2.
-            random_state (int, optional): Random seed for data splitting. Defaults to None.
+            coll_type (str): List or identifier of collection types to load from.
+            test_size (float, optional): Proportion of data to use for testing.
+                                         Defaults to 0.2.
+            random_state (int, optional): Random seed. Defaults to None.
 
         Returns:
-            tuple: A tuple containing the training and testing data.
+            Tuple[np.ndarray, np.ndarray, np.ndarray, np.ndarray]: Arrays for
+            x_train, x_test, y_train, y_test.
         """
         from aiml.aiml_comm import load_data
 
         data = load_data(self.data_loader, start_datetime, end_datetime, coll_type)
-
         x, y = self._prepare_sequences(data)
         return train_test_split(
-            x, y, test_size=test_size, random_state=random_state, shuffle=False
+            x,
+            y,
+            test_size=test_size,
+            random_state=random_state,
+            shuffle=False
         )
 
     def _process_timestamp_and_cyclical_features(self, data: pd.DataFrame) -> pd.DataFrame:
         """
-        Preprocesses data by converting datetime strings to Unix timestamps and adding sine wave features for hour, day of week, and month.
+        Preprocesses data by converting date to Unix timestamps and adding
+        cyclical features (hour, day of week, month).
 
         Args:
             data (pd.DataFrame): DataFrame to preprocess.
@@ -286,102 +288,102 @@ class TransformerPredictionRollingModel(BaseModel, PredictionModel):
         Returns:
             pd.DataFrame: Preprocessed DataFrame.
         """
-        # datetime オブジェクトに変換
+        # Convert to datetime
         data["date"] = pd.to_datetime(data["date"])
 
-        # Unix タイムスタンプに変換
+        # Convert to Unix timestamp
         data["date"] = data["date"].astype(np.int64) // 10**9
 
-        # 時間帯を計算
+        # Compute hour, hour_sin, hour_cos
         data["hour"] = (data["date"] // 3600) % 24
         data["hour_sin"] = np.sin(2 * np.pi * data["hour"] / 24)
         data["hour_cos"] = np.cos(2 * np.pi * data["hour"] / 24)
 
-        # 曜日を計算
+        # Compute day of week, day_sin, day_cos
         data["day_of_week"] = (data["date"] // (3600 * 24)) % 7
         data["day_sin"] = np.sin(2 * np.pi * data["day_of_week"] / 7)
         data["day_cos"] = np.cos(2 * np.pi * data["day_of_week"] / 7)
 
-        # 月を計算
+        # Compute month, month_sin, month_cos
         data["month"] = pd.to_datetime(data["date"], unit="s").dt.month
         data["month_sin"] = np.sin(2 * np.pi * data["month"] / 12)
         data["month_cos"] = np.cos(2 * np.pi * data["month"] / 12)
 
         return data
 
-    def _prepare_sequences(self, data):
+    def _prepare_sequences(self, data: pd.DataFrame) -> Tuple[np.ndarray, np.ndarray]:
         """
-        Prepares the data for training or evaluation.
-
-        Scales the data and creates sequences of time series data with corresponding targets.
+        Prepares the data for training or evaluation by creating sequences
+        of time-series data and corresponding targets.
 
         Args:
-            data (pd.DataFrame): Raw data to prepare.
+            data (pd.DataFrame): Raw data.
 
         Returns:
-            tuple: A tuple containing the scaled sequences and target values.
+            Tuple[np.ndarray, np.ndarray]: Arrays containing sequences and targets.
         """
-        time_period = self.model_param.TIME_SERIES_PERIOD  # Get the time series period
-        forecast_horizon = self.prediction_distance  # Forecast horizon
+        time_period = self.model_param.TIME_SERIES_PERIOD
+        forecast_horizon = self.prediction_distance
 
-        # Convert datetime strings to unix timestamps only if 'date' is in feature columns
+        # Process time features if 'date' is included in feature columns
         if "date" in self.feature_columns:
             data = self._process_timestamp_and_cyclical_features(data)
-
-        def sequence_generator():
-            for i in range(len(data) - (time_period + forecast_horizon)):
-                sequence = data.iloc[
-                    i : i + time_period, data.columns.get_indexer(self.feature_columns)
-                ].values
-
-                # 未来の価格が現在の価格を上回るかどうかで 0/1 を決定
-                target = int(
-                    data.iloc[i + time_period + forecast_horizon - 1][self.target_column[1]]
-                    > data.iloc[i + time_period - 1][self.target_column[0]]
-                )
-                yield sequence, target
 
         sequences = []
         targets = []
 
-        # シーケンスを作成
-        for seq, target in sequence_generator():
+        def _sequence_generator():
+            for i in range(len(data) - (time_period + forecast_horizon)):
+                seq_x = data.iloc[
+                    i : i + time_period,
+                    data.columns.get_indexer(self.feature_columns)
+                ].values
+
+                # Set target as 1 if future price > current price
+                future_price = data.iloc[i + time_period + forecast_horizon - 1][
+                    self.target_column[1]
+                ]
+                current_price = data.iloc[i + time_period - 1][
+                    self.target_column[0]
+                ]
+                yield seq_x, int(future_price > current_price)
+
+        for seq, target in _sequence_generator():
+            # Scale each sequence independently
             scaled_seq = self.scaler.fit_transform(seq)
             sequences.append(scaled_seq)
             targets.append(target)
 
-        sequences = np.array(sequences)
-        targets = np.array(targets)
-        return sequences, targets
+        return np.array(sequences), np.array(targets)
 
     def create_cnn_transformer_model(
         self,
-        input_shape,
-        num_heads=24,  # Number of attention heads
-        dff=256,
-        rate=0.1,
-        l2_reg=0.01,
-        num_transformer_blocks=6,  # Number of Transformer blocks
-        num_filters=128,
-        kernel_size=6,
-        pool_size=4,
-    ):
+        input_shape: Tuple[int, int],
+        num_heads: int = 24,
+        dff: int = 256,
+        rate: float = 0.1,
+        l2_reg: float = 0.01,
+        num_transformer_blocks: int = 6,
+        num_filters: int = 128,
+        kernel_size: int = 6,
+        pool_size: int = 4,
+    ) -> tf.keras.Model:
         """
-        Creates a model combining CNN and Transformer.
+        Creates a model that combines CNN and Transformer blocks.
 
         Args:
-            input_shape (tuple): Shape of input data.
+            input_shape (Tuple[int, int]): Shape of input data (timesteps, features).
             num_heads (int, optional): Number of attention heads. Defaults to 24.
-            dff (int, optional): Dimensionality of the feedforward network. Defaults to 256.
+            dff (int, optional): Dimensionality of feedforward network. Defaults to 256.
             rate (float, optional): Dropout rate. Defaults to 0.1.
-            l2_reg (float, optional): L2 regularization coefficient. Defaults to 0.01.
+            l2_reg (float, optional): L2 regularization. Defaults to 0.01.
             num_transformer_blocks (int, optional): Number of Transformer blocks. Defaults to 6.
-            num_filters (int, optional): Number of filters in convolutional layers. Defaults to 128.
-            kernel_size (int, optional): Kernel size for convolutional layers. Defaults to 6.
-            pool_size (int, optional): Pool size for max pooling layers. Defaults to 4.
+            num_filters (int, optional): Number of convolutional filters. Defaults to 128.
+            kernel_size (int, optional): Kernel size for Conv1D. Defaults to 6.
+            pool_size (int, optional): Pool size for MaxPooling1D. Defaults to 4.
 
         Returns:
-            tf.keras.Model: Created CNN-Transformer model.
+            tf.keras.Model: Compiled CNN-Transformer model.
         """
         inputs = Input(shape=input_shape)
         x = Conv1D(num_filters, kernel_size, activation="relu", padding="same")(inputs)
@@ -390,11 +392,11 @@ class TransformerPredictionRollingModel(BaseModel, PredictionModel):
         x = MaxPooling1D(pool_size)(x)
 
         # Transformer part
-        x = LayerNormalization(epsilon=1e-6)(x)  # Add LayerNormalization
+        x = LayerNormalization(epsilon=1e-6)(x)
         for _ in range(num_transformer_blocks):
             x = TransformerBlock(x.shape[-1], num_heads, dff, rate, l2_reg=l2_reg)(x)
 
-        # Output layer
+        # Output part
         x = GlobalAveragePooling1D()(x)
         x = Dropout(0.2)(x)
         x = Dense(160, activation="relu", kernel_regularizer=l2(l2_reg))(x)
@@ -408,32 +410,32 @@ class TransformerPredictionRollingModel(BaseModel, PredictionModel):
         x = Dense(16, activation="relu", kernel_regularizer=l2(l2_reg))(x)
         outputs = Dense(1, activation="sigmoid", kernel_regularizer=l2(l2_reg))(x)
 
-        model = tf.keras.Model(inputs=inputs, outputs=outputs)
-        return model
+        return tf.keras.Model(inputs=inputs, outputs=outputs)
 
     def create_transformer_model(
         self,
-        input_shape,
-        num_heads=16,
-        dff=256,
-        rate=0.1,
-        l2_reg=0.01,
-        num_transformer_blocks=3,
-    ):
+        input_shape: Tuple[int, int],
+        num_heads: int = 16,
+        dff: int = 256,
+        rate: float = 0.1,
+        l2_reg: float = 0.01,
+        num_transformer_blocks: int = 3,
+    ) -> tf.keras.Model:
         """
-        Creates a Transformer model.
+        Creates a pure Transformer model (without CNN layers).
 
         Args:
-            input_shape (tuple): Shape of input data.
-            num_heads (int): Number of heads in the attention mechanism.
+            input_shape (Tuple[int, int]): Shape of input data (timesteps, features).
+            num_heads (int): Number of heads in multi-head attention.
             dff (int): Dimensionality of the feedforward network.
             rate (float): Dropout rate.
-            l2_reg (float): L2 regularization coefficient.
+            l2_reg (float): L2 regularization.
+            num_transformer_blocks (int): Number of consecutive Transformer blocks.
 
         Returns:
-            tf.keras.Model: Created model.
+            tf.keras.Model: Compiled Transformer model.
         """
-        inputs = tf.keras.Input(shape=input_shape)
+        inputs = Input(shape=input_shape)
         x = inputs
         for _ in range(num_transformer_blocks):
             x = TransformerBlock(input_shape[1], num_heads, dff, rate, l2_reg=l2_reg)(x)
@@ -450,16 +452,15 @@ class TransformerPredictionRollingModel(BaseModel, PredictionModel):
         x = Flatten()(x)
 
         outputs = Dense(1, activation="sigmoid", kernel_regularizer=l2(l2_reg))(x)
-        model = tf.keras.Model(inputs=inputs, outputs=outputs)
-        return model
+        return tf.keras.Model(inputs=inputs, outputs=outputs)
 
-    def train(self, x_train, y_train):
+    def train(self, x_train: np.ndarray, y_train: np.ndarray) -> None:
         """
-        Trains the model.
+        Trains the model on the given dataset.
 
         Args:
-            x_train (np.array): Training data.
-            y_train (np.array): Labels for training data.
+            x_train (np.ndarray): Training features.
+            y_train (np.ndarray): Training labels.
         """
         epochs = self.model_param.PARAM_EPOCHS
         batch_size = self.model_param.BATCH_SIZE
@@ -468,7 +469,6 @@ class TransformerPredictionRollingModel(BaseModel, PredictionModel):
         self.model = self.create_cnn_transformer_model(
             (x_train.shape[1], x_train.shape[2])
         )
-
         self.model.compile(
             optimizer=Adam(learning_rate=param_learning_rate),
             loss="binary_crossentropy",
@@ -477,42 +477,38 @@ class TransformerPredictionRollingModel(BaseModel, PredictionModel):
         self.model.fit(x_train, y_train, epochs=epochs, batch_size=batch_size)
 
     def train_with_cross_validation(
-        self, data: np.ndarray, targets: np.ndarray
+        self,
+        data: np.ndarray,
+        targets: np.ndarray
     ) -> list:
         """
-        Trains the model using TimeSeriesSplit for cross-validation (time series data).
+        Trains the model using TimeSeriesSplit for cross-validation on time series data.
 
         Args:
-            data (np.ndarray): Dataset used for training.
-            targets (np.ndarray): Target values corresponding to the dataset.
+            data (np.ndarray): All features for training.
+            targets (np.ndarray): Corresponding labels.
 
         Returns:
-            list: Model performance evaluation results for the test data in each split.
+            list: List of (loss, accuracy) tuples for each fold.
         """
         epochs = self.model_param.PARAM_EPOCHS
         batch_size = self.model_param.BATCH_SIZE
         n_splits = self.model_param.N_SPLITS
         param_learning_rate = self.model_param.ROLLING_PARAM_LEARNING_RATE
 
-        # ---- ここを KFold から TimeSeriesSplit に変更 ----
         tscv = TimeSeriesSplit(n_splits=n_splits)
-
-        fold_no = 1
         scores = []
 
-        for train_idx, test_idx in tscv.split(data, targets):
-            # Generate the model
+        for fold_no, (train_idx, test_idx) in enumerate(tscv.split(data, targets), 1):
             self.model = self.create_cnn_transformer_model(
                 (data.shape[1], data.shape[2])
             )
-
-            # Compile the model
             self.model.compile(
                 optimizer=Adam(learning_rate=param_learning_rate),
                 loss="binary_crossentropy",
                 metrics=["accuracy"],
             )
-            # Train the model
+
             self.logger.log_system_message(f"Training for fold {fold_no} ...")
             self.model.fit(
                 data[train_idx],
@@ -522,106 +518,100 @@ class TransformerPredictionRollingModel(BaseModel, PredictionModel):
                 verbose=1,
             )
 
-            # Evaluate the model's performance
             score = self.model.evaluate(data[test_idx], targets[test_idx], verbose=0)
             scores.append(score)
-            fold_no += 1
 
         return scores
 
     def evaluate(
-        self, x_test: np.ndarray, y_test: np.ndarray
+        self,
+        x_test: np.ndarray,
+        y_test: np.ndarray
     ) -> Tuple[float, str, np.ndarray]:
         """
         Evaluates the model on the test dataset.
 
         Args:
-            x_test (np.ndarray): Test dataset.
-            y_test (np.ndarray): Correct labels for the test dataset.
+            x_test (np.ndarray): Test features.
+            y_test (np.ndarray): Test labels.
 
         Returns:
-            Tuple[float, str, np.ndarray]: Model accuracy, classification report, confusion matrix.
+            Tuple[float, str, np.ndarray]: Accuracy, classification report, confusion matrix.
         """
-        print(f"evaluate - x_test.shape: {x_test.shape}")  # デバッグ出力
+        self.logger.log_system_message(f"Evaluating on x_test with shape {x_test.shape}")
         y_pred = (self.model.predict(x_test) > 0.5).astype(int)
         accuracy = accuracy_score(y_test, y_pred)
         report = classification_report(y_test, y_pred)
         conf_matrix = confusion_matrix(y_test, y_pred)
         return accuracy, report, conf_matrix
 
-    def predict(self, data: np.ndarray, use_gpu: bool = None) -> np.ndarray:
+    def predict(self, data: np.ndarray, use_gpu: Optional[bool] = None) -> np.ndarray:
         """
-        Makes predictions for the specified data.
+        Predicts on the given data.
 
         Args:
-            data (np.ndarray): Data to predict for.
-            use_gpu (bool, optional): Whether to use GPU for this specific prediction.
-                                      If None, uses the model's default setting.
+            data (np.ndarray): Input features to predict on.
+            use_gpu (bool, optional): Temporarily enable or disable GPU for this prediction.
 
         Returns:
-            np.ndarray: Prediction results.
+            np.ndarray: Prediction scores or probabilities.
         """
         if use_gpu is not None:
-            # 一時的にGPU設定を変更
             original_devices = tf.config.get_visible_devices()
             self._configure_gpu(use_gpu)
 
         predictions = self.model.predict(data)
 
         if use_gpu is not None:
-            # GPU設定を元に戻す
             tf.config.set_visible_devices(original_devices)
 
         return predictions
 
-    def predict_single(self, data_point: np.ndarray, use_gpu: bool = None) -> int:
+    def predict_single(self, data_point: np.ndarray, use_gpu: Optional[bool] = None) -> int:
         """
-        Makes a prediction for a single data point.
+        Predicts a single data point, returns 0 or 1 class.
 
         Args:
-            data_point (np.ndarray): Data point to predict for.
-            use_gpu (bool, optional): Whether to use GPU for this specific prediction.
-                                      If None, uses the model's default setting.
+            data_point (np.ndarray): Single data point (timesteps, features).
+            use_gpu (bool, optional): Temporarily enable/disable GPU.
 
         Returns:
-            int: Predicted class label.
+            int: Predicted class label (0 or 1).
         """
-        prediction = self.predict_single_res(data_point, use_gpu)
-        prediction = (prediction > 0.5).astype(int)
-        return prediction
+        prediction_score = self.predict_single_res(data_point, use_gpu)
+        return int(prediction_score > 0.5)
 
-    def predict_single_res(self, data_point: np.ndarray, use_gpu: bool = None) -> float:
+    def predict_single_res(self, data_point: np.ndarray, use_gpu: Optional[bool] = None) -> float:
         """
-        Makes a prediction for a single data point and returns the raw result.
+        Predicts a single data point, returns raw prediction score.
 
         Args:
-            data_point (np.ndarray): Data point to predict for.
-            use_gpu (bool, optional): Whether to use GPU for this specific prediction.
-                                      If None, uses the model's default setting.
+            data_point (np.ndarray): Single data point (timesteps, features).
+            use_gpu (bool, optional): Temporarily enable/disable GPU.
 
         Returns:
-            float: Raw prediction value.
+            float: Prediction score (0.0 ~ 1.0).
         """
         scaled_data_point = self.scaler.fit_transform(data_point)
-        # Reshape the data point and make prediction
         reshaped_data = scaled_data_point.reshape(1, -1, len(self.feature_columns))
 
         if use_gpu is not None:
-            # 一時的にGPU設定を変更
             original_devices = tf.config.get_visible_devices()
             self._configure_gpu(use_gpu)
 
         prediction = self.model.predict(reshaped_data)
 
         if use_gpu is not None:
-            # GPU設定を元に戻す
             tf.config.set_visible_devices(original_devices)
 
-        return prediction[0][0]
+        return float(prediction[0][0])
 
-    def save_model(self, filename=None):
+    def save_model(self, filename: Optional[str] = None) -> None:
         """
-        Saves the trained model and scaler to files.
+        Saves the trained model and scaler.
+
+        Args:
+            filename (str, optional): Custom filename override.
         """
         if filename is not None:
             self.filename = filename
@@ -637,9 +627,12 @@ class TransformerPredictionRollingModel(BaseModel, PredictionModel):
         self.logger.log_system_message(f"Saving scaler to {model_scaler_path}")
         joblib.dump(self.scaler, model_scaler_path)
 
-    def load_model(self, filename=None):
+    def load_model(self, filename: Optional[str] = None) -> None:
         """
         Loads the saved model and scaler.
+
+        Args:
+            filename (str, optional): Custom filename override.
         """
         if filename is not None:
             self.filename = filename
@@ -652,103 +645,125 @@ class TransformerPredictionRollingModel(BaseModel, PredictionModel):
         self.logger.log_system_message(f"Loading scaler from {model_scaler_path}")
         self.scaler = joblib.load(model_scaler_path)
 
-    def get_data_period(self, date: str, period: int) -> np.ndarray:
+    def get_data_period(self, date: str, period: int) -> pd.DataFrame:
         """
-        Gets data for the specified period.
+        Loads data for a specific period starting at a given date.
 
         Args:
-            date (str): Start date and time of the period.
-            period (int): Length of the period.
+            date (str): Start date/time.
+            period (int): Number of records/timesteps to load.
 
         Returns:
-            np.ndarray: Data for the specified period.
+            pd.DataFrame: Data for the specified period.
         """
-        data = self.data_loader.load_data_from_datetime_period(
-            date, period, self.table_name
+        data = self.data_loader.load_data_from_point_date(
+            date, period, MARKET_DATA_TECH, self.symbol, self.interval
         )
         if "date" in data.columns:
             data = self._process_timestamp_and_cyclical_features(data)
-        return data.filter(items=self.feature_columns).to_numpy()
+        return data.filter(items=self.feature_columns)
 
     def _configure_gpu(self, use_gpu: bool) -> None:
         """
-        Configures GPU usage for the model.
+        Configures GPU usage.
+
+        Args:
+            use_gpu (bool): If False, hides all GPUs. If True, attempts to enable GPU.
         """
-        if not use_gpu:
-            tf.config.set_visible_devices([], "GPU")
-            self.logger.log_system_message("GPU disabled for inference")
-        else:
-            gpus = tf.config.list_physical_devices("GPU")
-            if gpus:
-                try:
-                    for gpu in gpus:
-                        tf.config.experimental.set_memory_growth(gpu, True)
-                    self.logger.log_system_message(
-                        f"GPU enabled for inference. Available GPUs: {len(gpus)}"
-                    )
-                except RuntimeError as e:
-                    self.logger.log_error(f"GPU configuration error: {str(e)}")
-            else:
-                self.logger.log_system_message("No GPU available, using CPU instead")
+        """
+        GPUの使用を設定する。
+        """
+        from aiml.aiml_comm import configure_gpu
+        configure_gpu(use_gpu=use_gpu,logger=self.logger)
 
 
-def main():
+def transfomer_predictin_trend(date: str, model: TransformerPredictionRollingModel, target_column: str) -> Tuple[float, float]:
+    """
+    Makes a single forward-looking prediction of upward/downward trend probabilities.
+
+    Args:
+        date (str): Datetime string for the data lookup.
+        model (TransformerPredictionRollingModel): Pre-initialized model.
+
+    Returns:
+        Tuple[float, float]: (Probability that price will go up [%],
+                              Probability that price will go down [%])
+    """
+    df = model.get_data_period(date, TIME_SERIES_PERIOD)
+    current_value = df.iloc[-1][target_column]
+    pred = model.predict_single_res(df.to_numpy())
+    up_pred = pred * 100
+    down_pred = (1 - pred) * 100
+    return up_pred, down_pred, current_value
+
+
+def transfomer_predictin_evaluate(
+    start_date: str,
+    end_date: str,
+    model: TransformerPredictionRollingModel
+) -> None:
+    """
+    Evaluates the model performance on the specified date range.
+
+    Args:
+        start_date (str): Start date/time.
+        end_date (str): End date/time.
+        model (TransformerPredictionRollingModel): The model instance to evaluate.
+    """
+    x_train, x_test, y_train, y_test = model.load_and_prepare_data(
+        start_date,
+        end_date,
+        MARKET_DATA_TECH,
+        test_size=0.9,
+        random_state=None,
+    )
+    accuracy, report, conf_matrix = model.evaluate(x_test, y_test)
+    print(f"Accuracy: {accuracy:.4f}")
+    print(report)
+    print(conf_matrix)
+
+
+def transfomer_predictin_trend_setup(
+    model_id: str,
+    symbol: str,
+    interval: int
+) -> TransformerPredictionRollingModel:
+    """
+    Sets up a TransformerPredictionRollingModel for trend predictions.
+
+    Args:
+        model_id (str): The model ID to load.
+        symbol (str): Trading symbol (e.g., 'BTCUSDT').
+        interval (int): Interval for the model (e.g., 1440 for daily).
+
+    Returns:
+        TransformerPredictionRollingModel: The initialized and loaded model.
+    """
     from aiml.aiml_comm import COLLECTIONS_TECH
     from common.utils import get_config_model
 
     data_loader = MongoDataLoader()
     logger = TradingLogger()
-    model_id = "rolling_v1"
-
-    config = get_config_model("MODEL_SHORT_TERM", model_id)  # Get the model configuration
-
+    config = get_config_model("MODEL_SHORT_TERM", model_id)
     model = TransformerPredictionRollingModel(
         id=model_id,
         config=config,
         data_loader=data_loader,
         logger=logger,
+        symbol=symbol,
+        interval=interval,
         use_gpu=True
     )
-
-    # 既存の学習済みモデルを読み込む（必要に応じて）
     model.load_model()
+    return model
 
+
+def main() -> None:
+    import datetime
     """
-    model.set_parameters(
-        param_epochs=10,
-    )
-    # クロスバリデーション例
-    x_train, x_test, y_train, y_test = model.load_and_prepare_data_mix(
-        "2020-01-01 00:00:00",
-        "2024-01-01 00:00:00",
-        COLLECTIONS_TECH
-    )
-
-    cv_scores = model.train_with_cross_validation(
-        np.concatenate((x_train, x_test), axis=0),
-        np.concatenate((y_train, y_test), axis=0),
-    )
-
-    for i, score in enumerate(cv_scores):
-        print(f"Fold {i+1}: Loss = {score[0]}, Accuracy = {score[1]}")
+    Example main function demonstrating how to use the TransformerPredictionRollingModel.
     """
 
-    # 最終評価用
-    x_train, x_test, y_train, y_test = model.load_and_prepare_data(
-        "2024-08-01 00:00:00",
-        "2025-01-05 00:00:00",
-        MARKET_DATA_TECH,
-        test_size=0.9,
-        random_state=None,
-    )
-
-    accuracy, report, conf_matrix = model.evaluate(x_test, y_test)
-    print(f"Accuracy: {accuracy}")
-    print(report)
-    print(conf_matrix)
-
-    # モデルを保存
-    #model.save_model()
 
 
 if __name__ == "__main__":

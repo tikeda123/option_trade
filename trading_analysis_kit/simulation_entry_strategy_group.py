@@ -135,6 +135,7 @@ class EntryStrategyGroup:
                 from trade_config import trade_config
                 short_flag, short_trend = self.short_term_model.trend_prediction(context)
                 mid_flag, mid_trend = self.middle_term_model.trend_prediction(context)
+                print(f"mid_tred: {mid_trend}, short_trend: {short_trend}")
                 #long_flag, long_trend = self.long_term_model.trend_prediction(context)
 
                 # Define weights for short-term and mid-term trends
@@ -146,7 +147,8 @@ class EntryStrategyGroup:
                 weighted_trend = (short_trend * short_weight) + (mid_trend * mid_weight)
 
                                 # Determine final prediction
-                trend = 1 if weighted_trend > 0.5 else 0
+                #trend = 1 if weighted_trend > 0.5 else 0
+                trend = short_trend
 
                 return True, trend
                 """

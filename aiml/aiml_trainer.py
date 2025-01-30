@@ -123,7 +123,7 @@ def main(
 
 
 if __name__ == "__main__":
-        main("rolling_v1", "MODEL_SHORT_TERM", use_gpu=True)
+        main("rolling_v5", "MODEL_SHORT_TERM", use_gpu=True)
         """
         for i in range(2, 7):
             version = f"rolling_v{i}"

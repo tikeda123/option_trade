@@ -94,3 +94,6 @@
 2025-01-06 15:11:35,394 INFO: Collection 'trade_config' exists.
 2025-01-06 15:11:35,398 INFO: Collection 'trade_config' dropped successfully.
 2025-01-06 15:11:35,403 INFO: Collection 'trade_config' does not exist.
+2025-01-28 22:21:20,398 INFO: Collection 'trade_config' exists.
+2025-01-28 22:21:20,403 INFO: Collection 'trade_config' dropped successfully.
+2025-01-28 22:21:20,408 INFO: Collection 'trade_config' does not exist.

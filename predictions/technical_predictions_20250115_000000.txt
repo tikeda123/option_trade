@@ -1,0 +1,31 @@
+Technical Predictions Report
+Generated at: 20250115_000000
+Current date: 2025-01-15 00:00:00
+Prediction date: 2025-01-18 00:00:00
+--------------------------------------------------
+
+Technical Indicator: ema
+Up prediction probability: 93.42%
+Down prediction probability: 6.58%
+Current value: 95482.01
+
+Technical Indicator: macdhist
+Up prediction probability: 94.56%
+Down prediction probability: 5.44%
+Current value: -93.56
+
+Technical Indicator: roc
+Up prediction probability: 3.68%
+Down prediction probability: 96.32%
+Current value: 2.82
+
+Technical Indicator: mfi
+Up prediction probability: 8.33%
+Down prediction probability: 91.67%
+Current value: 52.73
+
+Technical Indicator: aroon
+Up prediction probability: 2.01%
+Down prediction probability: 97.99%
+Current value: -42.85
+

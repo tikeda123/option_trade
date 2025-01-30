@@ -96,7 +96,7 @@ def get_config(tag,filename=None)-> dict:
              return config_data[tag]
         return config_data
 
-def get_config_model(model_group_tag:str,  id:str=None,):
+def get_config_model(model_group_tag:str,  id:str=None):
         """
         Get the configuration data for a specific model ID.
 

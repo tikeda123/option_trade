@@ -19,6 +19,7 @@ from aiml.prediction_model import PredictionModel
 from aiml.lstm_prediction_rolling_model import LSTMPredictionRollingModel
 from aiml.transformer_prediction_rolling_model import TransformerPredictionRollingModel
 #from aiml.transformer_prediction_logsparse import TransformerPredictionRollingModel
+#from aiml.transformer_triclass_rolling_model import TransformerPredictionRollingModel
 from aiml.aiml_comm import process_timestamp_and_cyclical_features
 from aiml.aiml_comm import COLLECTIONS_LOWER, COLLECTIONS_UPPER, COLLECTIONS_TECH
 
@@ -258,7 +259,6 @@ class PredictionManager:
 
                 prediction = self.predict_model(target_df)
                 return prediction
-
         def predict_model(self, data_point: np.ndarray, probability: bool = False) -> int:
                 """
                 Makes a prediction for a single data point.
@@ -269,7 +269,16 @@ class PredictionManager:
                 Returns:
                         int: Prediction result (1 for up, 0 for down).
                 """
-                #print(f"predict_model - data_point.shape: {data_point.shape}")  # デバッグ出力
+                # Get feature columns
+                feature_columns = self.prediction_model.get_feature_columns()
+
+                # If data_point is a pandas DataFrame, extract numpy array
+                if hasattr(data_point, 'columns'):
+                    # Convert feature_columns list to numeric indices
+                    feature_indices = [data_point.columns.get_loc(col) for col in feature_columns]
+                    data_point = data_point.iloc[:, feature_indices].to_numpy()
+
+                #print(f"predict_model - data_point.shape: {data_point.shape}")  # Debug output
                 if probability:
                         predict = self.prediction_model.predict_single_res(data_point)
                 else:
@@ -380,11 +389,17 @@ def main():
         #manager.load_model("mix_lower_mlts_model_v2")
 
     # 評価期間の開始日時と終了日時を指定して、データをロード
-        start_datetime = "2024-01-01 00:00:00"
-        end_datetime = "2024--07-20 00:00:00"
+        start_datetime = "2024-04-10 00:00:00"
+        end_datetime = "2025-01-01 00:00:00"
 
         X_train, x_test, y_train, y_test  = manager.load_and_prepare_data(start_datetime, end_datetime, test_size=0.8)
         manager.evaluate_model()
+
+        df = manager.data_loader.load_data_from_point_date(start_datetime,TIME_SERIES_PERIOD,MARKET_DATA_TECH)
+        print(df)
+
+        res = manager.predict_model(df)
+        print(res)
 
 """
         # 予測結果を格納するリスト

@@ -10,475 +10,557 @@ from sklearn.model_selection import TimeSeriesSplit
 from sklearn.preprocessing import StandardScaler
 from sklearn.metrics import mean_squared_error, mean_absolute_error, r2_score
 from sklearn.linear_model import BayesianRidge
+import tensorflow as tf  # Unused import
 
 import joblib
 
-# ===== MongoDataLoader等、外部ライブラリの読み込み ===== #
-current_dir = os.path.dirname(os.path.abspath(__file__))
-parent_dir = os.path.dirname(current_dir)
-sys.path.append(parent_dir)
 
-# ここは各自の環境に合わせて修正してください
-from mongodb.data_loader_mongo import MongoDataLoader
-from common.utils import get_config
-from common.constants import MARKET_DATA_TECH
+# --------------------------------------------------------------------------
+# Set up paths and environment
+# --------------------------------------------------------------------------
+CURRENT_DIR = os.path.dirname(os.path.abspath(__file__))
+PARENT_DIR = os.path.dirname(CURRENT_DIR)
+sys.path.append(PARENT_DIR)  # Add the parent directory to the Python path for local imports
+
+# --------------------------------------------------------------------------
+# Local imports (adjust as necessary for your environment)
+# --------------------------------------------------------------------------
+from mongodb.data_loader_mongo import MongoDataLoader  # Import for MongoDB data loading
+from aiml.model_param import BaseModel  # Import for base model class
+from common.trading_logger import TradingLogger  # Import for custom logging
+from common.constants import MARKET_DATA_TECH  # Import for constants
 
 
-class BayesianPricePredictor:
+# --------------------------------------------------------------------------
+# BayesianPredictionModel class
+# --------------------------------------------------------------------------
+class BayesianPredictionModel(BaseModel):
     """
-    BayesianRidgeを用いたBTC価格予測モデルのクラス。
+    A price prediction model using BayesianRidge regression.
+
+    This class provides a wrapper for preprocessing, training, and inference,
+    allowing flexibility in choosing the target variable (target_col) and
+    the prediction horizon (shift_steps).
     """
+
     def __init__(
         self,
-        symbol: str = "BTCUSDT",
-        interval: int = 1440*3,
-        features: Optional[List[str]] = None,
-        model_params: Optional[Dict[str, Any]] = None
+        id: str,  # Model identifier
+        config: Dict[str, Any],  # Model configuration dictionary
+        data_loader: MongoDataLoader,  # Data loader object
+        logger: TradingLogger,  # Logger object
+        symbol: str = None,  # Trading symbol (e.g., BTCUSDT)
+        interval: str = None,  # Time interval (e.g., 1440 for daily)
+        use_gpu: bool = True,  # Whether to use GPU (currently not utilized)
     ):
+        super().__init__(id, config, data_loader, logger, symbol, interval)
+        self._initialize_attributes()
+        self._configure_gpu(use_gpu)  # Configure GPU usage (if applicable)
+
+    def _initialize_attributes(self) -> None:
         """
-        :param symbol: 予測対象の銘柄・ペア (例: "BTCUSDT")
-        :param interval: 取得するデータのタイムフレーム (分単位)。1440*3 で3日足を想定。
-        :param features: 使用する特徴量のリスト
-        :param model_params: BayesianRidgeのパラメータ (dict)
+        Initializes model attributes.
         """
-        self.symbol = symbol
-        self.interval = interval
-        # ここで扱う特徴量をデフォルト定義
-        self.features = features or [
-            "open", "close", "high", "low", "volume",
-            "rsi", "macd", "macdsignal",
-            "ema", "sma",
-            "upper1", "lower1", "middle",
-        ]
-        # モデルのパラメータ (BayesianRidge)
+        self.datapath = os.path.join(PARENT_DIR, self.config["DATAPATH"])  # Path to store model data
+        self.feature_columns = self.config["FEATURE_COLUMNS"]  # List of feature column names
+        self.target_column = self.config["TARGET_COLUMN"][0]  # Target column name for prediction
+        self.shift_steps = self.config["PREDICTION_DISTANCE"]  # Number of steps to predict ahead
+        self.filename = self.config["MODLE_FILENAME"]  # Filename for saving/loading the model
+        self.table_name = f"{self.symbol}_{self.interval}"  # MongoDB collection name
+        self.all_data: Optional[pd.DataFrame] = None  # Stores the entire loaded dataset
+
+        # Scaler and model objects
+        self.scaler = StandardScaler()  # StandardScaler for feature scaling
+        self.model: Optional[BayesianRidge] = None  # BayesianRidge model instance
+
+        # Default model parameters
         default_params = {
-            "max_iter": 300,
-            "tol": 1e-6,
-            "alpha_1": 1e-6,
+            "max_iter": 300,  # Maximum iterations for solver
+            "tol": 1e-6,  # Convergence tolerance
+            "alpha_1": 1e-6,  # Hyperparameter for the Gamma prior on the precision
             "alpha_2": 1e-6,
             "lambda_1": 1e-6,
             "lambda_2": 1e-6,
         }
-        if model_params is not None:
-            default_params.update(model_params)
-        self.model_params = default_params
+        self.model_params = default_params  # Store model parameters
 
-        self.data_loader = MongoDataLoader()  # MongoDBからのデータローダー（外部クラス）
-        self.scaler = StandardScaler()
+        # Data storage for training and testing
+        self.X_train_scaled: Optional[np.ndarray] = None  # Scaled training features
+        self.y_train: Optional[pd.Series] = None  # Training target values
+        self.X_test_scaled: Optional[np.ndarray] = None  # Scaled test features
+        self.y_test: Optional[pd.Series] = None  # Test target values
+        self.train_df: Optional[pd.DataFrame] = None  # Training dataframe
+        self.test_df: Optional[pd.DataFrame] = None  # Test dataframe
 
-        self.model = None
-        self.X_train_scaled = None
-        self.y_train = None
-        self.X_test_scaled = None
-        self.y_test = None
-
-        self.train_df = None
-        self.test_df = None
-
-        # ---- 追加: 全期間のデータを保持する変数 (predict_for_dateで使う) ----
-        self.all_data = None
-
-    def load_data(self, start_date: str, end_date: str) -> pd.DataFrame:
+    # ----------------------------------------------------------------------
+    # Public Setter / Getter
+    # ----------------------------------------------------------------------
+    def set_parameters(
+        self,
+        default_params: Optional[Dict[str, Any]] = None, # Dictionary of model parameters
+        param_epochs: Optional[int] = None,  # Not used in this model (remove?)
+        n_splits: Optional[int] = None,  # Number of splits for cross-validation
+        shift_steps: Optional[int] = None,  # Prediction horizon
+    ) -> None:
         """
-        start_dateからend_dateまでのデータをMongoDBからロードし、保持する。
+        Updates model parameters.
         """
-        df = self.data_loader.load_data_from_datetime_period(
-            start_date,
-            end_date,
-            coll_type=MARKET_DATA_TECH,
-            symbol=self.symbol,
-            interval=self.interval
-        )
-        # 後で個別予測するため、全期間のデータをクラス変数に保存しておく
-        self.all_data = df.copy()
-        return df
+        if default_params is not None:
+            self.model_params.update(default_params)  # Update model parameters with provided values
 
+        if shift_steps is not None:
+            if shift_steps <= 0:
+                raise ValueError("shift_steps must be positive.")
+            self.shift_steps = shift_steps  # Update prediction horizon
+
+        # The following parameters are not used in this model:
+        # if param_epochs is not None: ...
+        # if n_splits is not None: ...
+        # Consider removing them for clarity
+
+        self.logger.log_system_message("Model parameters updated successfully.")  # Log the update
+
+
+    def get_data_loader(self) -> MongoDataLoader:
+        """Returns the DataLoader instance."""
+        return self.data_loader
+
+    def get_feature_columns(self) -> list:
+        """Returns the list of feature columns used by the model."""
+        return self.feature_columns
+
+    def create_table_name(self) -> str:
+        """
+        Creates or updates and returns the table name.
+        """
+        self.table_name = f"{self.symbol}_{self.interval}_market_data_tech" # update table name
+        return self.table_name
+
+    # ----------------------------------------------------------------------
+    # Data Preprocessing
+    # ----------------------------------------------------------------------
     def preprocess_data(
         self,
-        df: pd.DataFrame,
-        train_end_date: str = "2024-10-01",
-        test_start_date: str = "2024-10-01"
+        train_end_date: str, # End date for the training data
+        test_start_date: str, # Start date for the test data
+        date_col: str = "date" # Name of the date column
     ) -> None:
         """
-        データフレームを前処理し、訓練用データとテスト用データを作成する。
-        テストデータが空の場合は、その後の処理でエラーにならないよう None で扱う。
+        Loads data, splits it into training and test sets, and performs preprocessing.
+
+        1. Converts the date column to datetime and sorts the data.
+        2. Splits the data into training and test sets based on the provided dates.
+        3. Creates a shifted target column for predictions.
+        4. Removes rows with NaN values resulting from the shift.
+        5. Fits the StandardScaler on the training data and transforms it.
+        6. Transforms the test data using the same fitted scaler.
         """
-        # 日付型に変換
-        if "date" in df.columns and not np.issubdtype(df["date"].dtype, np.datetime64):
-            df["date"] = pd.to_datetime(df["date"])
+        df = self._load_and_sort_data(date_col)
+        self.all_data = df.copy() # keep original data
 
-        # 次の日のCloseをラベル化
-        df["close_next"] = df["close"].shift(-3)
 
-        # 学習・テストに分割
-        train_df = df[df["date"] < train_end_date].copy()
-        test_df  = df[df["date"] >= test_start_date].copy()
+        # (2) Split data into training and test sets
+        train_df = df[df[date_col] < train_end_date].copy()
+        test_df = df[df[date_col] >= test_start_date].copy()
 
-        # 特徴量とラベルを作成 (学習用)
-        train_data = train_df[["date"] + self.features + ["close_next"]].dropna().copy()
-        X_train = train_data[self.features]
-        y_train = train_data["close_next"]
+        # (3) Create shifted target column
+        label_col = f"{self.target_column}_shifted"
+        train_df[label_col] = train_df[self.target_column].shift(-self.shift_steps) # create shifted target data
+        test_df[label_col] = test_df[self.target_column].shift(-self.shift_steps) # create shifted target data
 
-        # 学習データをスケーリング
-        X_train_scaled = self.scaler.fit_transform(X_train)
+        # (4) Remove rows with NaN values in the target
+        train_df.dropna(subset=[label_col], inplace=True)
+        test_df.dropna(subset=[label_col], inplace=True)
 
-        # テストデータがある場合のみ処理
-        if test_df.empty:
-            print("[INFO] No test data found. All data will be used as training data.")
-            self.test_df = None
-            self.X_test_scaled = None
-            self.y_test = None
+        # (5) Preprocess training data
+        if not train_df.empty: # check if the training data is empty
+            X_train = train_df[self.feature_columns] # set features
+            y_train = train_df[label_col] # set target
+            self.X_train_scaled = self.scaler.fit_transform(X_train) # normalize data
+            self.y_train = y_train # set target values
+            self.train_df = train_df # set dataframe
         else:
-            test_data = test_df[["date"] + self.features + ["close_next"]].dropna().copy()
-            if test_data.empty:
-                print("[INFO] Test data exists but became empty after dropna. No valid test samples.")
-                self.test_df = None
-                self.X_test_scaled = None
-                self.y_test = None
-            else:
-                X_test = test_data[self.features]
-                y_test = test_data["close_next"]
-                X_test_scaled = self.scaler.transform(X_test)
+            self._reset_train_data() # reset data
 
-                # 結果をクラス内に保持
-                self.test_df = test_data
-                self.X_test_scaled = X_test_scaled
-                self.y_test = y_test
-
-        # 学習データをクラス内に保持
-        self.train_df = train_data
-        self.X_train_scaled = X_train_scaled
-        self.y_train = y_train
-
-        print(f"Train period: {train_df['date'].min()} - {train_df['date'].max()}")
-        if self.test_df is not None:
-            print(f"Test  period: {test_df['date'].min()} - {test_df['date'].max()}")
+        # (6) Preprocess test data
+        if not test_df.empty and self.X_train_scaled is not None: # check if the test data is empty and if the training data is set
+            X_test = test_df[self.feature_columns] # set features
+            y_test = test_df[label_col] # set target
+            self.X_test_scaled = self.scaler.transform(X_test) # normalize data using the same scaler
+            self.y_test = y_test # set target values
+            self.test_df = test_df # set dataframe
         else:
-            print("Test period: None (no test data).")
+            self._reset_test_data() # reset data
 
+    def _load_and_sort_data(self, date_col: str) -> pd.DataFrame:
+        """Loads data from MongoDB, sorts it by date, and returns it as a Pandas DataFrame."""
+        df = self.data_loader.load_data( # load data from mongoDB
+            coll_type=MARKET_DATA_TECH,
+            symbol=self.symbol,
+            interval=self.interval,
+        )
+        df[date_col] = pd.to_datetime(df[date_col]) # convert data type to datetime
+        df.sort_values(by=date_col, inplace=True) # sort data
+        return df
+
+    def _reset_train_data(self) -> None:
+        """Resets training data attributes to None."""
+        self.X_train_scaled = None # scaled training data
+        self.y_train = None # training labels
+        self.train_df = None # raw train dataframe
+
+    def _reset_test_data(self) -> None:
+        """Resets test data attributes to None."""
+        self.X_test_scaled = None # scaled test data
+        self.y_test = None # test labels
+        self.test_df = None # raw test dataframe
+
+    # ----------------------------------------------------------------------
+    # Training and Validation
+    # ----------------------------------------------------------------------
     def cross_validate(
         self,
-        n_splits: int = 5,
-        plot_last_fold: bool = True
-    ) -> None:
+        n_splits: int = 5, # Number of splits for cross-validation
+        plot_last_fold: bool = False  # Option to plot the last fold's predictions (Not implemented)
+    ) -> Dict[str, float]:
         """
-        TimeSeriesSplitによるクロスバリデーションを実施し、
-        各Foldでの評価指標を表示する。
+        Performs time series cross-validation.
+
+        Args:
+            n_splits (int): The number of splits for cross-validation. Defaults to 5.
+            plot_last_fold (bool): Whether to plot predictions for the last fold.
+                                    Not implemented yet. Defaults to False.
+
+        Returns:
+            Dict[str, float]: A dictionary containing the average MSE, MAE, and R2 scores
+                              across all folds.
         """
-        tscv = TimeSeriesSplit(n_splits=n_splits)
-        mse_list, mae_list, r2_list = [], [], []
 
-        last_fold_y_test_cv = None
-        last_fold_y_pred_cv = None
+        if self.X_train_scaled is None or self.y_train is None: # check if train data is set
+            self.logger.log_system_message("[WARN] No training data for cross-validation.")
+            return {"mse": np.nan, "mae": np.nan, "r2": np.nan} # if not set then return nan values
 
-        for fold, (cv_train_index, cv_val_index) in enumerate(tscv.split(self.X_train_scaled)):
-            X_cv_train = self.X_train_scaled[cv_train_index]
-            X_cv_val   = self.X_train_scaled[cv_val_index]
-            y_cv_train = self.y_train.values[cv_train_index]
-            y_cv_val   = self.y_train.values[cv_val_index]
+        tscv = TimeSeriesSplit(n_splits=n_splits) # generate index for time series cross validation
+        mse_list, mae_list, r2_list = [], [], [] # define list
 
-            model_cv = BayesianRidge(**self.model_params)
-            model_cv.fit(X_cv_train, y_cv_train)
+        for fold, (cv_train_idx, cv_val_idx) in enumerate(tscv.split(self.X_train_scaled)):
+            X_cv_train = self.X_train_scaled[cv_train_idx]  # Training data for current fold
+            X_cv_val = self.X_train_scaled[cv_val_idx]  # Validation data for current fold
+            y_cv_train = self.y_train.values[cv_train_idx] # training labels for current fold
+            y_cv_val = self.y_train.values[cv_val_idx] # validation labels for current fold
 
-            y_cv_pred = model_cv.predict(X_cv_val)
-            mse = mean_squared_error(y_cv_val, y_cv_pred)
-            mae = mean_absolute_error(y_cv_val, y_cv_pred)
-            r2  = r2_score(y_cv_val, y_cv_pred)
+            model_cv = BayesianRidge(**self.model_params) # set model
+            model_cv.fit(X_cv_train, y_cv_train) # fit model
 
-            mse_list.append(mse)
-            mae_list.append(mae)
-            r2_list.append(r2)
+            y_cv_pred = model_cv.predict(X_cv_val) # predict using validation data
 
-            print(f"[Fold {fold+1}] MSE={mse:.4f}, MAE={mae:.4f}, R2={r2:.4f}")
+            # Calculate metrics and store them in lists
+            mse_list.append(mean_squared_error(y_cv_val, y_cv_pred))
+            mae_list.append(mean_absolute_error(y_cv_val, y_cv_pred))
+            r2_list.append(r2_score(y_cv_val, y_cv_pred))
 
-            # 最終foldの予測結果を保存して後で可視化
-            if fold == (tscv.n_splits - 1):
-                last_fold_y_test_cv = y_cv_val
-                last_fold_y_pred_cv = y_cv_pred
 
-        """
-        print("\n=== Cross Validation Result on Training Data ===")
-        print(f"Average MSE: {np.mean(mse_list):.4f}")
-        print(f"Average MAE: {np.mean(mae_list):.4f}")
-        print(f"Average R2 : {np.mean(r2_list):.4f}")
-
-        if plot_last_fold and (last_fold_y_test_cv is not None) and (last_fold_y_pred_cv is not None):
-            plt.figure(figsize=(10, 6))
-            x_values = range(len(last_fold_y_test_cv))
-            plt.plot(x_values, last_fold_y_test_cv, label='Actual (val)', marker='o')
-            plt.plot(x_values, last_fold_y_pred_cv, label='Predicted (val)', marker='x')
-            plt.title("CV Last Fold: Actual vs Predicted")
-            plt.xlabel("Index in Validation (last fold)")
-            plt.ylabel("BTC Next Day Close Price")
-            plt.legend()
-            plt.show()
-         """
+        result = { # set result
+            "mse": float(np.mean(mse_list)), # avarage mean square error
+            "mae": float(np.mean(mae_list)), # avarage mean absolute error
+            "r2": float(np.mean(r2_list)), # avarage r2 score
+        }
+        return result # return result as dictionary
 
     def train_final_model(self) -> None:
-        """
-        学習データ全体で最終モデルを再学習する。
-        """
-        self.model = BayesianRidge(**self.model_params)
-        self.model.fit(self.X_train_scaled, self.y_train.values)
-        print("\n[INFO] Final model training completed.")
+        """Trains the final model on the entire training dataset."""
+        if self.X_train_scaled is None or self.y_train is None:
+            self.logger.log_system_message("[WARN] No training data. Cannot train final model.")
+            return
 
+        self.model = BayesianRidge(**self.model_params) # initiate model
+        self.model.fit(self.X_train_scaled, self.y_train.values) # train model using whole train dataset
+        self.logger.log_system_message("Final model trained successfully.")
+
+    # ----------------------------------------------------------------------
+    # Inference and Evaluation
+    # ----------------------------------------------------------------------
     def predict_test(self) -> Tuple[Optional[np.ndarray], Optional[np.ndarray]]:
         """
-        テストデータに対して予測を行い、(予測値, 標準偏差) を返す。
-        テストデータがない場合は (None, None) を返す。
+        Makes predictions on the test data and returns predictions and standard deviations.
         """
-        if self.model is None:
-            raise ValueError("Model is not trained. Call train_final_model() first.")
-
-        if self.X_test_scaled is None or self.y_test is None:
-            print("[INFO] No test data available. Skipping prediction.")
+        if not self._is_model_ready(): # check if the model is ready
+            return None, None
+        if self.X_test_scaled is None: # check if the test data is set
+            self.logger.log_system_message("[WARN] No test data to predict.")
             return None, None
 
-        y_pred, y_std = self.model.predict(self.X_test_scaled, return_std=True)
+        y_pred, y_std = self.model.predict(self.X_test_scaled, return_std=True) # predict using test dataset and return standard deviation as well
         return y_pred, y_std
 
-    def evaluate_test(self, y_pred: Optional[np.ndarray]) -> Dict[str, Optional[float]]:
+    def evaluate_test(self, y_pred: np.ndarray) -> Dict[str, float]:
         """
-        テストデータでの性能を評価し、指標を返す。
-        テストデータがない場合は None を返す。
-        """
-        if self.X_test_scaled is None or self.y_test is None or y_pred is None:
-            print("[INFO] No test data available. Skipping evaluation.")
-            return {"mse": None, "mae": None, "r2": None}
+        Evaluates the model's performance on the test data using MSE, MAE, and R2.
 
-        test_mse = mean_squared_error(self.y_test, y_pred)
-        test_mae = mean_absolute_error(self.y_test, y_pred)
-        test_r2  = r2_score(self.y_test, y_pred)
+        Args:
+            y_pred (np.ndarray): Model predictions on the test data.
+
+        Returns:
+            Dict[str, float]: A dictionary containing the MSE, MAE, and R2 scores.
+        """
+        if self.y_test is None: # check if the test data is set
+            self.logger.log_system_message("[WARN] No test data for evaluation.")
+            return {"mse": np.nan, "mae": np.nan, "r2": np.nan}
 
         return {
-            "mse": test_mse,
-            "mae": test_mae,
-            "r2": test_r2
+            "mse": mean_squared_error(self.y_test, y_pred), # Mean Squared Error
+            "mae": mean_absolute_error(self.y_test, y_pred), # Mean Absolute Error
+            "r2": r2_score(self.y_test, y_pred), # R-squared score
         }
 
     def plot_test_result(
         self,
-        y_pred: Optional[np.ndarray],
-        y_std: Optional[np.ndarray],
-        percentile_threshold: float = 60.0,
-        std_multiplier: float = 2.0
+        y_pred: Optional[np.ndarray],  # Predicted values
+        y_std: Optional[np.ndarray],  # Standard deviations of predictions
+        percentile_threshold: float = 60.0, # percentile threshold for judging uncertainty
+        std_multiplier: float = 2.0 # multiplier threshold for judging uncertainty.
     ) -> None:
         """
-        テストデータにおける実測値と予測値の可視化を行う。
-        不確実性（標準偏差）を考慮した可視化を行い、thresholdを超えた部分をハイライト。
-        テストデータがない場合はスキップ。
+        Plots the actual vs. predicted values on the test data along with uncertainty.
+
+        Args:
+            y_pred (np.ndarray): Predicted values.
+            y_std (np.ndarray): Standard deviations of predictions.
+            percentile_threshold (float): The percentile of standard deviation above which a prediction is
+                                        considered highly uncertain. Default is 60.0
+            std_multiplier (float): The multiplier of the average standard deviation above which a prediction is
+                                    considered highly uncertain. Defaults to 2.0.
         """
-        if self.test_df is None or self.y_test is None or y_pred is None or y_std is None:
-            print("[INFO] No test data to plot. Skipping plot.")
+        if not self._can_plot_results(y_pred, y_std):
             return
 
-        test_data = self.test_df.copy()
-        dates = test_data["date"]
+        dates = self.test_df["date"] # get date data
+        self._plot_predictions(dates, self.y_test, y_pred, y_std, percentile_threshold, std_multiplier) # call plot function
 
+    def predict_for_date(
+        self,
+        date_str: str,  # Date string for prediction (format: 'YYYY-MM-DD HH:MM:SS')
+        return_std: bool = True,  # Whether to return standard deviation and uncertainty flag
+        percentile_threshold: float = 60.0, # Threshold for uncertainty based on percentile of std
+        std_multiplier: float = 2.0 # Threshold for uncertainty based on multiple of average std
+    ) -> Tuple[float, Optional[float], Optional[bool]]:
+        """
+        Predicts the target variable for a single date.
+
+        Args:
+            date_str (str): The date for which to make a prediction.
+            return_std (bool): Whether to return the standard deviation and uncertainty flag.
+            percentile_threshold (float):  Threshold for uncertainty based on percentile of standard deviation.
+            std_multiplier (float):  Threshold for uncertainty based on multiple of average standard deviation.
+
+        Returns:
+            Tuple[float, Optional[float], Optional[bool]]: A tuple containing the prediction,
+                standard deviation (if return_std is True), and uncertainty flag (if return_std is True).
+        """
+
+
+        if not self._is_model_ready(raise_error=True): # raise error if the model is not ready
+            return 0.0, None, None # return 0 and None for the rest of values
+
+        if self.all_data is None: # if all_data is None then call load and sort method
+            self.all_data = self._load_and_sort_data("date")
+
+        target_date = pd.to_datetime(date_str) # convert to datetime object
+        row_data = self.all_data[self.all_data["date"] == target_date] # filter out the target date
+        if row_data.empty:
+            raise ValueError(f"No data found for date: {date_str}") # raise value error if the target date is not included in the data
+
+        X_scaled = self.scaler.transform(row_data[self.feature_columns]) # scale input data
+
+        if return_std: # if return_std is True
+            y_pred, y_std = self.model.predict(X_scaled, return_std=True) # predict the target and return standard deviation
+            is_uncertain = self._judge_uncertainty(y_std[0], percentile_threshold, std_multiplier) # decide if the prediction is uncertain
+            return y_pred[0], y_std[0], is_uncertain # return prediction, standard deviation and uncertainty boolean
+        else:
+            y_pred = self.model.predict(X_scaled) # if return_std id False, just return prediction
+            return y_pred[0], None, None
+
+    # ----------------------------------------------------------------------
+    # Internal Plotting / Utility
+    # ----------------------------------------------------------------------
+    def _plot_predictions(
+        self,
+        dates: pd.Series,  # Dates for the x-axis
+        y_true: pd.Series,  # True values
+        y_pred: np.ndarray,  # Predicted values
+        y_std: np.ndarray,  # Standard deviations of predictions
+        percentile_threshold: float, # Percentile threshold for uncertainty
+        std_multiplier: float # Standard deviation multiplier threshold for uncertainty
+    ) -> None:
+        """Internal method to plot predictions with uncertainty."""
         plt.figure(figsize=(10, 6))
-        # 実測値
-        plt.plot(dates, self.y_test, label='Actual (Next Day Close)', marker='o')
-        # 予測値
-        plt.plot(dates, y_pred, label='Predicted (Next Day Close)', marker='x')
+        plt.plot(dates, y_true, label="Actual", marker="o") # plot actual values
+        plt.plot(dates, y_pred, label="Predicted", marker="x") # plot predictions
 
-        # 95% CI (±1.96 * std)
-        y_upper = y_pred + 1.96 * y_std
-        y_lower = y_pred - 1.96 * y_std
-        plt.fill_between(dates, y_lower, y_upper, alpha=0.2, color='orange', label='95% CI')
+        # Plot 95% confidence interval
+        y_upper = y_pred + 1.96 * y_std  # Calculate upper bound
+        y_lower = y_pred - 1.96 * y_std  # Calculate lower bound
+        plt.fill_between(dates, y_lower, y_upper, alpha=0.2, color="orange", label="95% CI") # plot confidence interval
 
-        # 複数の基準で不確実性を判断
-        threshold = np.percentile(y_std, percentile_threshold)
-        baseline_std = np.mean(y_std)
-
-        # 不確実性が高いと判断する条件を複数組み合わせる
-        mask_high = (
-            (y_std > threshold) |  # パーセンタイルベースの判断
-            (y_std > baseline_std * std_multiplier)  # 平均からの乖離による判断
-        )
-
-        plt.fill_between(dates, y_lower, y_upper, where=mask_high,
-                         alpha=0.3, color='red', label='High Uncertainty')
+        # Highlight regions of high uncertainty based on standard deviation thresholds
+        threshold = np.percentile(y_std, percentile_threshold) # Percentile based threshold
+        baseline_std = np.mean(y_std) # average standard deviation
+        mask_high = (y_std > threshold) | (y_std > baseline_std * std_multiplier) # filter data based on threshold
+        plt.fill_between(dates, y_lower, y_upper, where=mask_high, alpha=0.3, color="red", label="High Uncertainty") # plot areas with high uncertainty
 
         plt.xticks(rotation=45)
-        plt.title("Comparison of Actual vs Predicted (Next Day Close) with Uncertainty")
         plt.xlabel("Date")
-        plt.ylabel("BTC Next Day Close Price")
+        plt.ylabel(f"Shifted {self.target_column}")
+        plt.title("Test Result with Prediction and Uncertainty")
         plt.legend()
         plt.tight_layout()
         plt.show()
 
-    def print_model_info(self) -> None:
-        """
-        モデル係数やハイパーパラメータなどを出力する。
-        """
-        if self.model is None:
-            print("[INFO] Model not trained yet.")
+    def _judge_uncertainty(self, y_std: float, percentile_threshold: float, std_multiplier: float) -> bool:
+        """Judges if a prediction is uncertain based on its standard deviation."""
+
+        if self.X_train_scaled is None:
+            return False  # Cannot judge uncertainty without training data
+
+        _, all_std = self.model.predict(self.X_train_scaled, return_std=True) # predict standard deviation for train data
+        threshold = np.percentile(all_std, percentile_threshold)  # calculate standard deviation threshold based on percentile
+        baseline_std = np.mean(all_std) # calculate average standard deviation
+
+        # A prediction is uncertain if its standard deviation exceeds either threshold
+        return (y_std > threshold) or (y_std > baseline_std * std_multiplier)
+
+    def _can_plot_results(
+        self,
+        y_pred: Optional[np.ndarray],
+        y_std: Optional[np.ndarray]
+    ) -> bool:
+        """Checks if all necessary data is available for plotting."""
+        if self.test_df is None or self.y_test is None: # check if the test data and target is set
+            self.logger.log_system_message("[WARN] No test data to plot.")
+            return False
+        if y_pred is None or y_std is None: # check if prediction and standard deviation is set
+            self.logger.log_system_message("[WARN] Invalid prediction data.")
+            return False
+        return True
+
+    def _is_model_ready(self, raise_error: bool = False) -> bool:
+        """Checks if the model is trained and ready for use."""
+        if self.model is None: # check if the model is set
+            msg = "[WARN] Model is not trained or loaded."
+            if raise_error:
+                raise ValueError(msg) # raise error if raise_error is set as True
+            else:
+                self.logger.log_system_message(msg) # log warning message
+            return False
+        return True
+
+    # ----------------------------------------------------------------------
+    # Model IO
+    # ----------------------------------------------------------------------
+    def save_model(self, filename: Optional[str] = None) -> None:
+        """Saves the trained model and scaler using joblib."""
+        if filename is not None: # if filename is set, update it
+            self.filename = filename
+
+        if not self._is_model_ready(): # check if the model is ready
             return
 
-        print("\n=== Final Model Coefficients ===")
-        for f, coef in zip(self.features, self.model.coef_):
-            print(f"{f}: {coef:.4f}")
-        print("Intercept:", self.model.intercept_)
-        print("Alpha (precision of the noise):", self.model.alpha_)
-        print("Lambda (precision of the weights):", self.model.lambda_)
+        model_file_name = self.filename + ".joblib"  # Create the full filename
+        model_path = os.path.join(self.datapath, model_file_name) # define path where the model will be saved
+        self.logger.log_system_message(f"Saving model to {model_path}")
 
-    def save_model(self, filepath: str) -> None:
-        """
-        学習済みモデルをjoblib形式で保存する。
-        """
-        if self.model is None:
-            raise ValueError("Model is not trained. Nothing to save.")
-        joblib.dump({
-            "model": self.model,
-            "scaler": self.scaler,
-            "features": self.features
-        }, filepath)
-        print(f"[INFO] Model saved to {filepath}")
+        data_to_save = { # define data to save
+            "model": self.model, # model itself
+            "scaler": self.scaler, # scaler
+            "features": self.feature_columns, # feature columns
+            "target_col": self.target_column, # target column name
+            "shift_steps": self.shift_steps, # number of shift steps
+        }
+        joblib.dump(data_to_save, model_path)  # Save the model and related data
 
-    def load_model(self, filepath: str) -> None:
-        """
-        保存済みモデルをjoblib形式から読み込む。
-        """
-        saved_data = joblib.load(filepath)
-        self.model = saved_data["model"]
-        self.scaler = saved_data["scaler"]
-        self.features = saved_data["features"]
-        print(f"[INFO] Model loaded from {filepath}")
+    def load_model(self, filename: Optional[str] = None) -> None:
+        """Loads a pre-trained model and scaler using joblib."""
+        if filename is not None: # if filename is set, update it
+            self.filename = filename
 
-    def predict_for_date(
-        self,
-        date_str: str,
-        return_std: bool = True,
-        percentile_threshold: float = 60.0,
-        std_multiplier: float = 2.0
-    ) -> Tuple[float, Optional[float], Optional[bool]]:
-        """
-        指定した日時のレコードに基づき、その翌日のclose価格を予測する。
-        :param date_str: 予測したい日時 (format: "YYYY-MM-DD" 等)
-        :param return_std: Trueにすると標準偏差も返す
-        :param percentile_threshold: 不確実性を判断するパーセンタイルの閾値
-        :param std_multiplier: 平均標準偏差の何倍を不確実とみなすか
-        :return: (予測値, 標準偏差, 不確実性フラグ) または (予測値, None, None)
-        """
-        if self.model is None:
-            raise ValueError("Model is not trained. Call train_final_model() first.")
+        model_file_name = self.filename + ".joblib" # Create the full filename
+        model_path = os.path.join(self.datapath, model_file_name) # define the path where the model will be loaded
 
-        if self.all_data is None:
-            raise ValueError("No data loaded. Call load_data() first.")
+        self.logger.log_system_message(f"Loading model from {model_path}")
+        saved_data = joblib.load(model_path) # load the data from model path
 
-        # 日時をdatetimeに変換
-        target_date = pd.to_datetime(date_str)
+        self.model = saved_data["model"] # load model
+        self.scaler = saved_data["scaler"] # load scaler
+        self.feature_columns = saved_data["features"] # load feature columns
+        self.target_column = saved_data["target_col"] # load target column name
+        self.shift_steps = saved_data["shift_steps"] # load number of steps to shift
 
-        # all_dataから該当する日時のレコードを取り出す
-        row_data = self.all_data[self.all_data["date"] == target_date].copy()
-        if row_data.empty:
-            raise ValueError(f"No data found for the specified date: {date_str}")
-
-        # 特徴量列を抜き出し
-        X = row_data[self.features]
-        X_scaled = self.scaler.transform(X)
-
-        # 予測
-        if return_std:
-            y_pred, y_std = self.model.predict(X_scaled, return_std=True)
-
-            # 不確実性の判定
-            # 学習データ全体での予測の標準偏差を計算
-            _, all_std = self.model.predict(self.X_train_scaled, return_std=True)
-            threshold = np.percentile(all_std, percentile_threshold)
-            baseline_std = np.mean(all_std)
-
-            # 不確実性が高いかどうかを判定
-            is_uncertain = (y_std[0] > threshold) or (y_std[0] > baseline_std * std_multiplier)
-
-            return y_pred[0], y_std[0], is_uncertain
-        else:
-            y_pred = self.model.predict(X_scaled)
-            return y_pred[0], None, None
+    # ----------------------------------------------------------------------
+    # GPU Configuration
+    # ----------------------------------------------------------------------
+    def _configure_gpu(self, use_gpu: bool) -> None:
+        """Configures GPU usage (currently not utilized)."""
+        from aiml.aiml_comm import configure_gpu
+        configure_gpu(use_gpu=use_gpu,logger=self.logger)
 
 
-def main():
-    # データ取得範囲
-    start_date = "2020-01-01"
-    end_date   = "2025-01-01"
+def execute_bayes_prediction_model(current_date: str,symbol: str,interval: int): # define function to execute the bayesian model
+    from aiml.aiml_comm import COLLECTIONS_TECH
+    from common.utils import get_config_model # import function to get config
 
-    # Mongoデータローダー（環境に応じて修正）
-    data_loader = MongoDataLoader()
-    df = data_loader.load_data_from_datetime_period(
-        start_date,
-        end_date,
-        coll_type=MARKET_DATA_TECH,
-        symbol="BTCUSDT",
-        interval=1440
+    model_id = "bayes_v1" # set model id
+    data_loader = MongoDataLoader() # initiate dataloader
+    logger = TradingLogger() # initiate logger
+
+    # Get model configuration from config file
+    config = get_config_model("MODEL_LONG_BAYES", model_id) # get config
+    model = BayesianPredictionModel( # initiate model
+        id=model_id,
+        config=config,
+        data_loader=data_loader,
+        logger=logger,
+        symbol=symbol,
+        interval=interval,
+        use_gpu=True
     )
-    print(df.tail())
 
-    # モデルのインスタンスを作成
-    model = BayesianPricePredictor(
+    model.load_model() # load the model
+    res = model.predict_for_date(current_date) # predict using the input date
+    return res # return prediction
+
+
+# --------------------------------------------------------------------------
+# main function (example usage)
+# --------------------------------------------------------------------------
+def main():
+    """Example usage of the BayesianPredictionModel."""
+    from aiml.aiml_comm import COLLECTIONS_TECH
+    from common.utils import get_config_model
+
+    model_id = "bayes_v1" # set model id
+    data_loader = MongoDataLoader() # initiate data loader
+    logger = TradingLogger() # initiate logger
+
+    config = get_config_model("MODEL_LONG_BAYES", model_id) # load config data
+    model = BayesianPredictionModel( # initiate the model
+        id=model_id,
+        config=config,
+        data_loader=data_loader,
+        logger=logger,
         symbol="BTCUSDT",
         interval=1440,
-        features=[
-            "open", "close", "high", "low", "volume",
-            "rsi", "macd", "macdsignal",
-            "ema", "sma",
-            "upper1", "lower1", "middle",
-        ],
-        model_params={
-            "max_iter": 300,
-            "tol": 1e-6,
-            "alpha_1": 1e-6,
-            "alpha_2": 1e-6,
-            "lambda_1": 1e-6,
-            "lambda_2": 1e-6,
-        }
+        use_gpu=True
     )
 
-    # データをロード (クラス内部でも保持するため)
-    df = model.load_data(start_date, end_date)
-    print("DataFrame columns:", df.columns)
-    print(df.head())
+    model.load_model()  # Load a pre-trained model
 
-    # 前処理 & 学習・テスト分割
-    # （テストデータがない可能性もあるため、その場合はスキップされる）
-    model.preprocess_data(df, train_end_date="2024-10-01", test_start_date="2024-10-01")
+    # ----  Sample code for training and evaluation (commented out) ----
 
-    # クロスバリデーション (学習データのみで実施)
-    model.cross_validate(n_splits=5, plot_last_fold=True)
+    # Example: Predict for a specific date
+    res = model.predict_for_date("2025-01-15 00:00:00")  # Example date
+    print("Prediction result:", res)
 
-    # 全学習データで最終モデルを訓練
-    model.train_final_model()
-
-    # テストデータで予測 & 評価（テストデータがない場合はスキップ）
-    y_pred, y_std = model.predict_test()
-    metrics = model.evaluate_test(y_pred)
-    print("\n=== Final Evaluation on Test Data ===")
-    print(f"Test MSE: {metrics['mse']}")
-    print(f"Test MAE: {metrics['mae']}")
-    print(f"Test R2 : {metrics['r2']}")
-
-    # テストデータでの予測結果を可視化
-    model.plot_test_result(y_pred, y_std, percentile_threshold=60.0)
-
-    # モデル情報を出力
-    model.print_model_info()
-
-    # 特定の日時に対して予測する例
-    target_date = "2025-01-01 00:00:00"
-    try:
-        pred_value, pred_std, is_uncertain = model.predict_for_date(target_date, return_std=True)
-        print(f"\nPredicted next-day close for {target_date} : {pred_value:.4f} (+/- {pred_std:.4f})")
-        if is_uncertain:
-            print("High uncertainty")
-        else:
-            print("Low uncertainty")
-    except ValueError as e:
-        print(f"Prediction error: {e}")
-
-    # 末尾5行を確認
-    print("\nDataFrame tail:")
-    print(df.tail())
 
 
 if __name__ == "__main__":
     main()
-

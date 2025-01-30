@@ -256,6 +256,53 @@ class MongoDataLoader(DataLoader):
                 finally:
                         self.close()
 
+        def load_data_from_datetime_period_option(
+                self, start_date: Optional[str] = None, end_date: Optional[str] = None) -> Optional[pd.DataFrame]:
+                """
+                Loads option data from MongoDB within a specified datetime range.
+
+                Args:
+                        start_date (Optional[str]): Start date in format 'YYYY-MM-DD HH:MM:SS'
+                        end_date (Optional[str]): End date in format 'YYYY-MM-DD HH:MM:SS'
+
+                Returns:
+                        Optional[pd.DataFrame]: DataFrame containing the option data within the specified range,
+                                                                 or None if no data is found
+                """
+                self.collection = "option_ticker"
+                self.connect()
+
+                try:
+                        # Create query
+                        query = {}
+                        if start_date is not None:
+                                start_dt = pd.to_datetime(start_date)
+                                query['date'] = {'$gte': start_dt.strftime('%Y-%m-%d %H:%M:%S')}
+                        if end_date is not None:
+                                end_dt = pd.to_datetime(end_date)
+                                if 'date' in query:
+                                        query['date']['$lte'] = end_dt.strftime('%Y-%m-%d %H:%M:%S')
+                                else:
+                                        query['date'] = {'$lte': end_dt.strftime('%Y-%m-%d %H:%M:%S')}
+
+                        # Retrieve data
+                        data = list(self.col.find(query))
+
+                        if len(data) > 0:
+                                self._df = pd.DataFrame(data)
+                                self._df['date'] = pd.to_datetime(self._df['date'])
+                                self.set_df_raw(self._df)
+                                self.remove_unuse_colums()
+                                return self._df
+                        else:
+                                self.logger.log_system_message("No data found for the specified datetime range.")
+                                return None
+                except OperationFailure as e:
+                        self.logger.log_system_message(f"Failed to load data: {str(e)}")
+                        raise
+                finally:
+                        self.close()
+
 
         def load_data_from_point_date(
                 self, point_date: Union[str, datetime], nsteps: int, collection_name: str, symbol: Optional[str] = None,interval: Optional[int]=None

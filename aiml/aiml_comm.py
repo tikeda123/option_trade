@@ -13,6 +13,7 @@ parent_dir = os.path.dirname(current_dir)
 sys.path.append(parent_dir)
 
 from common.constants import MARKET_DATA_ML_UPPER, MARKET_DATA_ML_LOWER
+from common.trading_logger import TradingLogger
 from mongodb.data_loader_mongo import MongoDataLoader
 
 # Lists of MongoDB collection names for different data types
@@ -173,6 +174,29 @@ def setup_gpu():
                 else:
                                 print("GPU is not available, using CPU")
 
+
+def configure_gpu(use_gpu: bool,logger:TradingLogger) -> None:
+        """
+        GPUの使用を設定する。
+        """
+        if not use_gpu:
+            tf.config.set_visible_devices([], "GPU")
+            logger.log_system_message("GPU disabled for inference.")
+            return
+
+        # GPUがある場合の設定
+        gpus = tf.config.list_physical_devices("GPU")
+        if gpus:
+            try:
+                for gpu in gpus:
+                    tf.config.experimental.set_memory_growth(gpu, True)
+                logger.log_system_message(
+                    f"GPU enabled for inference. Available GPUs: {len(gpus)}"
+                )
+            except RuntimeError as e:
+                logger.log_error(f"GPU configuration error: {str(e)}")
+        else:
+            logger.log_system_message("No GPU available, using CPU instead.")
 
 def load_data(
                 db: MongoDataLoader, start_date: str, end_date: str, collections: list

@@ -92,6 +92,12 @@ class ModelGroupManager:
 
         def init_models(self):
                 """Initializes PredictionManager for each model."""
+                self.managers_sp = PredictionManager()
+                config = get_config_model("MODEL_SHORT_TERM", "rolling_v1")  # Get the model configuration
+                self.managers_sp.initialize_model('rolling_v1', config)
+                self.managers_sp.load_model()
+                X_train, x_test, y_train, y_test  = self.managers_sp.load_and_prepare_data("2023-01-01", "2025-01-01", test_size=0.8)
+                self.managers_sp.evaluate_model()
                 for id_name in self.manager_list:
                         self.managers[id_name] = PredictionManager()
                         config = self.config[id_name]
@@ -332,10 +338,15 @@ class ModelGroupManager:
                 Returns:
                         The prediction made by the model.
                 """
+                #df = self.managers_sp.create_time_series_data(df)
+                prediction = self.managers_sp.predict_model(df)
+                print(f"***************************************************************prediction: {prediction}")
+                return prediction
+
                 # Generate prediction
                 target_df = self.managers[id_name].create_time_series_data(df)
                 prediction = self.managers[id_name].predict_model(
-                        target_df, probability=True
+                        target_df, probability=False
                 )
 
                 # Update predictions in DataManager
@@ -375,8 +386,7 @@ class ModelGroupManager:
 
 
 
-                df = self.data_loader.load_data_from_point_date(mod_date,TIME_SERIES_PERIOD,MARKET_DATA_TECH,self.symbol, interval_aligned)
-                #print(df)
+                df = self.data_loader.load_data_from_point_date(mod_date,TIME_SERIES_PERIOD,MARKET_DATA_TECH)
 
                 if  df['date'].isna().any():
                         print(f'************************************************************************************')
@@ -385,17 +395,7 @@ class ModelGroupManager:
                         exit(0)
 
                 # Generate predictions from all models
-                rolling_pred = {}
-                for i, id_name in enumerate(self.manager_list):
-                        prediction = self.generate_and_update_single_model_prediction(
-                                context, df, id_name
-                        )
-                        rolling_pred[i] = prediction
 
-                # Select top models and calculate weighted average prediction
-                top_model_indices = self.select_top_models(context)
-                combined_pred = np.mean([rolling_pred[i] for i in top_model_indices])
-                #prediction = 1 if combined_pred > 0.5 else 0
-
-                #context.log_transaction(f"Pred_b {prediction}  {combined_pred}")
-                return True, combined_pred
+                prediction = self.managers_sp.predict_model(df)
+                print(f"***************************************************************prediction: {prediction}")
+                return True, prediction

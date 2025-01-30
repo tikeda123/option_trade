@@ -18,7 +18,7 @@ from trading_analysis_kit.simulation_strategy_context import SimulationStrategyC
 from trading_analysis_kit.dynamic_modelselection_strategy import DynamicModelSelectionStrategy
 from trading_analysis_kit.simulation_entry_strategy_singlemodel import EntryStrategySIngleModel
 from trading_analysis_kit.simulation_entry_strategy_group import EntryStrategyGroup
-from aiml.prediciton_option_model import prediction_option_model
+from aiml.prediciton_option_model import prediction_option_model,garch_should_entry
 from aiml.prediction_option_bayes_model import prediction_option_bayes_model
 
 from trade_config import trade_config
@@ -38,7 +38,7 @@ class SimulationStrategy(TradingStrategy):
                 #self.__entry_strategy = EntryStrategySIngleModel()
                 self.__entry_strategy = EntryStrategyGroup()
 
-        def should_entry(self, context, index: int) -> bool:
+        def should_entry(self, context:SimulationStrategyContext, index: int) -> bool:
                 """
                 Determines whether to enter a trade.
 
@@ -58,6 +58,8 @@ class SimulationStrategy(TradingStrategy):
                 context.dm.set_bb_direction(BB_DIRECTION_UPPER)
                 return True
 
+
+
         def Idle_event_execute(self, context: SimulationStrategyContext)->None:
                 """
                 Executes an event in the idle state, transitioning to the entry preparation state.
@@ -70,31 +72,25 @@ class SimulationStrategy(TradingStrategy):
                 #        return
 
                 # Get trend prediction from the entry manager
-
-                pred_value, pred_std, is_uncertain = prediction_option_bayes_model(context.dm.get_current_date())
-
-
+                flag,trend = self.__entry_strategy.trend_prediction(context)
                 close_price = context.dm.get_close_price()
 
-                if close_price > pred_value:
-                        pred = 0
-                        exit_price = pred_value - pred_std
+                if trend == 2:
+                        pred = PRED_TYPE_LONG
+                        exit_price = close_price*1.02
+                elif trend == 0:
+                        pred = PRED_TYPE_SHORT
+                        exit_price = close_price*0.98
                 else:
-                        pred = 1
-                        exit_price = pred_value + pred_std
-                        
-                context.dm.set_entry_price_garch(close_price)
-                context.dm.set_exit_price_garch(exit_price)
-
-
-                context.dm.set_prediction(pred)
-                context.dm.set_entry_price_garch(close_price)
-                context.dm.set_exit_price_garch(exit_price)
-
+                        return False
+                close_price = context.dm.get_close_price()
+                context.dm.set_entry_type(pred)
                 context.dm.set_entry_price(close_price)
-                self.trade_entry(context, close_price)
+                context.dm.set_exit_price_garch(exit_price)
+
+                self.trade_entry(context,close_price)
+                # Transition to the position state
                 context.change_to_position_state()
-                context.dm.increment_entry_counter()
                 return
 
         def EntryPreparation_event_execute(self, context: SimulationStrategyContext)->None:
@@ -234,6 +230,7 @@ class SimulationStrategy(TradingStrategy):
                 # Update current maximum and minimum profit and loss
                 context.set_current_max_min_pandl()
                 # Check if a loss-cut is triggered
+                pandl = self.calculate_current_pandl(context)
 
                 if self.trigger_exit_price(context):
                         self._handle_position_exit(context, context.dm.get_exit_price_garch())
@@ -247,9 +244,8 @@ class SimulationStrategy(TradingStrategy):
                         return True
 
                 if context.dm.get_entry_counter() > 3:
-                        self._handle_position_exit(context, context.dm.get_close_price())
+                        self._handle_position_exit(context, context.dm.get_exit_price_garch())
                         return True
-
                 return False
 
 
