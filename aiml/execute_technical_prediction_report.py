@@ -73,8 +73,8 @@ def execute_technical_prediction(current_date: str, output_file: str) -> None:
     # Convert string date to datetime object before adding timedelta
     current_date_dt = datetime.strptime(current_date, "%Y-%m-%d %H:%M:%S")
     prediction_date = current_date_dt + timedelta(days=3)
-    model_target = ["ema", "macdhist", "roc", "mfi", "aroon"]
-    model_id_list = ["rolling_v1", "rolling_v2", "rolling_v3", "rolling_v4", "rolling_v5"]
+    model_target = ["ema", "macdhist", "roc", "mfi", "aroon","volatility"]
+    model_id_list = ["rolling_v1", "rolling_v2", "rolling_v3", "rolling_v4", "rolling_v5", "rolling_v6"]
     model_list = []
 
     for model_id in model_id_list:

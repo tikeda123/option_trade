@@ -40,7 +40,6 @@ class TechnicalAnalyzer:
                 self.__data_loader = MongoDataLoader()
                 # Initialize the configuration manager for accessing technical analysis settings
                 self.__config_manager = ConfigManager()
-                self.interval = int(self.__config_manager.get('TRADE_CONFIG', 'INTERVAL'))
 
                 # If a DataFrame is provided, use it; otherwise, initialize an empty DataFrame
                 if df is not None:
@@ -167,8 +166,7 @@ class TechnicalAnalyzer:
                 self.calculate_ROC()
                 # Calculate Average True Range (ATR)
                 self.calculate_ATR()
-                # Calculate Volatility
-                self.calculate_volatility(self.interval)
+
                 # Finalize the analysis by handling any remaining data cleanup
                 self.finalize_analysis()
                 return self.__data
@@ -205,43 +203,6 @@ class TechnicalAnalyzer:
                 self.__data[COLUMN_MFI] = ta.MFI(self.__data[COLUMN_HIGH], self.__data[COLUMN_LOW], self.__data[COLUMN_CLOSE], self.__data[COLUMN_VOLUME], timeperiod)
                 # Truncate the MFI values and add them to the DataFrame
                 self._truncate_and_add_to_df(self.__data[COLUMN_MFI], COLUMN_MFI)
-
-
-        def calculate_volatility(self, interval: int = 1440):
-                """
-                interval: Candlestick interval in minutes (e.g., 1440=daily, 240=4h, 60=1h)
-                         Assumes 365 trading days per year for bars_per_year = bars_per_day * 365
-                """
-                timeperiod_days = float(self.__config_manager.get('TECHNICAL', 'VOLATILITY', 'TIMEPERIOD'))
-                # Using float here for flexibility, though int would also work
-
-                # 2) Number of bars per day (divide total minutes in day by interval)
-                bars_per_day = 1440 / interval  # e.g., interval=60 means 24 bars, 240 means 6 bars
-
-                # 3) Number of bars for rolling calculation (specified days x bars per day)
-                bars_for_rolling = int(timeperiod_days * bars_per_day)
-                # e.g., timeperiod_days=30, interval=60(1h) → bars_for_rolling=30×24=720
-
-                # 4) Number of bars per year (assuming 365 days) → annual_factor as √(bars_per_year)
-                bars_per_year = bars_per_day * 365
-                annual_factor = np.sqrt(bars_per_year)
-
-                # 5) Calculate logarithmic returns
-                self.__data['log_returns'] = np.log(
-                        self.__data[COLUMN_WCLPRICE] / self.__data[COLUMN_WCLPRICE].shift(1)
-                )
-
-                # 6) Rolling standard deviation (over past bars_for_rolling bars)
-                if bars_for_rolling < 2:
-                        # If insufficient samples for rolling calculation, set to NaN
-                        self.__data['volatility'] = np.nan
-                else:
-                        rolling_std = self.__data['log_returns'].rolling(bars_for_rolling).std()
-                        # 7) Annualize (rolling_std × annual_factor)
-                        self.__data['volatility'] = rolling_std * annual_factor
-
-                # Round to 2 decimal places
-                self._truncate_and_add_to_df(self.__data['volatility'], 'volatility')
 
         def calculate_wclprice(self):
                 """
@@ -509,23 +470,20 @@ def main():
         """
         Main function to demonstrate the usage of the TechnicalAnalyzer class.
         """
-        condition_list = [('BNBUSDT', 720), ('BNBUSDT', 240), ('BNBUSDT', 120), ('BNBUSDT', 60), ('BNBUSDT', 1440),('BNBUSDT', 10080),
-                                        ('BTCUSDT', 720), ('BTCUSDT', 240), ('BTCUSDT', 120), ('BTCUSDT', 60), ('BTCUSDT', 1440),('BTCUSDT', 10080),
-                                        ('ETHUSDT', 720), ('ETHUSDT', 240), ('ETHUSDT', 120), ('ETHUSDT', 60), ('ETHUSDT', 1440),('ETHUSDT', 10080),
-                                        ('SOLUSDT', 720), ('SOLUSDT', 240), ('SOLUSDT', 120), ('SOLUSDT', 60), ('SOLUSDT', 1440),('SOLUSDT', 10080)]
+        condition_list = [('BNBUSDT', 720), ('BNBUSDT', 240), ('BNBUSDT', 120), ('BNBUSDT', 60), ('BNBUSDT', 30), ('BNBUSDT', 15), ('BNBUSDT', 5),
+                                        ('BTCUSDT', 720), ('BTCUSDT', 240), ('BTCUSDT', 120), ('BTCUSDT', 60), ('BTCUSDT', 30), ('BTCUSDT', 15), ('BTCUSDT', 5),
+                                        ('ETHUSDT', 720), ('ETHUSDT', 240), ('ETHUSDT', 120), ('ETHUSDT', 60), ('ETHUSDT', 30), ('ETHUSDT', 15), ('ETHUSDT', 5),
+                                        ('SOLUSDT', 720), ('SOLUSDT', 240), ('SOLUSDT', 120), ('SOLUSDT', 60), ('SOLUSDT', 30), ('SOLUSDT', 15), ('SOLUSDT', 5)]
 
         analyzer = TechnicalAnalyzer()
         for symbol, interval in condition_list:
                 ts_collection = "market_data"
-                print(f"Loading data for {symbol} {interval}")
-                df = analyzer.load_data_from_db(ts_collection, symbol=symbol, interval=interval)
-                if df is not None:
-                        result = analyzer.analyze(df)
-                        analyzer.insert_data(symbol=symbol, interval=interval)
-                        print(f"Inserted data for {symbol} {interval}")
-                        print(result)
-                else:
-                        print(f"No data found for {symbol} {interval}")
+                analyzer.load_data_from_db(ts_collection, symbol=symbol, interval=interval)
+                result = analyzer.analyze()
+                analyzer.insert_data(symbol=symbol, interval=interval)
+                print(f"Inserted data for {symbol} {interval}")
+                print(result)
+
 
                 #print(f"Dropping collection {ts_collection}")
 

@@ -66,65 +66,37 @@ def main():
     predict_col = "ask1Price"
     db = MongoDataLoader()
 
-    df = db.load_data(OPTION_TICKER)
+    df = db.load_data_from_datetime_period(datetime(2024, 1, 1),
+                                           datetime(2025, 1, 1),
+                                           coll_type=MARKET_DATA_TECH,
+                                           symbol='BTCUSDT',
+                                           interval=1440)
 
-    # ------------------------------
-    # データ前処理: 0→NaN変換, IQR外れ値処理, 補間, dropna
-    # ------------------------------
+    graph_df = df[['start_at', 'close', 'volatility']]
+    graph_df.set_index('start_at', inplace=True)
 
-    df = clean_option_data(
-        df,
-        group_col='symbol',
-        columns_to_clean=['ask1Price', 'ask1Iv', 'bid1Price', 'bid1Iv'],  # 必要に応じて追加
-        outlier_factor=1.5,  # IQR factor
-        dropna_after=True
-    )
+    # Create figure and axis objects with a single subplot
+    fig, ax1 = plt.subplots(figsize=(15, 7))
 
-    # シンボルごとの時系列データを取得
-    symbol_groups = process_option_data(df)
+    # Plot close price on primary y-axis
+    color = 'tab:blue'
+    ax1.set_xlabel('Time')
+    ax1.set_ylabel('Close Price (USDT)', color=color)
+    ax1.plot(graph_df.index, graph_df['close'], color=color)
+    ax1.tick_params(axis='y', labelcolor=color)
+    ax1.set_ylim(30000, 120000)
 
-    # 特定のシンボルのデータを取り出す例
-    #target_symbol = df['symbol'].unique()[0]  # 最初のシンボルを例として使用
+    # Create second y-axis that shares x-axis
+    ax2 = ax1.twinx()
+    color = 'tab:red'
+    ax2.set_ylabel('Volatility', color=color)
+    ax2.plot(graph_df.index, graph_df['volatility'], color=color)
+    ax2.tick_params(axis='y', labelcolor=color)
+    ax2.set_ylim(0, 1)  # Set volatility range from 0 to 1
 
-    target_symbol = "BTC-28MAR25-95000-P"
-
-    symbol_data = symbol_groups[target_symbol]
-
-    # 時系列データの基本情報を表示
-    print(f"Symbol: {target_symbol}")
-    print(f"Data period: {symbol_data.index.min()} to {symbol_data.index.max()}")
-    print(f"Number of data points: {len(symbol_data)}")
-    print("\nFeature columns:")
-    for col in FEATURE_COLS:
-        if col in symbol_data.columns:
-            print(f"{col}: {symbol_data[col].describe()}")
-
-
-
-
-
-
-
-    # グラフのスタイル設定
-    plt.style.use('seaborn-v0_8')
-    plt.figure(figsize=(15, 7))
-
-    # ask1PriceとbidPriceの時系列プロット
-    plt.plot(symbol_data.index, symbol_data['ask1Price'], label='Ask Price', color='red', alpha=0.7)
-    plt.plot(symbol_data.index, symbol_data['bid1Price'], label='Bid Price', color='blue', alpha=0.7)
-
-    # グラフの設定
-    plt.title(f'Ask/Bid Price Time Series for {target_symbol}', fontsize=14)
-    plt.xlabel('Date', fontsize=12)
-    plt.ylabel('Price', fontsize=12)
-    plt.grid(True, alpha=0.3)
-    plt.legend()
-
-    # x軸の日付表示を見やすく調整
-    plt.xticks(rotation=45)
-    plt.tight_layout()
-
-    # グラフを表示
+    # Add title and adjust layout
+    plt.title('BTC-USDT Close Price and Volatility Over Time')
+    fig.tight_layout()
     plt.show()
 
 if __name__ == "__main__":

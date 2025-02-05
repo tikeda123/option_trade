@@ -20,6 +20,8 @@ from aiml.lstm_prediction_rolling_model import LSTMPredictionRollingModel
 from aiml.transformer_prediction_rolling_model import TransformerPredictionRollingModel
 #from aiml.transformer_prediction_logsparse import TransformerPredictionRollingModel
 #from aiml.transformer_triclass_rolling_model import TransformerPredictionRollingModel
+#from aiml.transformer_prediction_rolling_model_atvis import TransformerPredictionRollingModel
+
 from aiml.aiml_comm import process_timestamp_and_cyclical_features
 from aiml.aiml_comm import COLLECTIONS_LOWER, COLLECTIONS_UPPER, COLLECTIONS_TECH
 
@@ -374,7 +376,7 @@ from sklearn.metrics import accuracy_score, classification_report, confusion_mat
 
 def main():
         manager = PredictionManager()
-        config = get_config_model("MODEL_SHORT_TERM", "rolling_v1")  # Get the model configuration
+        config = get_config_model("MODEL_SHORT_TERM", "rolling_v7")  # Get the model configuration
 
         manager.initialize_model("rolling_v1", config)
 

@@ -87,6 +87,9 @@
                 },
                 "EMA": {
                         "TIMEPERIOD": 4
+                },
+                "VOLATILITY": {
+                        "TIMEPERIOD": 30
                 }
         }
 }
