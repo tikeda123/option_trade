@@ -18,9 +18,6 @@ from trading_analysis_kit.simulation_strategy_context import SimulationStrategyC
 from trading_analysis_kit.dynamic_modelselection_strategy import DynamicModelSelectionStrategy
 from trading_analysis_kit.simulation_entry_strategy_singlemodel import EntryStrategySIngleModel
 from trading_analysis_kit.simulation_entry_strategy_group import EntryStrategyGroup
-from aiml.prediciton_option_model import prediction_option_model,garch_should_entry
-from aiml.prediction_option_bayes_model import prediction_option_bayes_model
-
 from trade_config import trade_config
 
 class SimulationStrategy(TradingStrategy):
@@ -38,7 +35,7 @@ class SimulationStrategy(TradingStrategy):
                 #self.__entry_strategy = EntryStrategySIngleModel()
                 self.__entry_strategy = EntryStrategyGroup()
 
-        def should_entry(self, context:SimulationStrategyContext, index: int) -> bool:
+        def should_entry(self, context, index: int) -> bool:
                 """
                 Determines whether to enter a trade.
 
@@ -55,10 +52,28 @@ class SimulationStrategy(TradingStrategy):
                 """
                 if context.dm.get_current_index() < TIME_SERIES_PERIOD:
                         return False
-                context.dm.set_bb_direction(BB_DIRECTION_UPPER)
-                return True
 
+                # Check if the closing price crosses the upper Bollinger Band
+                if context.is_first_column_greater_than_second(COLUMN_CLOSE, COLUMN_UPPER_BAND2, index):
+                        context.log_transaction(f'upper band cross')
+                        if trade_config.entry_enabled  == False:
+                                context.log_transaction(f'entry disabled')
+                                return False
 
+                        context.dm.set_bb_direction(BB_DIRECTION_UPPER)
+                        return True
+                # Check if the closing price crosses the lower Bollinger Band
+                elif context.is_first_column_less_than_second(COLUMN_CLOSE, COLUMN_LOWER_BAND2, index):
+                        context.log_transaction(f'lower band cross')
+                        if trade_config.entry_enabled  == False:
+                                context.log_transaction(f'entry disabled')
+                                return False
+
+                        context.dm.set_bb_direction(BB_DIRECTION_LOWER)
+                        return True
+
+                # No entry condition met
+                return False
 
         def Idle_event_execute(self, context: SimulationStrategyContext)->None:
                 """
@@ -72,23 +87,14 @@ class SimulationStrategy(TradingStrategy):
                 #        return
 
                 # Get trend prediction from the entry manager
-                flag,trend = self.__entry_strategy.trend_prediction(context)
-                close_price = context.dm.get_close_price()
+                flag, pred = self.__entry_strategy.trend_prediction(context)
 
-                if trend == 2:
-                        pred = PRED_TYPE_LONG
-                        exit_price = close_price*1.02
-                elif trend == 0:
-                        pred = PRED_TYPE_SHORT
-                        exit_price = close_price*0.98
-                else:
-                        return False
-                close_price = context.dm.get_close_price()
-                context.dm.set_entry_type(pred)
-                context.dm.set_entry_price(close_price)
-                context.dm.set_exit_price_garch(exit_price)
+                if flag ==False:
+                        # Transition to the entry preparation state
+                        return
 
-                self.trade_entry(context,close_price)
+                context.dm.set_prediction(pred)
+                self.trade_entry(context)
                 # Transition to the position state
                 context.change_to_position_state()
                 return
@@ -101,27 +107,8 @@ class SimulationStrategy(TradingStrategy):
 
                 Args:
                         context (TradingContext): The trading context object.
-
                 """
-                entry_price = context.dm.get_entry_price_garch()
-
-                lower_price = context.dm.get_low_price()
-                upper_price = context.dm.get_high_price()
-
-                if entry_price < lower_price:
-                        context.change_to_idle_state()
-                        return
-
-                if entry_price > upper_price:
-                        context.change_to_idle_state()
-                        return
-
-                context.dm.set_entry_price(entry_price)
-                self.trade_entry(context, entry_price)
-                context.change_to_position_state()
-                context.dm.increment_entry_counter()
-                return
-
+                pass
 
         def PositionState_event_exit_execute(self, context: SimulationStrategyContext)->None:
                 """
@@ -157,8 +144,42 @@ class SimulationStrategy(TradingStrategy):
                 # Log the current profit and loss
                 context.log_transaction(f'continue Position state pandl:{pandl}')
 
-                context.dm.increment_entry_counter()
-                return
+                # Get the Bollinger Band direction and prediction
+                bb_direction = context.dm.get_bb_direction()
+                pred = context.dm.get_prediction()
+
+                # Define exit conditions based on Bollinger Band direction and prediction
+                position_state_dict = {
+                        (BB_DIRECTION_UPPER, PRED_TYPE_LONG): ['less_than', COLUMN_MIDDLE_BAND],
+                        (BB_DIRECTION_UPPER, PRED_TYPE_SHORT): ['less_than', COLUMN_LOWER_BAND1],
+                        (BB_DIRECTION_LOWER, PRED_TYPE_LONG): ['greater_than', COLUMN_UPPER_BAND1],
+                        (BB_DIRECTION_LOWER, PRED_TYPE_SHORT): ['greater_than', COLUMN_MIDDLE_BAND]
+                }
+
+                # Get the exit condition for the current direction and prediction
+                condition = position_state_dict.get((bb_direction, pred))
+                # If no condition is found, continue holding the position
+                if condition is None:
+                        raise ValueError(ERROR_MESSAGE_BB_DIRECTION.format(bb_direction=bb_direction))
+
+                # Extract the operator and column for the exit condition
+                operator, column = condition
+
+                # Check if the exit condition is met
+
+
+                if operator == 'less_than':
+                        if context.is_first_column_less_than_second(COLUMN_CLOSE, column, context.dm.get_current_index()):
+                                        self._handle_position_exit(context, context.dm.get_close_price())
+                                        return
+
+                elif operator == 'greater_than':
+                        if context.is_first_column_greater_than_second(COLUMN_CLOSE, column, context.dm.get_current_index()):
+                                        self._handle_position_exit(context, context.dm.get_close_price())
+                                        return
+
+
+                # No exit condition met, continue holding the position
 
 
         def ExitPreparationState_event_exit_execute(self, context: SimulationStrategyContext)->None:
@@ -189,29 +210,7 @@ class SimulationStrategy(TradingStrategy):
                 context.log_transaction(f'continue Position state pandl:{pandl}')
 
 
-        def trigger_exit_price(self, context:SimulationStrategyContext) -> bool:
-                """
-                Determines whether to exit the current position.
 
-                Args:
-                        context (TradingContext): The trading context object.
-
-                Returns:
-                        bool: True if the position should be exited, False otherwise.
-                """
-                exit_price = context.dm.get_exit_price_garch()
-                lower_price = context.dm.get_low_price()
-                upper_price = context.dm.get_high_price()
-
-                entry_type = context.dm.get_entry_type()
-
-                if entry_type == ENTRY_TYPE_LONG:
-                        if exit_price < upper_price:
-                                return True
-                else:
-                        if exit_price > lower_price:
-                                return True
-                return False
 
         def should_exit_position(self, context:SimulationStrategyContext, index: int) -> bool:
                 """
@@ -230,12 +229,6 @@ class SimulationStrategy(TradingStrategy):
                 # Update current maximum and minimum profit and loss
                 context.set_current_max_min_pandl()
                 # Check if a loss-cut is triggered
-                pandl = self.calculate_current_pandl(context)
-
-                if self.trigger_exit_price(context):
-                        self._handle_position_exit(context, context.dm.get_exit_price_garch())
-                        return True
-
                 is_losscut_triggered, exit_price = self.is_losscut_triggered(context)
 
                 # If loss-cut is triggered, exit the position
@@ -243,9 +236,6 @@ class SimulationStrategy(TradingStrategy):
                         self._handle_position_exit(context, exit_price, losscut=True)
                         return True
 
-                if context.dm.get_entry_counter() > 3:
-                        self._handle_position_exit(context, context.dm.get_exit_price_garch())
-                        return True
                 return False
 
 
@@ -263,7 +253,48 @@ class SimulationStrategy(TradingStrategy):
                 This method checks for loss-cut triggers and specific exit conditions based on the Bollinger Band direction and prediction.
                 If any of these conditions are met, it calls _handle_position_exit to exit the trade and returns True.
                 """
+                # Update current maximum and minimum profit and loss
+                context.set_current_max_min_pandl()
+                # Check if a loss-cut is triggered
+                is_losscut_triggered, exit_price = self.is_losscut_triggered(context)
 
+                # If loss-cut is triggered, exit the position
+                if is_losscut_triggered:
+                        self._handle_position_exit(context, exit_price, losscut=True)
+                        return True
+
+
+                bb_direction = context.dm.get_bb_direction()
+                pred = context.dm.get_prediction()
+
+                # Define exit conditions based on Bollinger Band direction and prediction
+                position_state_dict = {
+                        (BB_DIRECTION_UPPER, PRED_TYPE_LONG): ['less_than', COLUMN_MIDDLE_BAND],
+                        (BB_DIRECTION_UPPER, PRED_TYPE_SHORT): ['less_than', COLUMN_LOWER_BAND1],
+                        (BB_DIRECTION_LOWER, PRED_TYPE_LONG): ['greater_than', COLUMN_UPPER_BAND1],
+                        (BB_DIRECTION_LOWER, PRED_TYPE_SHORT): ['greater_than', COLUMN_MIDDLE_BAND]
+                }
+
+                # Get the exit condition for the current direction and prediction
+                condition = position_state_dict.get((bb_direction, pred))
+                # If no condition is found, continue holding the position
+                if condition is None:
+                        raise ValueError(ERROR_MESSAGE_BB_DIRECTION.format(bb_direction=bb_direction))
+
+                # Extract the operator and column for the exit condition
+                operator, column = condition
+
+                # Check if the exit condition is met
+                if operator == 'less_than':
+                        if context.is_first_column_less_than_second(COLUMN_CLOSE, column, index):
+                                self._handle_position_exit(context, context.dm.get_close_price())
+                                return True
+                elif operator == 'greater_than':
+                        if context.is_first_column_greater_than_second(COLUMN_CLOSE, column, index):
+                                self._handle_position_exit(context, context.dm.get_close_price())
+                                return True
+
+                # No exit condition met, continue holding the position
                 return False
 
 
@@ -318,7 +349,7 @@ class SimulationStrategy(TradingStrategy):
                 # Transition to the idle state
                 context.change_to_idle_state()
 
-        def trade_entry(self, context, entry_price):
+        def trade_entry(self, context):
                 """
                 Executes a trade entry, determining the entry type based on the Bollinger Band direction and prediction.
                 It records the trade details and updates the transaction serial number in the data manager.
@@ -330,6 +361,7 @@ class SimulationStrategy(TradingStrategy):
                 date = context.dm.get_current_date()
                 pred = context.dm.get_prediction()
                 bb_direction = context.dm.get_bb_direction()
+                entry_price = context.dm.get_close_price()
                 leverage = context.lop.leverage()
                 losscut = context.lop.loss_cut()
 

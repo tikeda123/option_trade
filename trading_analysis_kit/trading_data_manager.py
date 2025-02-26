@@ -31,6 +31,30 @@ class TradingDataManager:
 
                 self.reset_index()  # Reset all trade-related indices
 
+        def get_support_line(self) -> float:
+                """
+                Gets the support line for the current trade.
+                """
+                return self.state_data.get_support_line()
+
+        def set_support_line(self, support_line: float):
+                """
+                Sets the support line for the current trade.
+                """
+                self.state_data.set_support_line(support_line)
+
+        def get_resistance_line(self) -> float:
+                """
+                Gets the resistance line for the current trade.
+                """
+                return self.state_data.get_resistance_line()
+
+        def set_resistance_line(self, resistance_line: float):
+                """
+                Sets the resistance line for the current trade.
+                """
+                self.state_data.set_resistance_line(resistance_line)
+
         def get_df_fromto(self, start_index: int, end_index: int) -> pd.DataFrame:
                 """
                 Retrieves a subset of the DataFrame between the specified start and end indices.

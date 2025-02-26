@@ -13513,3 +13513,490 @@ weighted avg       0.61      0.62      0.59       196
 2025-02-05 23:47:37,637 INFO: Loading scaler from /home/tikeda/workspace/trade/option_trade/data/data_rolling/rolling_BTC_ETH_SOL_BNB_1440_xd_model_volatility3.scaler
 2025-02-05 23:47:43,136 INFO: GPU enabled for inference. Available GPUs: 1
 2025-02-05 23:47:43,136 INFO: Loading model from /home/tikeda/workspace/trade/option_trade/data/data_bayes/bayes_BTC_ETH_SOL_BNB_1440_xd_model_close3.joblib
+2025-02-18 18:28:14,540 INFO: Collection 'trade_config' exists.
+2025-02-18 18:28:14,547 INFO: Collection 'trade_config' dropped successfully.
+2025-02-18 18:28:14,560 INFO: Collection 'trade_config' does not exist.
+2025-02-18 18:29:04,059 INFO: Collection 'trade_config' exists.
+2025-02-18 18:29:04,065 INFO: Collection 'trade_config' dropped successfully.
+2025-02-18 18:29:04,071 INFO: Collection 'trade_config' does not exist.
+2025-02-18 18:29:04,504 INFO: GPU enabled for inference. Available GPUs: 1
+2025-02-18 18:29:04,505 INFO: Loading model from /home/tikeda/workspace/trade/option_trade/data/data_bayes/bayes_BTC_ETH_SOL_BNB_1440_xd_model_close3.joblib
+2025-02-22 20:08:18,948 INFO: Collection 'trade_config' exists.
+2025-02-22 20:08:18,954 INFO: Collection 'trade_config' dropped successfully.
+2025-02-22 20:08:18,961 INFO: Collection 'trade_config' does not exist.
+2025-02-22 20:08:19,244 INFO: GPU enabled for inference. Available GPUs: 1
+2025-02-22 20:08:19,244 INFO: Loading model from file: /home/tikeda/workspace/trade/option_trade/data/data_rolling/rolling_BTC_ETH_SOL_BNB_60_120_240_720_d_model_roc1.keras
+2025-02-22 20:08:24,521 INFO: Loading scaler from /home/tikeda/workspace/trade/option_trade/data/data_rolling/rolling_BTC_ETH_SOL_BNB_60_120_240_720_d_model_roc1.scaler
+2025-02-22 20:08:24,523 INFO: Loading scaler from /home/tikeda/workspace/trade/option_trade/data/data_rolling/rolling_BTC_ETH_SOL_BNB_60_120_240_720_d_model_roc1.scaler
+2025-02-22 20:08:24,525 INFO: GPU enabled for inference. Available GPUs: 1
+2025-02-22 20:08:24,525 INFO: Loading model from file: /home/tikeda/workspace/trade/option_trade/data/data_rolling/rolling_BTC_ETH_SOL_BNB_60_120_240_720_d_model_ema1.keras
+2025-02-22 20:08:29,639 INFO: Loading scaler from /home/tikeda/workspace/trade/option_trade/data/data_rolling/rolling_BTC_ETH_SOL_BNB_60_120_240_720_d_model_ema1.scaler
+2025-02-22 20:08:29,641 INFO: Loading scaler from /home/tikeda/workspace/trade/option_trade/data/data_rolling/rolling_BTC_ETH_SOL_BNB_60_120_240_720_d_model_ema1.scaler
+2025-02-22 20:08:29,642 INFO: GPU enabled for inference. Available GPUs: 1
+2025-02-22 20:08:29,642 INFO: Loading model from file: /home/tikeda/workspace/trade/option_trade/data/data_rolling/rolling_BTC_ETH_SOL_BNB_60_120_240_720_d_model_macd1.keras
+2025-02-22 20:08:34,767 INFO: Loading scaler from /home/tikeda/workspace/trade/option_trade/data/data_rolling/rolling_BTC_ETH_SOL_BNB_60_120_240_720_d_model_macd1.scaler
+2025-02-22 20:08:34,788 INFO: Loading scaler from /home/tikeda/workspace/trade/option_trade/data/data_rolling/rolling_BTC_ETH_SOL_BNB_60_120_240_720_d_model_macd1.scaler
+2025-02-22 20:08:34,790 INFO: GPU enabled for inference. Available GPUs: 1
+2025-02-22 20:08:34,790 INFO: Loading model from file: /home/tikeda/workspace/trade/option_trade/data/data_rolling/rolling_BTC_ETH_SOL_BNB_60_120_240_720_d_model_sma1.keras
+2025-02-22 20:08:35,237 INFO: Loading scaler from /home/tikeda/workspace/trade/option_trade/data/data_rolling/rolling_BTC_ETH_SOL_BNB_60_120_240_720_d_model_sma1.scaler
+2025-02-22 20:08:35,238 INFO: Loading scaler from /home/tikeda/workspace/trade/option_trade/data/data_rolling/rolling_BTC_ETH_SOL_BNB_60_120_240_720_d_model_sma1.scaler
+2025-02-22 20:08:35,239 INFO: GPU enabled for inference. Available GPUs: 1
+2025-02-22 20:08:35,239 INFO: Loading model from file: /home/tikeda/workspace/trade/option_trade/data/data_rolling/rolling_BTC_ETH_SOL_BNB_60_120_240_720_d_model_mfi1.keras
+2025-02-22 20:17:54,313 INFO: Collection 'trade_config' exists.
+2025-02-22 20:17:54,319 INFO: Collection 'trade_config' dropped successfully.
+2025-02-22 20:17:54,325 INFO: Collection 'trade_config' does not exist.
+2025-02-22 20:17:54,492 INFO: GPU enabled for inference. Available GPUs: 1
+2025-02-22 20:17:54,493 INFO: Loading model from file: /home/tikeda/workspace/trade/option_trade/data/data_rolling/rolling_BTC_ETH_SOL_BNB_1440_xd_model_ema3.keras
+2025-02-22 20:17:59,938 INFO: Loading scaler from /home/tikeda/workspace/trade/option_trade/data/data_rolling/rolling_BTC_ETH_SOL_BNB_1440_xd_model_ema3.scaler
+2025-02-22 20:17:59,940 INFO: Loading scaler from /home/tikeda/workspace/trade/option_trade/data/data_rolling/rolling_BTC_ETH_SOL_BNB_1440_xd_model_ema3.scaler
+2025-02-22 20:17:59,942 INFO: GPU enabled for inference. Available GPUs: 1
+2025-02-22 20:17:59,942 INFO: Loading model from file: /home/tikeda/workspace/trade/option_trade/data/data_rolling/rolling_BTC_ETH_SOL_BNB_1440_xd_model_madhist3.keras
+2025-02-22 20:18:05,286 INFO: Loading scaler from /home/tikeda/workspace/trade/option_trade/data/data_rolling/rolling_BTC_ETH_SOL_BNB_1440_xd_model_madhist3.scaler
+2025-02-22 20:18:05,288 INFO: Loading scaler from /home/tikeda/workspace/trade/option_trade/data/data_rolling/rolling_BTC_ETH_SOL_BNB_1440_xd_model_madhist3.scaler
+2025-02-22 20:18:05,290 INFO: GPU enabled for inference. Available GPUs: 1
+2025-02-22 20:18:05,290 INFO: Loading model from file: /home/tikeda/workspace/trade/option_trade/data/data_rolling/rolling_BTC_ETH_SOL_BNB_1440_xd_model_roc3.keras
+2025-02-22 20:18:10,384 INFO: Loading scaler from /home/tikeda/workspace/trade/option_trade/data/data_rolling/rolling_BTC_ETH_SOL_BNB_1440_xd_model_roc3.scaler
+2025-02-22 20:18:10,386 INFO: Loading scaler from /home/tikeda/workspace/trade/option_trade/data/data_rolling/rolling_BTC_ETH_SOL_BNB_1440_xd_model_roc3.scaler
+2025-02-22 20:18:10,387 INFO: GPU enabled for inference. Available GPUs: 1
+2025-02-22 20:18:10,387 INFO: Loading model from file: /home/tikeda/workspace/trade/option_trade/data/data_rolling/rolling_BTC_ETH_SOL_BNB_1440_xd_model_mfi3.keras
+2025-02-22 20:18:15,465 INFO: Loading scaler from /home/tikeda/workspace/trade/option_trade/data/data_rolling/rolling_BTC_ETH_SOL_BNB_1440_xd_model_mfi3.scaler
+2025-02-22 20:18:15,467 INFO: Loading scaler from /home/tikeda/workspace/trade/option_trade/data/data_rolling/rolling_BTC_ETH_SOL_BNB_1440_xd_model_mfi3.scaler
+2025-02-22 20:18:15,468 INFO: GPU enabled for inference. Available GPUs: 1
+2025-02-22 20:18:15,468 INFO: Loading model from file: /home/tikeda/workspace/trade/option_trade/data/data_rolling/rolling_BTC_ETH_SOL_BNB_1440_xd_model_aroon3.keras
+2025-02-22 20:18:20,738 INFO: Loading scaler from /home/tikeda/workspace/trade/option_trade/data/data_rolling/rolling_BTC_ETH_SOL_BNB_1440_xd_model_aroon3.scaler
+2025-02-22 20:18:20,740 INFO: Loading scaler from /home/tikeda/workspace/trade/option_trade/data/data_rolling/rolling_BTC_ETH_SOL_BNB_1440_xd_model_aroon3.scaler
+2025-02-22 20:18:20,741 INFO: GPU enabled for inference. Available GPUs: 1
+2025-02-22 20:18:20,741 INFO: Loading model from file: /home/tikeda/workspace/trade/option_trade/data/data_rolling/rolling_BTC_ETH_SOL_BNB_1440_xd_model_volatility3.keras
+2025-02-22 20:18:25,870 INFO: Loading scaler from /home/tikeda/workspace/trade/option_trade/data/data_rolling/rolling_BTC_ETH_SOL_BNB_1440_xd_model_volatility3.scaler
+2025-02-22 20:18:25,872 INFO: Loading scaler from /home/tikeda/workspace/trade/option_trade/data/data_rolling/rolling_BTC_ETH_SOL_BNB_1440_xd_model_volatility3.scaler
+2025-02-22 20:23:08,568 INFO: Collection 'trade_config' exists.
+2025-02-22 20:23:08,574 INFO: Collection 'trade_config' dropped successfully.
+2025-02-22 20:23:08,580 INFO: Collection 'trade_config' does not exist.
+2025-02-22 20:23:08,626 INFO: id: rolling_v6, modle_gp: MODEL_SHORT_TERM, epochs: 60, n_splits: 2, use_gpu: True
+2025-02-22 20:23:08,718 INFO: GPU enabled for inference. Available GPUs: 1
+2025-02-22 20:23:08,718 INFO: Model parameters updated successfully
+2025-02-22 20:23:08,815 INFO: 
+Iteration 1
+2025-02-22 20:23:45,566 INFO: Training for fold 1 ...
+2025-02-22 20:27:19,859 INFO: Training for fold 2 ...
+2025-02-22 20:33:40,783 INFO: Fold 1: Accuracy = [1.0889556407928467, 0.7131192684173584]
+2025-02-22 20:33:40,783 INFO: Fold 2: Accuracy = [1.1639128923416138, 0.6247737407684326]
+2025-02-22 20:33:43,294 INFO: Evaluating on x_test with shape (5330, 32, 6)
+2025-02-22 20:33:47,041 INFO: Model Accuracy: 0.7035647279549718
+2025-02-22 20:33:47,041 INFO: Classification Report:
+              precision    recall  f1-score   support
+
+           0       0.85      0.77      0.81      4317
+           1       0.30      0.41      0.34      1013
+
+    accuracy                           0.70      5330
+   macro avg       0.57      0.59      0.58      5330
+weighted avg       0.74      0.70      0.72      5330
+
+2025-02-22 20:33:47,041 INFO: Confusion Matrix:
+[[3337  980]
+ [ 600  413]]
+2025-02-22 20:33:47,041 INFO: Cross-validation scores: [[1.0889556407928467, 0.7131192684173584], [1.1639128923416138, 0.6247737407684326]]
+2025-02-22 20:33:47,041 INFO: Mean CV score: 0.8976903855800629
+2025-02-22 20:33:47,041 INFO: New data accuracy: 0.7035647279549718
+2025-02-22 20:33:47,041 INFO: New best model!
+2025-02-22 20:33:47,042 INFO: Saving model to /home/tikeda/workspace/trade/option_trade/data/data_rolling/rolling_BTC_ETH_SOL_BNB_1440_xd_model_volatility3.keras
+2025-02-22 20:33:47,693 INFO: Saving scaler to /home/tikeda/workspace/trade/option_trade/data/data_rolling/rolling_BTC_ETH_SOL_BNB_1440_xd_model_volatility3.scaler
+2025-02-22 20:33:47,694 INFO: Target accuracy 0.5 achieved. Stopping training.
+2025-02-22 20:33:47,694 INFO: 
+Training completed.
+2025-02-22 20:33:47,694 INFO: Best accuracy on new data: 0.7035647279549718
+2025-02-22 20:33:47,694 INFO: Final classification report on new data:
+2025-02-22 20:33:47,694 INFO:               precision    recall  f1-score   support
+
+           0       0.85      0.77      0.81      4317
+           1       0.30      0.41      0.34      1013
+
+    accuracy                           0.70      5330
+   macro avg       0.57      0.59      0.58      5330
+weighted avg       0.74      0.70      0.72      5330
+
+2025-02-22 20:33:47,695 INFO: Final confusion matrix:
+2025-02-22 20:33:47,695 INFO: [[3337  980]
+ [ 600  413]]
+2025-02-22 20:33:47,695 INFO: test model load
+2025-02-22 20:35:08,732 INFO: Collection 'trade_config' exists.
+2025-02-22 20:35:08,738 INFO: Collection 'trade_config' dropped successfully.
+2025-02-22 20:35:08,744 INFO: Collection 'trade_config' does not exist.
+2025-02-22 20:35:08,805 INFO: id: rolling_v2, modle_gp: MODEL_SHORT_TERM, epochs: 60, n_splits: 2, use_gpu: True
+2025-02-22 20:35:08,873 INFO: GPU enabled for inference. Available GPUs: 1
+2025-02-22 20:35:08,873 INFO: Model parameters updated successfully
+2025-02-22 20:35:08,971 INFO: 
+Iteration 1
+2025-02-22 20:35:52,250 INFO: Training for fold 1 ...
+2025-02-22 20:39:31,752 INFO: Training for fold 2 ...
+2025-02-22 20:45:55,933 INFO: Fold 1: Accuracy = [1.245988368988037, 0.6629067063331604]
+2025-02-22 20:45:55,933 INFO: Fold 2: Accuracy = [1.0633090734481812, 0.6802054047584534]
+2025-02-22 20:45:58,600 INFO: Evaluating on x_test with shape (5330, 32, 10)
+2025-02-22 20:46:02,267 INFO: Model Accuracy: 0.6742964352720451
+2025-02-22 20:46:02,267 INFO: Classification Report:
+              precision    recall  f1-score   support
+
+           0       0.65      0.74      0.69      2617
+           1       0.71      0.61      0.66      2713
+
+    accuracy                           0.67      5330
+   macro avg       0.68      0.68      0.67      5330
+weighted avg       0.68      0.67      0.67      5330
+
+2025-02-22 20:46:02,267 INFO: Confusion Matrix:
+[[1946  671]
+ [1065 1648]]
+2025-02-22 20:46:02,267 INFO: Cross-validation scores: [[1.245988368988037, 0.6629067063331604], [1.0633090734481812, 0.6802054047584534]]
+2025-02-22 20:46:02,267 INFO: Mean CV score: 0.913102388381958
+2025-02-22 20:46:02,267 INFO: New data accuracy: 0.6742964352720451
+2025-02-22 20:46:02,267 INFO: New best model!
+2025-02-22 20:46:02,267 INFO: Saving model to /home/tikeda/workspace/trade/option_trade/data/data_rolling/rolling_BTC_ETH_SOL_BNB_1440_xd_model_madhist3.keras
+2025-02-22 20:46:02,924 INFO: Saving scaler to /home/tikeda/workspace/trade/option_trade/data/data_rolling/rolling_BTC_ETH_SOL_BNB_1440_xd_model_madhist3.scaler
+2025-02-22 20:46:02,925 INFO: Target accuracy 0.5 achieved. Stopping training.
+2025-02-22 20:46:02,925 INFO: 
+Training completed.
+2025-02-22 20:46:02,925 INFO: Best accuracy on new data: 0.6742964352720451
+2025-02-22 20:46:02,926 INFO: Final classification report on new data:
+2025-02-22 20:46:02,926 INFO:               precision    recall  f1-score   support
+
+           0       0.65      0.74      0.69      2617
+           1       0.71      0.61      0.66      2713
+
+    accuracy                           0.67      5330
+   macro avg       0.68      0.68      0.67      5330
+weighted avg       0.68      0.67      0.67      5330
+
+2025-02-22 20:46:02,926 INFO: Final confusion matrix:
+2025-02-22 20:46:02,926 INFO: [[1946  671]
+ [1065 1648]]
+2025-02-22 20:46:02,926 INFO: test model load
+2025-02-22 20:46:02,930 INFO: id: rolling_v3, modle_gp: MODEL_SHORT_TERM, epochs: 60, n_splits: 2, use_gpu: True
+2025-02-22 20:46:02,967 INFO: GPU enabled for inference. Available GPUs: 1
+2025-02-22 20:46:02,967 INFO: Model parameters updated successfully
+2025-02-22 20:46:02,977 INFO: 
+Iteration 1
+2025-02-22 20:46:53,291 INFO: Training for fold 1 ...
+2025-02-22 20:50:30,072 INFO: Training for fold 2 ...
+2025-02-22 20:56:58,465 INFO: Fold 1: Accuracy = [1.2330472469329834, 0.6676207184791565]
+2025-02-22 20:56:58,466 INFO: Fold 2: Accuracy = [1.0041688680648804, 0.6665263772010803]
+2025-02-22 20:57:01,347 INFO: Evaluating on x_test with shape (5330, 32, 10)
+2025-02-22 20:57:03,718 INFO: Model Accuracy: 0.6744840525328331
+2025-02-22 20:57:03,718 INFO: Classification Report:
+              precision    recall  f1-score   support
+
+           0       0.66      0.75      0.70      2692
+           1       0.70      0.60      0.65      2638
+
+    accuracy                           0.67      5330
+   macro avg       0.68      0.67      0.67      5330
+weighted avg       0.68      0.67      0.67      5330
+
+2025-02-22 20:57:03,718 INFO: Confusion Matrix:
+[[2018  674]
+ [1061 1577]]
+2025-02-22 20:57:03,719 INFO: Cross-validation scores: [[1.2330472469329834, 0.6676207184791565], [1.0041688680648804, 0.6665263772010803]]
+2025-02-22 20:57:03,719 INFO: Mean CV score: 0.8928408026695251
+2025-02-22 20:57:03,719 INFO: New data accuracy: 0.6744840525328331
+2025-02-22 20:57:03,719 INFO: New best model!
+2025-02-22 20:57:03,719 INFO: Saving model to /home/tikeda/workspace/trade/option_trade/data/data_rolling/rolling_BTC_ETH_SOL_BNB_1440_xd_model_roc3.keras
+2025-02-22 20:57:06,173 INFO: Saving scaler to /home/tikeda/workspace/trade/option_trade/data/data_rolling/rolling_BTC_ETH_SOL_BNB_1440_xd_model_roc3.scaler
+2025-02-22 20:57:06,174 INFO: Target accuracy 0.5 achieved. Stopping training.
+2025-02-22 20:57:06,175 INFO: 
+Training completed.
+2025-02-22 20:57:06,175 INFO: Best accuracy on new data: 0.6744840525328331
+2025-02-22 20:57:06,175 INFO: Final classification report on new data:
+2025-02-22 20:57:06,175 INFO:               precision    recall  f1-score   support
+
+           0       0.66      0.75      0.70      2692
+           1       0.70      0.60      0.65      2638
+
+    accuracy                           0.67      5330
+   macro avg       0.68      0.67      0.67      5330
+weighted avg       0.68      0.67      0.67      5330
+
+2025-02-22 20:57:06,175 INFO: Final confusion matrix:
+2025-02-22 20:57:06,175 INFO: [[2018  674]
+ [1061 1577]]
+2025-02-22 20:57:06,175 INFO: test model load
+2025-02-22 20:57:06,183 INFO: id: rolling_v4, modle_gp: MODEL_SHORT_TERM, epochs: 60, n_splits: 2, use_gpu: True
+2025-02-22 20:57:06,219 INFO: GPU enabled for inference. Available GPUs: 1
+2025-02-22 20:57:06,220 INFO: Model parameters updated successfully
+2025-02-22 20:57:06,231 INFO: 
+Iteration 1
+2025-02-22 20:57:53,248 INFO: Training for fold 1 ...
+2025-02-22 21:01:26,137 INFO: Training for fold 2 ...
+2025-02-22 21:07:58,642 INFO: Fold 1: Accuracy = [1.2083356380462646, 0.6484700441360474]
+2025-02-22 21:07:58,642 INFO: Fold 2: Accuracy = [1.0888547897338867, 0.6637485027313232]
+2025-02-22 21:08:01,320 INFO: Evaluating on x_test with shape (5330, 32, 10)
+2025-02-22 21:08:03,517 INFO: Model Accuracy: 0.672983114446529
+2025-02-22 21:08:03,517 INFO: Classification Report:
+              precision    recall  f1-score   support
+
+           0       0.67      0.67      0.67      2678
+           1       0.67      0.67      0.67      2652
+
+    accuracy                           0.67      5330
+   macro avg       0.67      0.67      0.67      5330
+weighted avg       0.67      0.67      0.67      5330
+
+2025-02-22 21:08:03,517 INFO: Confusion Matrix:
+[[1804  874]
+ [ 869 1783]]
+2025-02-22 21:08:03,517 INFO: Cross-validation scores: [[1.2083356380462646, 0.6484700441360474], [1.0888547897338867, 0.6637485027313232]]
+2025-02-22 21:08:03,517 INFO: Mean CV score: 0.9023522436618805
+2025-02-22 21:08:03,517 INFO: New data accuracy: 0.672983114446529
+2025-02-22 21:08:03,517 INFO: New best model!
+2025-02-22 21:08:03,517 INFO: Saving model to /home/tikeda/workspace/trade/option_trade/data/data_rolling/rolling_BTC_ETH_SOL_BNB_1440_xd_model_mfi3.keras
+2025-02-22 21:08:04,149 INFO: Saving scaler to /home/tikeda/workspace/trade/option_trade/data/data_rolling/rolling_BTC_ETH_SOL_BNB_1440_xd_model_mfi3.scaler
+2025-02-22 21:08:04,150 INFO: Target accuracy 0.5 achieved. Stopping training.
+2025-02-22 21:08:04,150 INFO: 
+Training completed.
+2025-02-22 21:08:04,150 INFO: Best accuracy on new data: 0.672983114446529
+2025-02-22 21:08:04,150 INFO: Final classification report on new data:
+2025-02-22 21:08:04,150 INFO:               precision    recall  f1-score   support
+
+           0       0.67      0.67      0.67      2678
+           1       0.67      0.67      0.67      2652
+
+    accuracy                           0.67      5330
+   macro avg       0.67      0.67      0.67      5330
+weighted avg       0.67      0.67      0.67      5330
+
+2025-02-22 21:08:04,150 INFO: Final confusion matrix:
+2025-02-22 21:08:04,150 INFO: [[1804  874]
+ [ 869 1783]]
+2025-02-22 21:08:04,150 INFO: test model load
+2025-02-22 21:08:04,151 INFO: id: rolling_v5, modle_gp: MODEL_SHORT_TERM, epochs: 60, n_splits: 2, use_gpu: True
+2025-02-22 21:08:04,163 INFO: GPU enabled for inference. Available GPUs: 1
+2025-02-22 21:08:04,163 INFO: Model parameters updated successfully
+2025-02-22 21:08:04,169 INFO: 
+Iteration 1
+2025-02-22 21:08:51,148 INFO: Training for fold 1 ...
+2025-02-22 21:12:26,147 INFO: Training for fold 2 ...
+2025-02-22 21:18:57,932 INFO: Fold 1: Accuracy = [1.1375541687011719, 0.7151395082473755]
+2025-02-22 21:18:57,932 INFO: Fold 2: Accuracy = [1.0220985412597656, 0.7279767394065857]
+2025-02-22 21:19:00,626 INFO: Evaluating on x_test with shape (5330, 32, 11)
+2025-02-22 21:19:03,332 INFO: Model Accuracy: 0.750656660412758
+2025-02-22 21:19:03,332 INFO: Classification Report:
+              precision    recall  f1-score   support
+
+           0       0.78      0.83      0.81      3330
+           1       0.69      0.62      0.65      2000
+
+    accuracy                           0.75      5330
+   macro avg       0.73      0.72      0.73      5330
+weighted avg       0.75      0.75      0.75      5330
+
+2025-02-22 21:19:03,332 INFO: Confusion Matrix:
+[[2768  562]
+ [ 767 1233]]
+2025-02-22 21:19:03,332 INFO: Cross-validation scores: [[1.1375541687011719, 0.7151395082473755], [1.0220985412597656, 0.7279767394065857]]
+2025-02-22 21:19:03,332 INFO: Mean CV score: 0.9006922394037247
+2025-02-22 21:19:03,332 INFO: New data accuracy: 0.750656660412758
+2025-02-22 21:19:03,332 INFO: New best model!
+2025-02-22 21:19:03,332 INFO: Saving model to /home/tikeda/workspace/trade/option_trade/data/data_rolling/rolling_BTC_ETH_SOL_BNB_1440_xd_model_aroon3.keras
+2025-02-22 21:19:03,954 INFO: Saving scaler to /home/tikeda/workspace/trade/option_trade/data/data_rolling/rolling_BTC_ETH_SOL_BNB_1440_xd_model_aroon3.scaler
+2025-02-22 21:19:03,955 INFO: Target accuracy 0.5 achieved. Stopping training.
+2025-02-22 21:19:03,956 INFO: 
+Training completed.
+2025-02-22 21:19:03,956 INFO: Best accuracy on new data: 0.750656660412758
+2025-02-22 21:19:03,956 INFO: Final classification report on new data:
+2025-02-22 21:19:03,956 INFO:               precision    recall  f1-score   support
+
+           0       0.78      0.83      0.81      3330
+           1       0.69      0.62      0.65      2000
+
+    accuracy                           0.75      5330
+   macro avg       0.73      0.72      0.73      5330
+weighted avg       0.75      0.75      0.75      5330
+
+2025-02-22 21:19:03,956 INFO: Final confusion matrix:
+2025-02-22 21:19:03,956 INFO: [[2768  562]
+ [ 767 1233]]
+2025-02-22 21:19:03,956 INFO: test model load
+2025-02-22 21:19:03,961 INFO: id: rolling_v6, modle_gp: MODEL_SHORT_TERM, epochs: 60, n_splits: 2, use_gpu: True
+2025-02-22 21:19:03,996 INFO: GPU enabled for inference. Available GPUs: 1
+2025-02-22 21:19:03,996 INFO: Model parameters updated successfully
+2025-02-22 21:19:04,003 INFO: 
+Iteration 1
+2025-02-22 21:19:42,095 INFO: Training for fold 1 ...
+2025-02-22 21:23:21,372 INFO: Training for fold 2 ...
+2025-02-22 21:29:51,469 INFO: Fold 1: Accuracy = [1.0902254581451416, 0.7096258401870728]
+2025-02-22 21:29:51,469 INFO: Fold 2: Accuracy = [1.1780418157577515, 0.6350856423377991]
+2025-02-22 21:29:54,042 INFO: Evaluating on x_test with shape (5330, 32, 6)
+2025-02-22 21:29:56,816 INFO: Model Accuracy: 0.7292682926829268
+2025-02-22 21:29:56,816 INFO: Classification Report:
+              precision    recall  f1-score   support
+
+           0       0.85      0.81      0.83      4317
+           1       0.32      0.37      0.34      1013
+
+    accuracy                           0.73      5330
+   macro avg       0.58      0.59      0.59      5330
+weighted avg       0.75      0.73      0.74      5330
+
+2025-02-22 21:29:56,816 INFO: Confusion Matrix:
+[[3511  806]
+ [ 637  376]]
+2025-02-22 21:29:56,816 INFO: Cross-validation scores: [[1.0902254581451416, 0.7096258401870728], [1.1780418157577515, 0.6350856423377991]]
+2025-02-22 21:29:56,816 INFO: Mean CV score: 0.9032446891069412
+2025-02-22 21:29:56,816 INFO: New data accuracy: 0.7292682926829268
+2025-02-22 21:29:56,816 INFO: New best model!
+2025-02-22 21:29:56,816 INFO: Saving model to /home/tikeda/workspace/trade/option_trade/data/data_rolling/rolling_BTC_ETH_SOL_BNB_1440_xd_model_volatility3.keras
+2025-02-22 21:29:57,578 INFO: Saving scaler to /home/tikeda/workspace/trade/option_trade/data/data_rolling/rolling_BTC_ETH_SOL_BNB_1440_xd_model_volatility3.scaler
+2025-02-22 21:29:57,579 INFO: Target accuracy 0.5 achieved. Stopping training.
+2025-02-22 21:29:57,579 INFO: 
+Training completed.
+2025-02-22 21:29:57,579 INFO: Best accuracy on new data: 0.7292682926829268
+2025-02-22 21:29:57,579 INFO: Final classification report on new data:
+2025-02-22 21:29:57,580 INFO:               precision    recall  f1-score   support
+
+           0       0.85      0.81      0.83      4317
+           1       0.32      0.37      0.34      1013
+
+    accuracy                           0.73      5330
+   macro avg       0.58      0.59      0.59      5330
+weighted avg       0.75      0.73      0.74      5330
+
+2025-02-22 21:29:57,580 INFO: Final confusion matrix:
+2025-02-22 21:29:57,580 INFO: [[3511  806]
+ [ 637  376]]
+2025-02-22 21:29:57,580 INFO: test model load
+2025-02-22 21:33:23,736 INFO: Collection 'trade_config' exists.
+2025-02-22 21:33:23,741 INFO: Collection 'trade_config' dropped successfully.
+2025-02-22 21:33:23,745 INFO: Collection 'trade_config' does not exist.
+2025-02-22 21:33:23,940 INFO: GPU enabled for inference. Available GPUs: 1
+2025-02-22 21:33:23,940 INFO: Loading model from file: /home/tikeda/workspace/trade/option_trade/data/data_rolling/rolling_BTC_ETH_SOL_BNB_1440_xd_model_ema3.keras
+2025-02-22 21:33:29,314 INFO: Loading scaler from /home/tikeda/workspace/trade/option_trade/data/data_rolling/rolling_BTC_ETH_SOL_BNB_1440_xd_model_ema3.scaler
+2025-02-22 21:33:29,315 INFO: Loading scaler from /home/tikeda/workspace/trade/option_trade/data/data_rolling/rolling_BTC_ETH_SOL_BNB_1440_xd_model_ema3.scaler
+2025-02-22 21:33:29,316 INFO: GPU enabled for inference. Available GPUs: 1
+2025-02-22 21:33:29,316 INFO: Loading model from file: /home/tikeda/workspace/trade/option_trade/data/data_rolling/rolling_BTC_ETH_SOL_BNB_1440_xd_model_madhist3.keras
+2025-02-22 21:33:34,499 INFO: Loading scaler from /home/tikeda/workspace/trade/option_trade/data/data_rolling/rolling_BTC_ETH_SOL_BNB_1440_xd_model_madhist3.scaler
+2025-02-22 21:33:34,500 INFO: Loading scaler from /home/tikeda/workspace/trade/option_trade/data/data_rolling/rolling_BTC_ETH_SOL_BNB_1440_xd_model_madhist3.scaler
+2025-02-22 21:33:34,501 INFO: GPU enabled for inference. Available GPUs: 1
+2025-02-22 21:33:34,501 INFO: Loading model from file: /home/tikeda/workspace/trade/option_trade/data/data_rolling/rolling_BTC_ETH_SOL_BNB_1440_xd_model_roc3.keras
+2025-02-22 21:33:39,661 INFO: Loading scaler from /home/tikeda/workspace/trade/option_trade/data/data_rolling/rolling_BTC_ETH_SOL_BNB_1440_xd_model_roc3.scaler
+2025-02-22 21:33:39,661 INFO: Loading scaler from /home/tikeda/workspace/trade/option_trade/data/data_rolling/rolling_BTC_ETH_SOL_BNB_1440_xd_model_roc3.scaler
+2025-02-22 21:33:39,663 INFO: GPU enabled for inference. Available GPUs: 1
+2025-02-22 21:33:39,663 INFO: Loading model from file: /home/tikeda/workspace/trade/option_trade/data/data_rolling/rolling_BTC_ETH_SOL_BNB_1440_xd_model_mfi3.keras
+2025-02-22 21:33:44,670 INFO: Loading scaler from /home/tikeda/workspace/trade/option_trade/data/data_rolling/rolling_BTC_ETH_SOL_BNB_1440_xd_model_mfi3.scaler
+2025-02-22 21:33:44,670 INFO: Loading scaler from /home/tikeda/workspace/trade/option_trade/data/data_rolling/rolling_BTC_ETH_SOL_BNB_1440_xd_model_mfi3.scaler
+2025-02-22 21:33:44,672 INFO: GPU enabled for inference. Available GPUs: 1
+2025-02-22 21:33:44,672 INFO: Loading model from file: /home/tikeda/workspace/trade/option_trade/data/data_rolling/rolling_BTC_ETH_SOL_BNB_1440_xd_model_aroon3.keras
+2025-02-22 21:33:49,732 INFO: Loading scaler from /home/tikeda/workspace/trade/option_trade/data/data_rolling/rolling_BTC_ETH_SOL_BNB_1440_xd_model_aroon3.scaler
+2025-02-22 21:33:49,733 INFO: Loading scaler from /home/tikeda/workspace/trade/option_trade/data/data_rolling/rolling_BTC_ETH_SOL_BNB_1440_xd_model_aroon3.scaler
+2025-02-22 21:33:49,734 INFO: GPU enabled for inference. Available GPUs: 1
+2025-02-22 21:33:49,734 INFO: Loading model from file: /home/tikeda/workspace/trade/option_trade/data/data_rolling/rolling_BTC_ETH_SOL_BNB_1440_xd_model_volatility3.keras
+2025-02-22 21:33:54,769 INFO: Loading scaler from /home/tikeda/workspace/trade/option_trade/data/data_rolling/rolling_BTC_ETH_SOL_BNB_1440_xd_model_volatility3.scaler
+2025-02-22 21:33:54,770 INFO: Loading scaler from /home/tikeda/workspace/trade/option_trade/data/data_rolling/rolling_BTC_ETH_SOL_BNB_1440_xd_model_volatility3.scaler
+2025-02-22 21:38:33,783 INFO: Collection 'trade_config' exists.
+2025-02-22 21:38:33,788 INFO: Collection 'trade_config' dropped successfully.
+2025-02-22 21:38:33,793 INFO: Collection 'trade_config' does not exist.
+2025-02-22 21:38:33,956 INFO: GPU enabled for inference. Available GPUs: 1
+2025-02-22 21:38:33,957 INFO: Loading model from file: /home/tikeda/workspace/trade/option_trade/data/data_rolling/rolling_BTC_ETH_SOL_BNB_1440_xd_model_ema3.keras
+2025-02-22 21:38:39,151 INFO: Loading scaler from /home/tikeda/workspace/trade/option_trade/data/data_rolling/rolling_BTC_ETH_SOL_BNB_1440_xd_model_ema3.scaler
+2025-02-22 21:38:39,151 INFO: Loading scaler from /home/tikeda/workspace/trade/option_trade/data/data_rolling/rolling_BTC_ETH_SOL_BNB_1440_xd_model_ema3.scaler
+2025-02-22 21:38:39,152 INFO: GPU enabled for inference. Available GPUs: 1
+2025-02-22 21:38:39,152 INFO: Loading model from file: /home/tikeda/workspace/trade/option_trade/data/data_rolling/rolling_BTC_ETH_SOL_BNB_1440_xd_model_madhist3.keras
+2025-02-22 21:38:44,210 INFO: Loading scaler from /home/tikeda/workspace/trade/option_trade/data/data_rolling/rolling_BTC_ETH_SOL_BNB_1440_xd_model_madhist3.scaler
+2025-02-22 21:38:44,210 INFO: Loading scaler from /home/tikeda/workspace/trade/option_trade/data/data_rolling/rolling_BTC_ETH_SOL_BNB_1440_xd_model_madhist3.scaler
+2025-02-22 21:38:44,212 INFO: GPU enabled for inference. Available GPUs: 1
+2025-02-22 21:38:44,212 INFO: Loading model from file: /home/tikeda/workspace/trade/option_trade/data/data_rolling/rolling_BTC_ETH_SOL_BNB_1440_xd_model_roc3.keras
+2025-02-22 21:38:49,162 INFO: Loading scaler from /home/tikeda/workspace/trade/option_trade/data/data_rolling/rolling_BTC_ETH_SOL_BNB_1440_xd_model_roc3.scaler
+2025-02-22 21:38:49,162 INFO: Loading scaler from /home/tikeda/workspace/trade/option_trade/data/data_rolling/rolling_BTC_ETH_SOL_BNB_1440_xd_model_roc3.scaler
+2025-02-22 21:38:49,163 INFO: GPU enabled for inference. Available GPUs: 1
+2025-02-22 21:38:49,163 INFO: Loading model from file: /home/tikeda/workspace/trade/option_trade/data/data_rolling/rolling_BTC_ETH_SOL_BNB_1440_xd_model_mfi3.keras
+2025-02-22 21:38:54,128 INFO: Loading scaler from /home/tikeda/workspace/trade/option_trade/data/data_rolling/rolling_BTC_ETH_SOL_BNB_1440_xd_model_mfi3.scaler
+2025-02-22 21:38:54,128 INFO: Loading scaler from /home/tikeda/workspace/trade/option_trade/data/data_rolling/rolling_BTC_ETH_SOL_BNB_1440_xd_model_mfi3.scaler
+2025-02-22 21:38:54,130 INFO: GPU enabled for inference. Available GPUs: 1
+2025-02-22 21:38:54,130 INFO: Loading model from file: /home/tikeda/workspace/trade/option_trade/data/data_rolling/rolling_BTC_ETH_SOL_BNB_1440_xd_model_aroon3.keras
+2025-02-22 21:38:59,050 INFO: Loading scaler from /home/tikeda/workspace/trade/option_trade/data/data_rolling/rolling_BTC_ETH_SOL_BNB_1440_xd_model_aroon3.scaler
+2025-02-22 21:38:59,050 INFO: Loading scaler from /home/tikeda/workspace/trade/option_trade/data/data_rolling/rolling_BTC_ETH_SOL_BNB_1440_xd_model_aroon3.scaler
+2025-02-22 21:38:59,052 INFO: GPU enabled for inference. Available GPUs: 1
+2025-02-22 21:38:59,052 INFO: Loading model from file: /home/tikeda/workspace/trade/option_trade/data/data_rolling/rolling_BTC_ETH_SOL_BNB_1440_xd_model_volatility3.keras
+2025-02-22 21:39:03,952 INFO: Loading scaler from /home/tikeda/workspace/trade/option_trade/data/data_rolling/rolling_BTC_ETH_SOL_BNB_1440_xd_model_volatility3.scaler
+2025-02-22 21:39:03,953 INFO: Loading scaler from /home/tikeda/workspace/trade/option_trade/data/data_rolling/rolling_BTC_ETH_SOL_BNB_1440_xd_model_volatility3.scaler
+2025-02-22 21:40:44,664 INFO: Collection 'trade_config' exists.
+2025-02-22 21:40:44,670 INFO: Collection 'trade_config' dropped successfully.
+2025-02-22 21:40:44,675 INFO: Collection 'trade_config' does not exist.
+2025-02-22 21:40:44,862 INFO: GPU enabled for inference. Available GPUs: 1
+2025-02-22 21:40:44,862 INFO: Loading model from file: /home/tikeda/workspace/trade/option_trade/data/data_rolling/rolling_BTC_ETH_SOL_BNB_1440_xd_model_ema3.keras
+2025-02-22 21:40:50,090 INFO: Loading scaler from /home/tikeda/workspace/trade/option_trade/data/data_rolling/rolling_BTC_ETH_SOL_BNB_1440_xd_model_ema3.scaler
+2025-02-22 21:40:50,091 INFO: Loading scaler from /home/tikeda/workspace/trade/option_trade/data/data_rolling/rolling_BTC_ETH_SOL_BNB_1440_xd_model_ema3.scaler
+2025-02-22 21:40:50,092 INFO: GPU enabled for inference. Available GPUs: 1
+2025-02-22 21:40:50,092 INFO: Loading model from file: /home/tikeda/workspace/trade/option_trade/data/data_rolling/rolling_BTC_ETH_SOL_BNB_1440_xd_model_madhist3.keras
+2025-02-22 21:40:55,165 INFO: Loading scaler from /home/tikeda/workspace/trade/option_trade/data/data_rolling/rolling_BTC_ETH_SOL_BNB_1440_xd_model_madhist3.scaler
+2025-02-22 21:40:55,165 INFO: Loading scaler from /home/tikeda/workspace/trade/option_trade/data/data_rolling/rolling_BTC_ETH_SOL_BNB_1440_xd_model_madhist3.scaler
+2025-02-22 21:40:55,168 INFO: GPU enabled for inference. Available GPUs: 1
+2025-02-22 21:40:55,168 INFO: Loading model from file: /home/tikeda/workspace/trade/option_trade/data/data_rolling/rolling_BTC_ETH_SOL_BNB_1440_xd_model_roc3.keras
+2025-02-22 21:41:00,272 INFO: Loading scaler from /home/tikeda/workspace/trade/option_trade/data/data_rolling/rolling_BTC_ETH_SOL_BNB_1440_xd_model_roc3.scaler
+2025-02-22 21:41:00,272 INFO: Loading scaler from /home/tikeda/workspace/trade/option_trade/data/data_rolling/rolling_BTC_ETH_SOL_BNB_1440_xd_model_roc3.scaler
+2025-02-22 21:41:00,273 INFO: GPU enabled for inference. Available GPUs: 1
+2025-02-22 21:41:00,274 INFO: Loading model from file: /home/tikeda/workspace/trade/option_trade/data/data_rolling/rolling_BTC_ETH_SOL_BNB_1440_xd_model_mfi3.keras
+2025-02-22 21:41:05,377 INFO: Loading scaler from /home/tikeda/workspace/trade/option_trade/data/data_rolling/rolling_BTC_ETH_SOL_BNB_1440_xd_model_mfi3.scaler
+2025-02-22 21:41:05,377 INFO: Loading scaler from /home/tikeda/workspace/trade/option_trade/data/data_rolling/rolling_BTC_ETH_SOL_BNB_1440_xd_model_mfi3.scaler
+2025-02-22 21:41:05,380 INFO: GPU enabled for inference. Available GPUs: 1
+2025-02-22 21:41:05,380 INFO: Loading model from file: /home/tikeda/workspace/trade/option_trade/data/data_rolling/rolling_BTC_ETH_SOL_BNB_1440_xd_model_aroon3.keras
+2025-02-22 21:41:10,453 INFO: Loading scaler from /home/tikeda/workspace/trade/option_trade/data/data_rolling/rolling_BTC_ETH_SOL_BNB_1440_xd_model_aroon3.scaler
+2025-02-22 21:41:10,453 INFO: Loading scaler from /home/tikeda/workspace/trade/option_trade/data/data_rolling/rolling_BTC_ETH_SOL_BNB_1440_xd_model_aroon3.scaler
+2025-02-22 21:41:10,454 INFO: GPU enabled for inference. Available GPUs: 1
+2025-02-22 21:41:10,454 INFO: Loading model from file: /home/tikeda/workspace/trade/option_trade/data/data_rolling/rolling_BTC_ETH_SOL_BNB_1440_xd_model_volatility3.keras
+2025-02-22 21:41:15,432 INFO: Loading scaler from /home/tikeda/workspace/trade/option_trade/data/data_rolling/rolling_BTC_ETH_SOL_BNB_1440_xd_model_volatility3.scaler
+2025-02-22 21:41:15,433 INFO: Loading scaler from /home/tikeda/workspace/trade/option_trade/data/data_rolling/rolling_BTC_ETH_SOL_BNB_1440_xd_model_volatility3.scaler
+2025-02-22 21:42:13,640 INFO: Collection 'trade_config' exists.
+2025-02-22 21:42:13,645 INFO: Collection 'trade_config' dropped successfully.
+2025-02-22 21:42:13,651 INFO: Collection 'trade_config' does not exist.
+2025-02-22 21:42:13,863 INFO: GPU enabled for inference. Available GPUs: 1
+2025-02-22 21:42:13,864 INFO: Loading model from file: /home/tikeda/workspace/trade/option_trade/data/data_rolling/rolling_BTC_ETH_SOL_BNB_1440_xd_model_ema3.keras
+2025-02-22 21:42:19,085 INFO: Loading scaler from /home/tikeda/workspace/trade/option_trade/data/data_rolling/rolling_BTC_ETH_SOL_BNB_1440_xd_model_ema3.scaler
+2025-02-22 21:42:19,085 INFO: Loading scaler from /home/tikeda/workspace/trade/option_trade/data/data_rolling/rolling_BTC_ETH_SOL_BNB_1440_xd_model_ema3.scaler
+2025-02-22 21:42:19,086 INFO: GPU enabled for inference. Available GPUs: 1
+2025-02-22 21:42:19,086 INFO: Loading model from file: /home/tikeda/workspace/trade/option_trade/data/data_rolling/rolling_BTC_ETH_SOL_BNB_1440_xd_model_madhist3.keras
+2025-02-22 21:42:24,032 INFO: Loading scaler from /home/tikeda/workspace/trade/option_trade/data/data_rolling/rolling_BTC_ETH_SOL_BNB_1440_xd_model_madhist3.scaler
+2025-02-22 21:42:24,032 INFO: Loading scaler from /home/tikeda/workspace/trade/option_trade/data/data_rolling/rolling_BTC_ETH_SOL_BNB_1440_xd_model_madhist3.scaler
+2025-02-22 21:42:24,033 INFO: GPU enabled for inference. Available GPUs: 1
+2025-02-22 21:42:24,033 INFO: Loading model from file: /home/tikeda/workspace/trade/option_trade/data/data_rolling/rolling_BTC_ETH_SOL_BNB_1440_xd_model_roc3.keras
+2025-02-22 21:42:28,989 INFO: Loading scaler from /home/tikeda/workspace/trade/option_trade/data/data_rolling/rolling_BTC_ETH_SOL_BNB_1440_xd_model_roc3.scaler
+2025-02-22 21:42:28,989 INFO: Loading scaler from /home/tikeda/workspace/trade/option_trade/data/data_rolling/rolling_BTC_ETH_SOL_BNB_1440_xd_model_roc3.scaler
+2025-02-22 21:42:28,991 INFO: GPU enabled for inference. Available GPUs: 1
+2025-02-22 21:42:28,991 INFO: Loading model from file: /home/tikeda/workspace/trade/option_trade/data/data_rolling/rolling_BTC_ETH_SOL_BNB_1440_xd_model_mfi3.keras
+2025-02-22 21:42:33,969 INFO: Loading scaler from /home/tikeda/workspace/trade/option_trade/data/data_rolling/rolling_BTC_ETH_SOL_BNB_1440_xd_model_mfi3.scaler
+2025-02-22 21:42:33,969 INFO: Loading scaler from /home/tikeda/workspace/trade/option_trade/data/data_rolling/rolling_BTC_ETH_SOL_BNB_1440_xd_model_mfi3.scaler
+2025-02-22 21:42:33,971 INFO: GPU enabled for inference. Available GPUs: 1
+2025-02-22 21:42:33,971 INFO: Loading model from file: /home/tikeda/workspace/trade/option_trade/data/data_rolling/rolling_BTC_ETH_SOL_BNB_1440_xd_model_aroon3.keras
+2025-02-22 21:42:39,044 INFO: Loading scaler from /home/tikeda/workspace/trade/option_trade/data/data_rolling/rolling_BTC_ETH_SOL_BNB_1440_xd_model_aroon3.scaler
+2025-02-22 21:42:39,045 INFO: Loading scaler from /home/tikeda/workspace/trade/option_trade/data/data_rolling/rolling_BTC_ETH_SOL_BNB_1440_xd_model_aroon3.scaler
+2025-02-22 21:42:39,046 INFO: GPU enabled for inference. Available GPUs: 1
+2025-02-22 21:42:39,046 INFO: Loading model from file: /home/tikeda/workspace/trade/option_trade/data/data_rolling/rolling_BTC_ETH_SOL_BNB_1440_xd_model_volatility3.keras
+2025-02-22 21:42:43,943 INFO: Loading scaler from /home/tikeda/workspace/trade/option_trade/data/data_rolling/rolling_BTC_ETH_SOL_BNB_1440_xd_model_volatility3.scaler
+2025-02-22 21:42:43,944 INFO: Loading scaler from /home/tikeda/workspace/trade/option_trade/data/data_rolling/rolling_BTC_ETH_SOL_BNB_1440_xd_model_volatility3.scaler
+2025-02-22 21:47:28,529 INFO: Collection 'trade_config' exists.
+2025-02-22 21:47:28,534 INFO: Collection 'trade_config' dropped successfully.
+2025-02-22 21:47:28,539 INFO: Collection 'trade_config' does not exist.
+2025-02-22 21:47:28,711 INFO: GPU enabled for inference. Available GPUs: 1
+2025-02-22 21:47:28,711 INFO: Loading model from file: /home/tikeda/workspace/trade/option_trade/data/data_rolling/rolling_BTC_ETH_SOL_BNB_1440_xd_model_ema3.keras
+2025-02-22 21:47:33,840 INFO: Loading scaler from /home/tikeda/workspace/trade/option_trade/data/data_rolling/rolling_BTC_ETH_SOL_BNB_1440_xd_model_ema3.scaler
+2025-02-22 21:47:33,840 INFO: Loading scaler from /home/tikeda/workspace/trade/option_trade/data/data_rolling/rolling_BTC_ETH_SOL_BNB_1440_xd_model_ema3.scaler
+2025-02-22 21:47:33,841 INFO: GPU enabled for inference. Available GPUs: 1
+2025-02-22 21:47:33,841 INFO: Loading model from file: /home/tikeda/workspace/trade/option_trade/data/data_rolling/rolling_BTC_ETH_SOL_BNB_1440_xd_model_madhist3.keras
+2025-02-22 21:47:38,855 INFO: Loading scaler from /home/tikeda/workspace/trade/option_trade/data/data_rolling/rolling_BTC_ETH_SOL_BNB_1440_xd_model_madhist3.scaler
+2025-02-22 21:47:38,855 INFO: Loading scaler from /home/tikeda/workspace/trade/option_trade/data/data_rolling/rolling_BTC_ETH_SOL_BNB_1440_xd_model_madhist3.scaler
+2025-02-22 21:47:38,856 INFO: GPU enabled for inference. Available GPUs: 1
+2025-02-22 21:47:38,856 INFO: Loading model from file: /home/tikeda/workspace/trade/option_trade/data/data_rolling/rolling_BTC_ETH_SOL_BNB_1440_xd_model_roc3.keras
+2025-02-22 21:47:43,834 INFO: Loading scaler from /home/tikeda/workspace/trade/option_trade/data/data_rolling/rolling_BTC_ETH_SOL_BNB_1440_xd_model_roc3.scaler
+2025-02-22 21:47:43,834 INFO: Loading scaler from /home/tikeda/workspace/trade/option_trade/data/data_rolling/rolling_BTC_ETH_SOL_BNB_1440_xd_model_roc3.scaler
+2025-02-22 21:47:43,835 INFO: GPU enabled for inference. Available GPUs: 1
+2025-02-22 21:47:43,835 INFO: Loading model from file: /home/tikeda/workspace/trade/option_trade/data/data_rolling/rolling_BTC_ETH_SOL_BNB_1440_xd_model_mfi3.keras
+2025-02-22 21:47:48,761 INFO: Loading scaler from /home/tikeda/workspace/trade/option_trade/data/data_rolling/rolling_BTC_ETH_SOL_BNB_1440_xd_model_mfi3.scaler
+2025-02-22 21:47:48,761 INFO: Loading scaler from /home/tikeda/workspace/trade/option_trade/data/data_rolling/rolling_BTC_ETH_SOL_BNB_1440_xd_model_mfi3.scaler
+2025-02-22 21:47:48,762 INFO: GPU enabled for inference. Available GPUs: 1
+2025-02-22 21:47:48,763 INFO: Loading model from file: /home/tikeda/workspace/trade/option_trade/data/data_rolling/rolling_BTC_ETH_SOL_BNB_1440_xd_model_aroon3.keras
+2025-02-22 21:47:53,897 INFO: Loading scaler from /home/tikeda/workspace/trade/option_trade/data/data_rolling/rolling_BTC_ETH_SOL_BNB_1440_xd_model_aroon3.scaler
+2025-02-22 21:47:53,897 INFO: Loading scaler from /home/tikeda/workspace/trade/option_trade/data/data_rolling/rolling_BTC_ETH_SOL_BNB_1440_xd_model_aroon3.scaler
+2025-02-22 21:47:53,899 INFO: GPU enabled for inference. Available GPUs: 1
+2025-02-22 21:47:53,899 INFO: Loading model from file: /home/tikeda/workspace/trade/option_trade/data/data_rolling/rolling_BTC_ETH_SOL_BNB_1440_xd_model_volatility3.keras
+2025-02-22 21:47:59,051 INFO: Loading scaler from /home/tikeda/workspace/trade/option_trade/data/data_rolling/rolling_BTC_ETH_SOL_BNB_1440_xd_model_volatility3.scaler
+2025-02-22 21:47:59,052 INFO: Loading scaler from /home/tikeda/workspace/trade/option_trade/data/data_rolling/rolling_BTC_ETH_SOL_BNB_1440_xd_model_volatility3.scaler
+2025-02-22 21:48:04,433 INFO: GPU enabled for inference. Available GPUs: 1
+2025-02-22 21:48:04,433 INFO: Loading model from /home/tikeda/workspace/trade/option_trade/data/data_bayes/bayes_BTC_ETH_SOL_BNB_1440_xd_model_close3.joblib

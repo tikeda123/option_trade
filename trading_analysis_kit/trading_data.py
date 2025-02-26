@@ -27,6 +27,8 @@ class TradingStateData:
                 self._order_id = None      # The order ID of the current trade
                 self._entry_price_garch = 0.0
                 self._exit_price_garch = 0.0
+                self._support_line = 0.0
+                self._resistance_line = 0.0
 
 
         def reset_index(self):
@@ -48,7 +50,32 @@ class TradingStateData:
                 self._order_id = None
                 self._entry_price_garch = 0.0
                 self._exit_price_garch = 0.0
+                self._support_line = 0.0
+                self._resistance_line = 0.0
 
+        def get_support_line(self) -> float:
+                """
+                Gets the support line for the current trade.
+                """
+                return self._support_line
+
+        def set_support_line(self, support_line: float):
+                """
+                Sets the support line for the current trade.
+                """
+                self._support_line = support_line
+
+        def get_resistance_line(self) -> float:
+                """
+                Gets the resistance line for the current trade.
+                """
+                return self._resistance_line
+
+        def set_resistance_line(self, resistance_line: float):
+                """
+                Sets the resistance line for the current trade.
+                """
+                self._resistance_line = resistance_line 
 
         def get_entry_price_garch(self) -> float:
                 """

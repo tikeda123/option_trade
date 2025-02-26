@@ -39,22 +39,6 @@ from common.constants import MARKET_DATA_TECH
 
 
 
-def prediction_option_bayes_model(current_date:str,symbol="BTCUSDT",m_interval=1440*3):
-    """
-    ベイズモデルによる予測
-    """
-    # データ読み込み
-    data_loader = MongoDataLoader()
-    start_date = "2020-01-01"
-    df = data_loader.load_data_from_datetime_period(
-        start_date,
-        current_date,
-        coll_type=MARKET_DATA_TECH,
-        symbol="BTCUSDT",
-        interval=m_interval
-    )
-
-
 def main():
     #=== 1. データ読み込み (全期間) ===#
     data_loader = MongoDataLoader()
