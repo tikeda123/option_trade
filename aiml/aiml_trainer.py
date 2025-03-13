@@ -25,7 +25,7 @@ NEW_DATA_END = "2025-01-05 00:00:00"
 
 
 def main(
-        id: str, modle_gp:str,  epochs: int = 60, n_splits=2,use_gpu: bool = True
+        id: str, modle_gp:str,  epochs: int = 30, n_splits=2,use_gpu: bool = True
 ):
         """
         Main function for training and evaluating a prediction model.
@@ -123,9 +123,11 @@ def main(
 
 
 if __name__ == "__main__":
-        #main("rolling_v6", "MODEL_SHORT_TERM", use_gpu=True)
+        main("rolling_v2", "MODEL_SHORT_TERM", use_gpu=True)
 
+        """
         for i in range(2, 7):
             version = f"rolling_v{i}"
             print(f"Start training: {version}")
             main(version, "MODEL_SHORT_TERM", use_gpu=True)
+        """

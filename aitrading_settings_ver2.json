@@ -34,8 +34,8 @@
                 "PTC": 0.00055,
                 "MAX_LOSSCUT": 0.07,
                 "MIN_LOSSCUT": 0.05,
-                "SHORT_MODEL_RATIO": 0.5,
-                "MIDDLE_MODEL_RATIO": 0.5,
+                "SHORT_MODEL_RATIO": 0.9,
+                "MIDDLE_MODEL_RATIO": 0.1,
                 "LONG_MODEL_RATIO": 0.2
         },
         "LOG": {

@@ -75,19 +75,25 @@ def create_lstm_dataset(data: np.ndarray, window_size: int, predict_col: str):
 
 def main():
     predict_col = "ask1Price"
-    db = MongoDataLoader()
-    df = db.load_data(OPTION_TICKER)
 
-    # ------------------------------
-    # データ前処理: 0→NaN変換, IQR外れ値処理, 補間, dropna
-    # ------------------------------
-    df = clean_option_data(
-        df,
-        group_col='symbol',
-        columns_to_clean=['ask1Price', 'ask1Iv', 'bid1Price', 'bid1Iv'],  # 必要に応じて追加
-        outlier_factor=1.5,  # IQR factor
-        dropna_after=True
-    )
+    if os.path.exists("cleaned_option_data.csv"):
+        df = pd.read_csv("cleaned_option_data.csv")
+    else:
+        db = MongoDataLoader()
+        df = db.load_data(OPTION_TICKER)
+
+        # ------------------------------
+        # データ前処理: 0→NaN変換, IQR外れ値処理, 補間, dropna
+        # ------------------------------
+        df = clean_option_data(
+            df,
+            group_col='symbol',
+            columns_to_clean=['ask1Price', 'ask1Iv', 'bid1Price', 'bid1Iv'],  # 必要に応じて追加
+            outlier_factor=1.5,  # IQR factor
+            dropna_after=True
+        )
+        #dfをファイルに保存
+        df.to_csv("cleaned_option_data.csv", index=False)
 
     # strike range フィルタ (例)
     df['strike'] = df['symbol'].apply(lambda s: parse_symbol(s)[2])
@@ -95,6 +101,8 @@ def main():
 
     # シンボルごとに DataFrame を辞書化
     symbol_timeseries = process_option_data(df)
+    print(symbol_timeseries)
+    exit()
 
     window_size = 24
     scaler = MinMaxScaler()

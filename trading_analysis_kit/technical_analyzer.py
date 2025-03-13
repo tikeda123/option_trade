@@ -16,6 +16,7 @@ from common.trading_logger_db import TradingLoggerDB
 from common.config_manager import ConfigManager
 from mongodb.data_loader_mongo import MongoDataLoader
 from common.constants import *
+from aiml.kalman_filter import apply_kalman_filter
 
 class TechnicalAnalyzer:
         """
@@ -127,7 +128,7 @@ class TechnicalAnalyzer:
                 """
                 self.__data_loader.insert_data(self.__data, MARKET_DATA_TECH, symbol, interval)
 
-        def analyze(self, df: Optional[ pd.DataFrame] = None) -> pd.DataFrame:
+        def analyze(self, df: Optional[ pd.DataFrame] = None, interval: Optional[int] = None) -> pd.DataFrame:
                 """
                 Performs technical analysis on the DataFrame, calculating various indicators.
 
@@ -136,6 +137,9 @@ class TechnicalAnalyzer:
                 """
                 if df is not None:
                         self.__data = df
+
+                if interval is not None:
+                        self.interval = interval
 
                 # Calculate Weighted Close Price (WCLPRICE)
                 self.calculate_wclprice()
@@ -169,6 +173,10 @@ class TechnicalAnalyzer:
                 self.calculate_ATR()
                 # Calculate Volatility
                 self.calculate_volatility(self.interval)
+                # Calculate Kalman Filter on Close
+                self.calculate_close_kalman()
+                # Calculate Kalman Filter on MACD
+                self.calculate_kalman_macd()
                 # Finalize the analysis by handling any remaining data cleanup
                 self.finalize_analysis()
                 return self.__data
@@ -183,6 +191,15 @@ class TechnicalAnalyzer:
                 self.__data[COLUMN_ATR] = ta.ATR(self.__data[COLUMN_HIGH], self.__data[COLUMN_LOW], self.__data[COLUMN_CLOSE], timeperiod)
                 # Truncate the ATR values and add them to the DataFrame
                 self._truncate_and_add_to_df(self.__data[COLUMN_ATR], COLUMN_ATR)
+
+        def calculate_close_kalman(self):
+                """
+                Calculates the Kalman Filter on Close and adds it to the DataFrame.
+                """
+                # Calculate Kalman Filter on Close using the TA-Lib library
+                self.__data[COLUMN_CLOSE_KALMAN] = apply_kalman_filter(self.__data, 'close', 1e-2, 1.0)
+                # Truncate the Kalman Filter on Close values and add them to the DataFrame
+                self._truncate_and_add_to_df(self.__data[COLUMN_CLOSE_KALMAN], COLUMN_CLOSE_KALMAN)
 
         def calculate_ROC(self):
                 """
@@ -319,6 +336,17 @@ class TechnicalAnalyzer:
                 self._truncate_and_add_to_df(macd, COLUMN_MACD)
                 self._truncate_and_add_to_df(macdsignal, COLUMN_MACDSIGNAL)
                 self._truncate_and_add_to_df(macdhist, COLUMN_MACDHIST)
+
+        def calculate_kalman_macd(self):
+                """
+                Calculates the Kalman Filter for MACD and adds it to the DataFrame.
+                """
+                fastperiod, slowperiod, signalperiod = int(self.__config_manager.get('TECHNICAL', 'MACD', 'FASTPERIOD')), int(self.__config_manager.get('TECHNICAL', 'MACD', 'SLOWPERIOD')), int(self.__config_manager.get('TECHNICAL', 'MACD', 'SIGNALPERIOD'))
+
+                macd, macdsignal, macdhist = ta.MACD(self.__data[COLUMN_CLOSE_KALMAN], fastperiod, slowperiod, signalperiod)
+                self._truncate_and_add_to_df(macd, COLUMN_KALMAN_MACD)
+                self._truncate_and_add_to_df(macdsignal, COLUMN_KALMAN_MACDSIGNAL)
+                self._truncate_and_add_to_df(macdhist, COLUMN_KALMAN_MACDHIST)
 
         def calculate_dmi(self):
                 """
@@ -506,11 +534,9 @@ def calculate_ema(current_price, previous_ema, smoothing_factor=0.4):
     return (current_price * smoothing_factor) + (previous_ema * (1 - smoothing_factor))
 
 def main():
-        """
-        Main function to demonstrate the usage of the TechnicalAnalyzer class.
-        """
+
         condition_list = [('BNBUSDT', 720), ('BNBUSDT', 240), ('BNBUSDT', 120), ('BNBUSDT', 60), ('BNBUSDT', 1440),('BNBUSDT', 10080),
-                                        ('BTCUSDT', 720), ('BTCUSDT', 240), ('BTCUSDT', 120), ('BTCUSDT', 60), ('BTCUSDT', 1440),('BTCUSDT', 10080),
+                                       ('BTCUSDT', 720), ('BTCUSDT', 240), ('BTCUSDT', 120), ('BTCUSDT', 60), ('BTCUSDT', 1440),('BTCUSDT', 10080),
                                         ('ETHUSDT', 720), ('ETHUSDT', 240), ('ETHUSDT', 120), ('ETHUSDT', 60), ('ETHUSDT', 1440),('ETHUSDT', 10080),
                                         ('SOLUSDT', 720), ('SOLUSDT', 240), ('SOLUSDT', 120), ('SOLUSDT', 60), ('SOLUSDT', 1440),('SOLUSDT', 10080)]
 

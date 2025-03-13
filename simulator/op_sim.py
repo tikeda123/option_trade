@@ -29,7 +29,7 @@ def main():
                                            interval=60)
     # 利用するカラムのみ抽出
     #graph_df = df[['start_at', 'close', 'ema', 'macdhist', 'roc', 'mfi', 'aroon', 'volatility']]
-    graph_df = df[['start_at', 'close', 'volume', 'macdhist', 'rsi', 'volatility']]
+    graph_df = df[['start_at', 'close', 'volume', 'macdhist', 'rsi', 'volatility','mfi']]
 
 
 

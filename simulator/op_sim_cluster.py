@@ -35,14 +35,14 @@ def main():
     # 2) 利用するカラムのみ抽出
     #   必要に応じて 'high', 'low' があれば 'price_range' を作ってもよい
     #   ここでは volume, macdhist, rsi, volatility を使う例とする
-    graph_df = df[['start_at', 'close', 'volume', 'macdhist', 'rsi', 'volatility']].copy()
+    graph_df = df[['start_at', 'close', 'volume', 'macdhist', 'rsi', 'volatility','mfi']].copy()
 
     # データが欠損している行を落としておく
     graph_df.dropna(inplace=True)
 
     # 3) クラスタリング用の特徴量を選定
     #    （価格レベルに左右されにくい指標を例示）
-    cluster_features = ['volume', 'macdhist', 'rsi', 'volatility']
+    cluster_features = ['volume', 'macdhist', 'rsi', 'volatility','mfi']
     cluster_df = graph_df[cluster_features].copy()  # 解析用に抜き出し
 
     # 4) 標準化（スケーリング）
@@ -81,7 +81,7 @@ def main():
     plt.show()
 
     # 7) ここでは仮に k=4 を選ぶ例とする（実際には上記結果を見て判断）
-    best_k = 4
+    best_k = 5
     kmeans = KMeans(n_clusters=best_k, random_state=42, n_init='auto')
     cluster_labels = kmeans.fit_predict(X_scaled)
 

@@ -431,7 +431,7 @@ class BayesianPricePredictor:
 def main():
     # データ取得範囲
     start_date = "2020-01-01"
-    end_date   = "2025-01-01"
+    end_date   = "2025-03-01"
 
     # Mongoデータローダー（環境に応じて修正）
     data_loader = MongoDataLoader()
@@ -493,7 +493,7 @@ def main():
     model.print_model_info()
 
     # 特定の日時に対して予測する例
-    target_date = "2024-12-28 00:00:00"
+    target_date = "2025-2-01 00:00:00"
     try:
         pred_value, pred_std, is_uncertain = model.predict_for_date(target_date, return_std=True)
         print(f"\nPredicted next-day close for {target_date} : {pred_value:.4f} (+/- {pred_std:.4f})")

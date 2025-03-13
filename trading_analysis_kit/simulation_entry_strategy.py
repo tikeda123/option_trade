@@ -408,12 +408,14 @@ class EntryStrategy:
                 current_index = context.dm.get_current_index()
                 df = context.dm.get_df_fromto(current_index - (TIME_SERIES_PERIOD - 1), current_index)
 
+                pred_v1 = 0
                 # Generate predictions from all models
                 rolling_pred = {}
                 for i in range(1, self.MAX_MANAGERS + 1):
                         manager_name = f"manager_rolling_v{i}"
                         target_df = self.manager[manager_name].create_time_series_data(df)
                         rolling_pred[i - 1] = self.manager[manager_name].predict_model(target_df, probability=True)
+
 
                         set_pred_method = getattr(context.dm, f'set_pred_v{i}')
                         set_pred_method(rolling_pred[i - 1])
@@ -423,6 +425,7 @@ class EntryStrategy:
 
                 # Calculate weighted average using selected models
                 combined_pred = np.sum([self.model_weights[i] * rolling_pred[i] for i in top_model_indices])
+
                 prediction = 1 if combined_pred > 0.5 else 0
 
                 context.log_transaction(f"Pred_b {prediction}  {combined_pred}")

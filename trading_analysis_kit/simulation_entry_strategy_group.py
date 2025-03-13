@@ -34,19 +34,19 @@ class EntryStrategyGroup:
                 """
                 model_params = {
                         "MODEL_SHORT_TERM": {
-                                "top_model_num": 2,
+                                "top_model_num": 1,
                                 "profit_weight": 0.6,
                                 "hit_rate_weight": 0.2,
                                 "error_rate_weight": 0.2,
                         },
                         "MODEL_MIDDLE_TERM": {
-                                "top_model_num": 2,
+                                "top_model_num": 1,
                                 "profit_weight": 0.6,
                                 "hit_rate_weight": 0.2,
                                 "error_rate_weight": 0.2,
                         },
                         "MODEL_LONG_TERM": {
-                                "top_model_num": 2,
+                                "top_model_num": 1,
                                 "profit_weight": 0.6,
                                 "hit_rate_weight": 0.2,
                                 "error_rate_weight": 0.2,
@@ -147,8 +147,8 @@ class EntryStrategyGroup:
                 weighted_trend = (short_trend * short_weight) + (mid_trend * mid_weight)
 
                                 # Determine final prediction
-                #trend = 1 if weighted_trend > 0.5 else 0
-                trend = short_trend
+                trend = 1 if weighted_trend > 0.5 else 0
+                #trend = 1 if short_trend > 0 else 0
 
                 return True, trend
                 """

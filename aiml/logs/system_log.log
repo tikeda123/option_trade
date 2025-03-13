@@ -14000,3 +14000,325 @@ weighted avg       0.75      0.73      0.74      5330
 2025-02-22 21:47:59,052 INFO: Loading scaler from /home/tikeda/workspace/trade/option_trade/data/data_rolling/rolling_BTC_ETH_SOL_BNB_1440_xd_model_volatility3.scaler
 2025-02-22 21:48:04,433 INFO: GPU enabled for inference. Available GPUs: 1
 2025-02-22 21:48:04,433 INFO: Loading model from /home/tikeda/workspace/trade/option_trade/data/data_bayes/bayes_BTC_ETH_SOL_BNB_1440_xd_model_close3.joblib
+2025-03-03 00:22:16,580 INFO: Collection 'trade_config' exists.
+2025-03-03 00:22:16,585 INFO: Collection 'trade_config' dropped successfully.
+2025-03-03 00:22:16,590 INFO: Collection 'trade_config' does not exist.
+2025-03-03 00:22:16,980 INFO: No GPU available, using CPU instead.
+2025-03-03 00:22:16,981 INFO: Loading model from /home/tikeda/workspace/trade/option_trade/data/data_bayes/bayes_BTC_ETH_SOL_BNB_1440_xd_model_close3.joblib
+2025-03-04 00:33:35,678 INFO: Collection 'trade_config' exists.
+2025-03-04 00:33:35,683 INFO: Collection 'trade_config' dropped successfully.
+2025-03-04 00:33:35,687 INFO: Collection 'trade_config' does not exist.
+2025-03-04 00:33:36,297 INFO: No GPU available, using CPU instead.
+2025-03-04 00:33:36,298 INFO: Loading model from file: /home/tikeda/workspace/trade/option_trade/data/data_rolling/rolling_BTC_ETH_SOL_BNB_1440_xd_model_ema3.keras
+2025-03-04 00:33:41,376 INFO: Loading scaler from /home/tikeda/workspace/trade/option_trade/data/data_rolling/rolling_BTC_ETH_SOL_BNB_1440_xd_model_ema3.scaler
+2025-03-04 00:33:41,378 INFO: Loading scaler from /home/tikeda/workspace/trade/option_trade/data/data_rolling/rolling_BTC_ETH_SOL_BNB_1440_xd_model_ema3.scaler
+2025-03-04 00:33:41,379 INFO: No GPU available, using CPU instead.
+2025-03-04 00:33:41,379 INFO: Loading model from file: /home/tikeda/workspace/trade/option_trade/data/data_rolling/rolling_BTC_ETH_SOL_BNB_1440_xd_model_madhist3.keras
+2025-03-04 00:33:46,416 INFO: Loading scaler from /home/tikeda/workspace/trade/option_trade/data/data_rolling/rolling_BTC_ETH_SOL_BNB_1440_xd_model_madhist3.scaler
+2025-03-04 00:33:46,436 INFO: Loading scaler from /home/tikeda/workspace/trade/option_trade/data/data_rolling/rolling_BTC_ETH_SOL_BNB_1440_xd_model_madhist3.scaler
+2025-03-04 00:33:46,438 INFO: No GPU available, using CPU instead.
+2025-03-04 00:33:46,438 INFO: Loading model from file: /home/tikeda/workspace/trade/option_trade/data/data_rolling/rolling_BTC_ETH_SOL_BNB_1440_xd_model_roc3.keras
+2025-03-04 00:33:51,396 INFO: Loading scaler from /home/tikeda/workspace/trade/option_trade/data/data_rolling/rolling_BTC_ETH_SOL_BNB_1440_xd_model_roc3.scaler
+2025-03-04 00:33:51,398 INFO: Loading scaler from /home/tikeda/workspace/trade/option_trade/data/data_rolling/rolling_BTC_ETH_SOL_BNB_1440_xd_model_roc3.scaler
+2025-03-04 00:33:51,399 INFO: No GPU available, using CPU instead.
+2025-03-04 00:33:51,399 INFO: Loading model from file: /home/tikeda/workspace/trade/option_trade/data/data_rolling/rolling_BTC_ETH_SOL_BNB_1440_xd_model_mfi3.keras
+2025-03-04 00:33:56,399 INFO: Loading scaler from /home/tikeda/workspace/trade/option_trade/data/data_rolling/rolling_BTC_ETH_SOL_BNB_1440_xd_model_mfi3.scaler
+2025-03-04 00:33:56,401 INFO: Loading scaler from /home/tikeda/workspace/trade/option_trade/data/data_rolling/rolling_BTC_ETH_SOL_BNB_1440_xd_model_mfi3.scaler
+2025-03-04 00:33:56,402 INFO: No GPU available, using CPU instead.
+2025-03-04 00:33:56,402 INFO: Loading model from file: /home/tikeda/workspace/trade/option_trade/data/data_rolling/rolling_BTC_ETH_SOL_BNB_1440_xd_model_aroon3.keras
+2025-03-04 00:34:01,350 INFO: Loading scaler from /home/tikeda/workspace/trade/option_trade/data/data_rolling/rolling_BTC_ETH_SOL_BNB_1440_xd_model_aroon3.scaler
+2025-03-04 00:34:01,351 INFO: Loading scaler from /home/tikeda/workspace/trade/option_trade/data/data_rolling/rolling_BTC_ETH_SOL_BNB_1440_xd_model_aroon3.scaler
+2025-03-04 00:34:01,353 INFO: No GPU available, using CPU instead.
+2025-03-04 00:34:01,353 INFO: Loading model from file: /home/tikeda/workspace/trade/option_trade/data/data_rolling/rolling_BTC_ETH_SOL_BNB_1440_xd_model_volatility3.keras
+2025-03-04 00:34:06,297 INFO: Loading scaler from /home/tikeda/workspace/trade/option_trade/data/data_rolling/rolling_BTC_ETH_SOL_BNB_1440_xd_model_volatility3.scaler
+2025-03-04 00:34:06,299 INFO: Loading scaler from /home/tikeda/workspace/trade/option_trade/data/data_rolling/rolling_BTC_ETH_SOL_BNB_1440_xd_model_volatility3.scaler
+2025-03-04 00:34:10,488 INFO: No GPU available, using CPU instead.
+2025-03-04 00:34:10,488 INFO: Loading model from /home/tikeda/workspace/trade/option_trade/data/data_bayes/bayes_BTC_ETH_SOL_BNB_1440_xd_model_close3.joblib
+2025-03-09 07:55:10,451 INFO: Collection 'trade_config' exists.
+2025-03-09 07:55:10,456 INFO: Collection 'trade_config' dropped successfully.
+2025-03-09 07:55:10,462 INFO: Collection 'trade_config' does not exist.
+2025-03-09 07:55:10,495 INFO: id: rolling_v1, modle_gp: MODEL_SHORT_TERM, epochs: 60, n_splits: 2, use_gpu: True
+2025-03-09 07:55:10,867 INFO: No GPU available, using CPU instead.
+2025-03-09 07:55:10,867 INFO: Model parameters updated successfully
+2025-03-09 07:55:10,958 INFO: 
+Iteration 1
+2025-03-09 07:55:10,966 INFO: No data found for the specified datetime range.
+2025-03-09 08:13:19,407 INFO: Collection 'trade_config' exists.
+2025-03-09 08:13:19,412 INFO: Collection 'trade_config' dropped successfully.
+2025-03-09 08:13:19,417 INFO: Collection 'trade_config' does not exist.
+2025-03-09 08:13:19,456 INFO: id: rolling_v1, modle_gp: MODEL_SHORT_TERM, epochs: 60, n_splits: 2, use_gpu: True
+2025-03-09 08:13:19,513 INFO: No GPU available, using CPU instead.
+2025-03-09 08:13:19,513 INFO: Model parameters updated successfully
+2025-03-09 08:13:19,601 INFO: 
+Iteration 1
+2025-03-09 08:13:20,298 INFO: No data found for the specified datetime range.
+2025-03-09 08:13:20,303 INFO: No data found for the specified datetime range.
+2025-03-09 08:13:20,336 INFO: No data found for the specified datetime range.
+2025-03-09 08:13:20,341 INFO: No data found for the specified datetime range.
+2025-03-09 08:13:20,394 INFO: No data found for the specified datetime range.
+2025-03-09 08:13:20,406 INFO: No data found for the specified datetime range.
+2025-03-09 08:13:20,489 INFO: No data found for the specified datetime range.
+2025-03-09 08:13:20,510 INFO: No data found for the specified datetime range.
+2025-03-09 08:13:59,563 INFO: Training for fold 1 ...
+2025-03-09 08:18:02,800 INFO: Collection 'trade_config' exists.
+2025-03-09 08:18:02,806 INFO: Collection 'trade_config' dropped successfully.
+2025-03-09 08:18:02,811 INFO: Collection 'trade_config' does not exist.
+2025-03-09 08:18:02,850 INFO: id: rolling_v1, modle_gp: MODEL_SHORT_TERM, epochs: 60, n_splits: 2, use_gpu: True
+2025-03-09 08:18:02,923 INFO: No GPU available, using CPU instead.
+2025-03-09 08:18:02,923 INFO: Model parameters updated successfully
+2025-03-09 08:18:03,010 INFO: 
+Iteration 1
+2025-03-09 08:18:03,758 INFO: No data found for the specified datetime range.
+2025-03-09 08:18:03,763 INFO: No data found for the specified datetime range.
+2025-03-09 08:18:03,796 INFO: No data found for the specified datetime range.
+2025-03-09 08:18:03,802 INFO: No data found for the specified datetime range.
+2025-03-09 08:18:03,836 INFO: No data found for the specified datetime range.
+2025-03-09 08:18:03,841 INFO: No data found for the specified datetime range.
+2025-03-09 08:18:03,873 INFO: No data found for the specified datetime range.
+2025-03-09 08:18:03,878 INFO: No data found for the specified datetime range.
+2025-03-09 08:18:44,716 INFO: Training for fold 1 ...
+2025-03-09 08:20:26,869 INFO: Collection 'trade_config' exists.
+2025-03-09 08:20:26,876 INFO: Collection 'trade_config' dropped successfully.
+2025-03-09 08:20:26,884 INFO: Collection 'trade_config' does not exist.
+2025-03-09 08:20:26,929 INFO: id: rolling_v1, modle_gp: MODEL_SHORT_TERM, epochs: 60, n_splits: 2, use_gpu: True
+2025-03-09 08:20:27,185 INFO: No GPU available, using CPU instead.
+2025-03-09 08:20:27,186 INFO: Model parameters updated successfully
+2025-03-09 08:20:27,273 INFO: 
+Iteration 1
+2025-03-09 08:20:28,148 INFO: No data found for the specified datetime range.
+2025-03-09 08:20:28,161 INFO: No data found for the specified datetime range.
+2025-03-09 08:20:28,230 INFO: No data found for the specified datetime range.
+2025-03-09 08:20:28,236 INFO: No data found for the specified datetime range.
+2025-03-09 08:20:28,344 INFO: No data found for the specified datetime range.
+2025-03-09 08:20:28,361 INFO: No data found for the specified datetime range.
+2025-03-09 08:20:28,462 INFO: No data found for the specified datetime range.
+2025-03-09 08:20:28,474 INFO: No data found for the specified datetime range.
+2025-03-09 08:21:08,736 INFO: Training for fold 1 ...
+2025-03-09 09:03:28,041 INFO: Collection 'trade_config' exists.
+2025-03-09 09:03:28,047 INFO: Collection 'trade_config' dropped successfully.
+2025-03-09 09:03:28,053 INFO: Collection 'trade_config' does not exist.
+2025-03-09 09:03:28,107 INFO: id: rolling_v1, modle_gp: MODEL_SHORT_TERM, epochs: 60, n_splits: 2, use_gpu: True
+2025-03-09 09:03:28,207 INFO: GPU enabled for inference. Available GPUs: 1
+2025-03-09 09:03:28,207 INFO: Model parameters updated successfully
+2025-03-09 09:03:28,312 INFO: 
+Iteration 1
+2025-03-09 09:03:29,121 INFO: No data found for the specified datetime range.
+2025-03-09 09:03:29,126 INFO: No data found for the specified datetime range.
+2025-03-09 09:03:29,160 INFO: No data found for the specified datetime range.
+2025-03-09 09:03:29,166 INFO: No data found for the specified datetime range.
+2025-03-09 09:03:29,199 INFO: No data found for the specified datetime range.
+2025-03-09 09:03:29,204 INFO: No data found for the specified datetime range.
+2025-03-09 09:03:29,258 INFO: No data found for the specified datetime range.
+2025-03-09 09:03:29,263 INFO: No data found for the specified datetime range.
+2025-03-09 09:04:10,923 INFO: Training for fold 1 ...
+2025-03-09 09:25:00,417 INFO: Collection 'trade_config' exists.
+2025-03-09 09:25:00,423 INFO: Collection 'trade_config' dropped successfully.
+2025-03-09 09:25:00,429 INFO: Collection 'trade_config' does not exist.
+2025-03-09 09:25:00,470 INFO: id: rolling_v1, modle_gp: MODEL_SHORT_TERM, epochs: 30, n_splits: 2, use_gpu: True
+2025-03-09 09:25:00,557 INFO: GPU enabled for inference. Available GPUs: 1
+2025-03-09 09:25:00,557 INFO: Model parameters updated successfully
+2025-03-09 09:25:00,647 INFO: 
+Iteration 1
+2025-03-09 09:25:01,432 INFO: No data found for the specified datetime range.
+2025-03-09 09:25:01,438 INFO: No data found for the specified datetime range.
+2025-03-09 09:25:01,486 INFO: No data found for the specified datetime range.
+2025-03-09 09:25:01,493 INFO: No data found for the specified datetime range.
+2025-03-09 09:25:01,545 INFO: No data found for the specified datetime range.
+2025-03-09 09:25:01,551 INFO: No data found for the specified datetime range.
+2025-03-09 09:25:01,624 INFO: No data found for the specified datetime range.
+2025-03-09 09:25:01,640 INFO: No data found for the specified datetime range.
+2025-03-09 09:25:44,679 INFO: Training for fold 1 ...
+2025-03-09 09:28:25,595 INFO: Collection 'trade_config' exists.
+2025-03-09 09:28:25,602 INFO: Collection 'trade_config' dropped successfully.
+2025-03-09 09:28:25,608 INFO: Collection 'trade_config' does not exist.
+2025-03-09 09:28:25,666 INFO: id: rolling_v1, modle_gp: MODEL_SHORT_TERM, epochs: 30, n_splits: 2, use_gpu: True
+2025-03-09 09:28:25,935 INFO: GPU enabled for inference. Available GPUs: 1
+2025-03-09 09:28:25,935 INFO: Model parameters updated successfully
+2025-03-09 09:28:26,036 INFO: 
+Iteration 1
+2025-03-09 09:28:26,840 INFO: No data found for the specified datetime range.
+2025-03-09 09:28:26,861 INFO: No data found for the specified datetime range.
+2025-03-09 09:28:26,952 INFO: No data found for the specified datetime range.
+2025-03-09 09:28:26,964 INFO: No data found for the specified datetime range.
+2025-03-09 09:28:27,036 INFO: No data found for the specified datetime range.
+2025-03-09 09:28:27,041 INFO: No data found for the specified datetime range.
+2025-03-09 09:28:27,080 INFO: No data found for the specified datetime range.
+2025-03-09 09:28:27,087 INFO: No data found for the specified datetime range.
+2025-03-09 09:29:09,418 INFO: Training for fold 1 ...
+2025-03-09 09:46:36,891 INFO: Training for fold 2 ...
+2025-03-09 10:20:10,250 INFO: Fold 1: Accuracy = [1.8723528385162354, 0.8079074025154114]
+2025-03-09 10:20:10,251 INFO: Fold 2: Accuracy = [0.5858283638954163, 0.8278493285179138]
+2025-03-09 10:20:10,349 INFO: Evaluating on x_test with shape (198, 32, 11)
+2025-03-09 10:20:13,542 INFO: Model Accuracy: 0.8333333333333334
+2025-03-09 10:20:13,542 INFO: Classification Report:
+              precision    recall  f1-score   support
+
+           0       0.86      0.72      0.78        82
+           1       0.82      0.91      0.87       116
+
+    accuracy                           0.83       198
+   macro avg       0.84      0.82      0.82       198
+weighted avg       0.84      0.83      0.83       198
+
+2025-03-09 10:20:13,542 INFO: Confusion Matrix:
+[[ 59  23]
+ [ 10 106]]
+2025-03-09 10:20:13,542 INFO: Cross-validation scores: [[1.8723528385162354, 0.8079074025154114], [0.5858283638954163, 0.8278493285179138]]
+2025-03-09 10:20:13,543 INFO: Mean CV score: 1.0234844833612442
+2025-03-09 10:20:13,543 INFO: New data accuracy: 0.8333333333333334
+2025-03-09 10:20:13,543 INFO: New best model!
+2025-03-09 10:20:13,543 INFO: Saving model to /home/tikeda/workspace/trade/option_trade/data/data_rolling/rolling_BTC_ETH_SOL_BNB_1440_xd_model_kalman1.keras
+2025-03-09 10:20:14,027 INFO: Saving scaler to /home/tikeda/workspace/trade/option_trade/data/data_rolling/rolling_BTC_ETH_SOL_BNB_1440_xd_model_kalman1.scaler
+2025-03-09 10:20:14,029 INFO: Target accuracy 0.5 achieved. Stopping training.
+2025-03-09 10:20:14,030 INFO: 
+Training completed.
+2025-03-09 10:20:14,030 INFO: Best accuracy on new data: 0.8333333333333334
+2025-03-09 10:20:14,030 INFO: Final classification report on new data:
+2025-03-09 10:20:14,030 INFO:               precision    recall  f1-score   support
+
+           0       0.86      0.72      0.78        82
+           1       0.82      0.91      0.87       116
+
+    accuracy                           0.83       198
+   macro avg       0.84      0.82      0.82       198
+weighted avg       0.84      0.83      0.83       198
+
+2025-03-09 10:20:14,030 INFO: Final confusion matrix:
+2025-03-09 10:20:14,030 INFO: [[ 59  23]
+ [ 10 106]]
+2025-03-09 10:20:14,030 INFO: test model load
+2025-03-09 14:12:05,944 INFO: Collection 'trade_config' exists.
+2025-03-09 14:12:05,949 INFO: Collection 'trade_config' dropped successfully.
+2025-03-09 14:12:05,954 INFO: Collection 'trade_config' does not exist.
+2025-03-09 14:12:05,986 INFO: id: rolling_v2, modle_gp: MODEL_MIDDLE_TERM, epochs: 30, n_splits: 2, use_gpu: True
+2025-03-09 14:12:06,049 INFO: GPU enabled for inference. Available GPUs: 1
+2025-03-09 14:12:06,049 INFO: Model parameters updated successfully
+2025-03-09 14:12:06,143 INFO: 
+Iteration 1
+2025-03-09 14:12:06,868 INFO: No data found for the specified datetime range.
+2025-03-09 14:12:06,873 INFO: No data found for the specified datetime range.
+2025-03-09 14:12:06,924 INFO: No data found for the specified datetime range.
+2025-03-09 14:12:06,934 INFO: No data found for the specified datetime range.
+2025-03-09 14:12:06,976 INFO: No data found for the specified datetime range.
+2025-03-09 14:12:06,981 INFO: No data found for the specified datetime range.
+2025-03-09 14:12:07,016 INFO: No data found for the specified datetime range.
+2025-03-09 14:12:07,021 INFO: No data found for the specified datetime range.
+2025-03-09 14:12:49,298 INFO: Training for fold 1 ...
+2025-03-09 14:30:25,416 INFO: Training for fold 2 ...
+2025-03-09 15:04:54,986 INFO: Fold 1: Accuracy = [2.14408540725708, 0.7515931725502014]
+2025-03-09 15:04:54,986 INFO: Fold 2: Accuracy = [0.7282233238220215, 0.784974217414856]
+2025-03-09 15:04:57,707 INFO: Evaluating on x_test with shape (5330, 32, 11)
+2025-03-09 15:05:01,356 INFO: Model Accuracy: 0.7799249530956848
+2025-03-09 15:05:01,356 INFO: Classification Report:
+              precision    recall  f1-score   support
+
+           0       0.74      0.81      0.77      2481
+           1       0.82      0.75      0.78      2849
+
+    accuracy                           0.78      5330
+   macro avg       0.78      0.78      0.78      5330
+weighted avg       0.78      0.78      0.78      5330
+
+2025-03-09 15:05:01,356 INFO: Confusion Matrix:
+[[2016  465]
+ [ 708 2141]]
+2025-03-09 15:05:01,356 INFO: Cross-validation scores: [[2.14408540725708, 0.7515931725502014], [0.7282233238220215, 0.784974217414856]]
+2025-03-09 15:05:01,356 INFO: Mean CV score: 1.1022190302610397
+2025-03-09 15:05:01,356 INFO: New data accuracy: 0.7799249530956848
+2025-03-09 15:05:01,356 INFO: New best model!
+2025-03-09 15:05:01,356 INFO: Saving model to /home/tikeda/workspace/trade/option_trade/data/data_rolling/rolling_BTC_ETH_SOL_BNB_1440_xd_model_kalman3.keras
+2025-03-09 15:05:01,823 INFO: Saving scaler to /home/tikeda/workspace/trade/option_trade/data/data_rolling/rolling_BTC_ETH_SOL_BNB_1440_xd_model_kalman3.scaler
+2025-03-09 15:05:01,824 INFO: Target accuracy 0.5 achieved. Stopping training.
+2025-03-09 15:05:01,824 INFO: 
+Training completed.
+2025-03-09 15:05:01,824 INFO: Best accuracy on new data: 0.7799249530956848
+2025-03-09 15:05:01,824 INFO: Final classification report on new data:
+2025-03-09 15:05:01,824 INFO:               precision    recall  f1-score   support
+
+           0       0.74      0.81      0.77      2481
+           1       0.82      0.75      0.78      2849
+
+    accuracy                           0.78      5330
+   macro avg       0.78      0.78      0.78      5330
+weighted avg       0.78      0.78      0.78      5330
+
+2025-03-09 15:05:01,824 INFO: Final confusion matrix:
+2025-03-09 15:05:01,824 INFO: [[2016  465]
+ [ 708 2141]]
+2025-03-09 15:05:01,824 INFO: test model load
+2025-03-10 01:21:21,426 INFO: Collection 'trade_config' exists.
+2025-03-10 01:21:21,434 INFO: Collection 'trade_config' dropped successfully.
+2025-03-10 01:21:21,448 INFO: Collection 'trade_config' does not exist.
+2025-03-10 01:21:21,752 INFO: GPU enabled for inference. Available GPUs: 1
+2025-03-10 01:22:54,979 INFO: Collection 'trade_config' exists.
+2025-03-10 01:22:54,984 INFO: Collection 'trade_config' dropped successfully.
+2025-03-10 01:22:54,988 INFO: Collection 'trade_config' does not exist.
+2025-03-10 01:22:55,104 INFO: GPU enabled for inference. Available GPUs: 1
+2025-03-10 01:22:55,133 INFO: GPU enabled for inference. Available GPUs: 1
+2025-03-10 01:53:43,321 INFO: Collection 'trade_config' exists.
+2025-03-10 01:53:43,327 INFO: Collection 'trade_config' dropped successfully.
+2025-03-10 01:53:43,332 INFO: Collection 'trade_config' does not exist.
+2025-03-10 01:53:43,475 INFO: GPU enabled for inference. Available GPUs: 1
+2025-03-10 01:53:43,475 INFO: Loading model from file: /home/tikeda/workspace/trade/option_trade/data/data_rolling/rolling_BTC_ETH_SOL_BNB_1440_xd_model_madhist1.keras
+2025-03-10 01:55:39,735 INFO: Collection 'trade_config' exists.
+2025-03-10 01:55:39,741 INFO: Collection 'trade_config' dropped successfully.
+2025-03-10 01:55:39,746 INFO: Collection 'trade_config' does not exist.
+2025-03-10 01:56:40,121 INFO: Collection 'trade_config' exists.
+2025-03-10 01:56:40,127 INFO: Collection 'trade_config' dropped successfully.
+2025-03-10 01:56:40,133 INFO: Collection 'trade_config' does not exist.
+2025-03-10 01:56:40,180 INFO: id: rolling_v2, modle_gp: MODEL_SHORT_TERM, epochs: 30, n_splits: 2, use_gpu: True
+2025-03-10 01:56:40,257 INFO: GPU enabled for inference. Available GPUs: 1
+2025-03-10 01:56:40,257 INFO: Model parameters updated successfully
+2025-03-10 01:56:40,357 INFO: 
+Iteration 1
+2025-03-10 01:56:41,188 INFO: No data found for the specified datetime range.
+2025-03-10 01:56:41,198 INFO: No data found for the specified datetime range.
+2025-03-10 01:56:41,252 INFO: No data found for the specified datetime range.
+2025-03-10 01:56:41,257 INFO: No data found for the specified datetime range.
+2025-03-10 01:56:41,293 INFO: No data found for the specified datetime range.
+2025-03-10 01:56:41,298 INFO: No data found for the specified datetime range.
+2025-03-10 01:56:41,335 INFO: No data found for the specified datetime range.
+2025-03-10 01:56:41,341 INFO: No data found for the specified datetime range.
+2025-03-10 01:57:20,258 INFO: Training for fold 1 ...
+2025-03-10 02:14:46,557 INFO: Training for fold 2 ...
+2025-03-10 02:49:22,312 INFO: Fold 1: Accuracy = [1.7957500219345093, 0.74652099609375]
+2025-03-10 02:49:22,312 INFO: Fold 2: Accuracy = [0.7200596332550049, 0.7563185691833496]
+2025-03-10 02:49:24,896 INFO: Evaluating on x_test with shape (5332, 32, 10)
+2025-03-10 02:49:28,535 INFO: Model Accuracy: 0.7507501875468867
+2025-03-10 02:49:28,535 INFO: Classification Report:
+              precision    recall  f1-score   support
+
+           0       0.73      0.79      0.76      2644
+           1       0.77      0.71      0.74      2688
+
+    accuracy                           0.75      5332
+   macro avg       0.75      0.75      0.75      5332
+weighted avg       0.75      0.75      0.75      5332
+
+2025-03-10 02:49:28,535 INFO: Confusion Matrix:
+[[2086  558]
+ [ 771 1917]]
+2025-03-10 02:49:28,535 INFO: Cross-validation scores: [[1.7957500219345093, 0.74652099609375], [0.7200596332550049, 0.7563185691833496]]
+2025-03-10 02:49:28,535 INFO: Mean CV score: 1.0046623051166534
+2025-03-10 02:49:28,535 INFO: New data accuracy: 0.7507501875468867
+2025-03-10 02:49:28,535 INFO: New best model!
+2025-03-10 02:49:28,535 INFO: Saving model to /home/tikeda/workspace/trade/option_trade/data/data_rolling/rolling_BTC_ETH_SOL_BNB_1440_xd_model_madhist1.keras
+2025-03-10 02:49:29,024 INFO: Saving scaler to /home/tikeda/workspace/trade/option_trade/data/data_rolling/rolling_BTC_ETH_SOL_BNB_1440_xd_model_madhist1.scaler
+2025-03-10 02:49:29,025 INFO: Target accuracy 0.5 achieved. Stopping training.
+2025-03-10 02:49:29,025 INFO: 
+Training completed.
+2025-03-10 02:49:29,025 INFO: Best accuracy on new data: 0.7507501875468867
+2025-03-10 02:49:29,025 INFO: Final classification report on new data:
+2025-03-10 02:49:29,025 INFO:               precision    recall  f1-score   support
+
+           0       0.73      0.79      0.76      2644
+           1       0.77      0.71      0.74      2688
+
+    accuracy                           0.75      5332
+   macro avg       0.75      0.75      0.75      5332
+weighted avg       0.75      0.75      0.75      5332
+
+2025-03-10 02:49:29,025 INFO: Final confusion matrix:
+2025-03-10 02:49:29,025 INFO: [[2086  558]
+ [ 771 1917]]
+2025-03-10 02:49:29,025 INFO: test model load
